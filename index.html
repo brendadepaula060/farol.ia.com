@@ -4,14 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Farol.IA — mentor de carreira</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
   :root{
-    color-scheme:dark;
+    color-scheme: dark;
     --ink:#0a1420;
     --ink-2:#0f2035;
     --ink-3:#16283e;
@@ -27,957 +25,200 @@
     --good:#5aab84;
     --good-dim:rgba(90,171,132,.16);
     --warn:#e08a63;
-    --serif:'Fraunces',Georgia,serif;
-    --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
-
   *{box-sizing:border-box}
-
-  html,body{
-    margin:0;
-    padding:0;
-  }
-
+  html,body{margin:0;padding:0}
   body{
-    background:radial-gradient(120% 100% at 15% -10%,#12253c 0%,var(--ink) 45%) fixed;
+    background: radial-gradient(120% 100% at 15% -10%, #12253c 0%, var(--ink) 45%) fixed;
     color:#eef2f7;
     font-family:var(--sans);
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
   }
-
   a{color:inherit}
   button{font-family:inherit}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:600;margin:0 0 .4em;letter-spacing:-.01em}
+  p{margin:0 0 1em;color:var(--fog)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
 
-  h1,h2,h3,h4{
-    font-family:var(--serif);
-    font-weight:600;
-    margin:0 0 .4em;
-    letter-spacing:-.01em;
-  }
-
-  p{
-    margin:0 0 1em;
-    color:var(--fog);
-  }
-
-  .wrap{
-    max-width:1040px;
-    margin:0 auto;
-    padding:0 24px;
-  }
-
-  /* ---------- Header ---------- */
-
+  /* ---------- Header & waypoint nav ---------- */
   header.top{
-    position:sticky;
-    top:0;
-    z-index:40;
+    position:sticky;top:0;z-index:40;
     background:rgba(10,20,32,.86);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
+  .top-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1040px;margin:0 auto;gap:20px}
+  .brand{display:flex;align-items:baseline;gap:10px}
+  .brand-mark{font-family:var(--serif);font-style:italic;font-weight:600;font-size:22px;color:var(--beacon-light)}
+  .brand-sub{font-size:12px;color:var(--fog-dim);display:none}
+  @media(min-width:640px){.brand-sub{display:inline}}
 
-  .top-inner{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:16px 24px;
-    max-width:1040px;
-    margin:0 auto;
-    gap:20px;
-  }
-
-  .brand{
-    display:flex;
-    align-items:baseline;
-    gap:10px;
-  }
-
-  .brand-mark{
-    font-family:var(--serif);
-    font-style:italic;
-    font-weight:600;
-    font-size:22px;
-    color:var(--beacon-light);
-  }
-
-  .brand-sub{
-    font-size:12px;
-    color:var(--fog-dim);
-    display:none;
-  }
-
-  @media(min-width:640px){
-    .brand-sub{display:inline}
-  }
-
-  nav.waypoints{
-    display:flex;
-    gap:2px;
-    overflow-x:auto;
-    scrollbar-width:none;
-  }
-
-  nav.waypoints::-webkit-scrollbar{
-    display:none;
-  }
-
+  nav.waypoints{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+  nav.waypoints::-webkit-scrollbar{display:none}
   nav.waypoints button{
-    background:none;
-    border:none;
-    color:var(--fog);
-    padding:9px 14px;
-    border-radius:999px;
-    font-size:13.5px;
-    font-weight:500;
-    cursor:pointer;
-    white-space:nowrap;
-    transition:color .18s,background .18s;
+    background:none;border:none;color:var(--fog);
+    padding:9px 14px;border-radius:999px;font-size:13.5px;font-weight:500;
+    cursor:pointer;white-space:nowrap;transition:color .18s, background .18s;
   }
-
-  nav.waypoints button:hover{
-    color:#fff;
-    background:rgba(255,255,255,.05);
-  }
-
-  nav.waypoints button.active{
-    color:var(--ink);
-    background:var(--beacon);
-    font-weight:600;
-  }
+  nav.waypoints button:hover{color:#fff;background:rgba(255,255,255,.05)}
+  nav.waypoints button.active{color:var(--ink);background:var(--beacon);font-weight:600}
 
   /* ---------- Screens ---------- */
-
-  .screen{
-    display:none;
-    padding:44px 0 90px;
-  }
-
-  .screen.active{
-    display:block;
-  }
+  .screen{display:none;padding:44px 0 90px}
+  .screen.active{display:block}
 
   /* ---------- Hero ---------- */
-
-  .hero{
-    position:relative;
-    overflow:hidden;
-    border-radius:20px;
-    padding:64px 36px;
-    margin-bottom:36px;
+  .hero{position:relative;overflow:hidden;border-radius:20px;padding:64px 36px;margin-bottom:36px;
     background:linear-gradient(180deg,#0d1e33 0%,#0a1622 100%);
     border:1px solid var(--line);
   }
-
-  .hero-beam{
-    position:absolute;
-    inset:-40% -20%;
-    pointer-events:none;
-    background:conic-gradient(
-      from 210deg at 22% 35%,
-      transparent 0deg,
-      var(--beacon-dim) 26deg,
-      transparent 70deg,
-      transparent 360deg
-    );
+  .hero-beam{position:absolute;inset:-40% -20%;pointer-events:none;
+    background:conic-gradient(from 210deg at 22% 35%, transparent 0deg, var(--beacon-dim) 26deg, transparent 70deg, transparent 360deg);
     animation:sweep 16s linear infinite;
   }
-
-  @keyframes sweep{
-    to{transform:rotate(360deg)}
-  }
-
-  @media(prefers-reduced-motion:reduce){
-    .hero-beam{animation:none}
-  }
-
-  .hero-content{
-    position:relative;
-    max-width:640px;
-  }
-
-  .hero h1{
-    font-size:clamp(30px,4.4vw,44px);
-    line-height:1.12;
-    color:#fff;
-  }
-
-  .hero p.lede{
-    font-size:17px;
-    color:var(--fog);
-    max-width:480px;
-  }
-
-  .hero-tag{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-size:12.5px;
-    color:var(--beacon-light);
-    background:var(--beacon-dim);
-    border:1px solid rgba(245,166,35,.3);
-    padding:5px 12px;
-    border-radius:999px;
-    margin-bottom:18px;
-  }
+  @keyframes sweep{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion: reduce){.hero-beam{animation:none}}
+  .hero-content{position:relative;max-width:640px}
+  .hero h1{font-size:clamp(30px,4.4vw,44px);line-height:1.12;color:#fff}
+  .hero p.lede{font-size:17px;color:var(--fog);max-width:480px}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--beacon-light);
+    background:var(--beacon-dim);border:1px solid rgba(245,166,35,.3);padding:5px 12px;border-radius:999px;margin-bottom:18px}
 
   /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--beacon);color:#1a1200;
+    border:none;padding:13px 22px;border-radius:11px;font-weight:600;font-size:14.5px;cursor:pointer;
+    transition:transform .12s, box-shadow .12s;}
+  .btn:hover{box-shadow:0 8px 24px -6px rgba(245,166,35,.5);transform:translateY(-1px)}
+  .btn:active{transform:translateY(0)}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid var(--line);padding:12px 20px;border-radius:11px;font-weight:500;font-size:14px;cursor:pointer}
+  .btn-ghost:hover{border-color:var(--beacon);color:var(--beacon-light)}
+  .btn-sm{padding:8px 14px;font-size:13px;border-radius:9px}
+  .btn:disabled{opacity:.5;cursor:default;box-shadow:none;transform:none}
 
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:var(--beacon);
-    color:#1a1200;
-    border:none;
-    padding:13px 22px;
-    border-radius:11px;
-    font-weight:600;
-    font-size:14.5px;
-    cursor:pointer;
-    transition:transform .12s,box-shadow .12s;
+  /* ---------- Cards / panels (varied treatments) ---------- */
+  .panel{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .panel + .panel{margin-top:18px}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+  .section-head h2{font-size:23px;color:#fff}
+  .section-head .hint{font-size:13px;color:var(--fog-dim)}
+
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--fog);margin-bottom:6px}
+  .field input, .field textarea{
+    width:100%;background:var(--ink-3);border:1px solid var(--line);color:#fff;
+    padding:11px 13px;border-radius:9px;font-size:14.5px;font-family:inherit;
   }
+  .field input:focus, .field textarea:focus{outline:2px solid var(--beacon);outline-offset:1px;border-color:transparent}
+  .field textarea{resize:vertical;min-height:88px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:600px){.grid2{grid-template-columns:1fr}}
 
-  .btn:hover{
-    box-shadow:0 8px 24px -6px rgba(245,166,35,.5);
-    transform:translateY(-1px);
-  }
+  .tag{display:inline-flex;align-items:center;background:var(--ink-3);border:1px solid var(--line);
+    color:#dce6f2;padding:6px 12px;border-radius:999px;font-size:12.5px;margin:0 8px 8px 0}
+  .tag.gold{background:var(--beacon-dim);border-color:rgba(245,166,35,.35);color:var(--beacon-light)}
+  .tag.good{background:var(--good-dim);border-color:rgba(90,171,132,.4);color:#a8e0c4}
 
-  .btn:active{
-    transform:translateY(0);
-  }
+  /* ---------- Stepper dots (diagnostic) ---------- */
+  .dots{display:flex;gap:7px;margin-bottom:26px}
+  .dot{width:26px;height:5px;border-radius:3px;background:var(--ink-3)}
+  .dot.done{background:var(--beacon)}
+  .dot.now{background:var(--beacon-light)}
 
-  .btn-ghost{
-    background:transparent;
-    color:#fff;
-    border:1px solid var(--line);
-    padding:12px 20px;
-    border-radius:11px;
-    font-weight:500;
-    font-size:14px;
-    cursor:pointer;
-  }
+  .quiz-q{font-size:20px;color:#fff;margin-bottom:22px;font-family:var(--serif);font-weight:500}
+  .quiz-opts{display:grid;gap:10px}
+  .quiz-opt{text-align:left;background:var(--ink-3);border:1px solid var(--line);color:#eef2f7;
+    padding:15px 16px;border-radius:11px;font-size:14.5px;cursor:pointer;transition:border-color .15s, background .15s}
+  .quiz-opt:hover{border-color:var(--beacon);background:#1b3350}
 
-  .btn-ghost:hover{
-    border-color:var(--beacon);
-    color:var(--beacon-light);
-  }
+  /* ---------- Persona result ---------- */
+  .persona-name{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(28px,4vw,38px);
+    color:var(--beacon-light);margin-bottom:6px}
+  .persona-block{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+  .persona-copy{flex:1;min-width:260px}
+  .persona-traits{min-width:220px}
+  .persona-traits h4{font-size:12.5px;text-transform:none;color:var(--fog-dim);margin-bottom:10px;font-family:var(--sans);font-weight:600}
 
-  .btn-sm{
-    padding:8px 14px;
-    font-size:13px;
-    border-radius:9px;
-  }
-
-  .btn:disabled{
-    opacity:.5;
-    cursor:default;
-    box-shadow:none;
-    transform:none;
-  }
-
-  /* ---------- Cards / panels ---------- */
-
-  .panel{
-    background:var(--ink-2);
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:28px;
-  }
-
-  .panel + .panel{
-    margin-top:18px;
-  }
-
-  .section-head{
-    display:flex;
-    align-items:baseline;
-    justify-content:space-between;
-    gap:12px;
-    margin-bottom:20px;
-    flex-wrap:wrap;
-  }
-
-  .section-head h2{
-    font-size:23px;
-    color:#fff;
-  }
-
-  .section-head .hint{
-    font-size:13px;
-    color:var(--fog-dim);
-  }
-
-  .field{
-    margin-bottom:16px;
-  }
-
-  .field label{
-    display:block;
-    font-size:13px;
-    color:var(--fog);
-    margin-bottom:6px;
-  }
-
-  .field input,
-  .field textarea{
-    width:100%;
-    background:var(--ink-3);
-    border:1px solid var(--line);
-    color:#fff;
-    padding:11px 13px;
-    border-radius:9px;
-    font-size:14.5px;
-    font-family:inherit;
-  }
-
-  .field input:focus,
-  .field textarea:focus{
-    outline:2px solid var(--beacon);
-    outline-offset:1px;
-    border-color:transparent;
-  }
-
-  .field textarea{
-    resize:vertical;
-    min-height:88px;
-  }
-
-  .grid2{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-  }
-
-  @media(max-width:600px){
-    .grid2{
-      grid-template-columns:1fr;
-    }
-  }
-
-  .tag{
-    display:inline-flex;
-    align-items:center;
-    background:var(--ink-3);
-    border:1px solid var(--line);
-    color:#dce6f2;
-    padding:6px 12px;
-    border-radius:999px;
-    font-size:12.5px;
-    margin:0 8px 8px 0;
-  }
-
-  .tag.gold{
-    background:var(--beacon-dim);
-    border-color:rgba(245,166,35,.35);
-    color:var(--beacon-light);
-  }
-
-  .tag.good{
-    background:var(--good-dim);
-    border-color:rgba(90,171,132,.4);
-    color:#a8e0c4;
-  }
-
-  /* ---------- Stepper ---------- */
-
-  .dots{
-    display:flex;
-    gap:7px;
-    margin-bottom:26px;
-  }
-
-  .dot{
-    width:26px;
-    height:5px;
-    border-radius:3px;
-    background:var(--ink-3);
-  }
-
-  .dot.done{
-    background:var(--beacon);
-  }
-
-  .dot.now{
-    background:var(--beacon-light);
-  }
-
-  .quiz-q{
-    font-size:20px;
-    color:#fff;
-    margin-bottom:22px;
-    font-family:var(--serif);
-    font-weight:500;
-  }
-
-  .quiz-opts{
-    display:grid;
-    gap:10px;
-  }
-
-  .quiz-opt{
-    text-align:left;
-    background:var(--ink-3);
-    border:1px solid var(--line);
-    color:#eef2f7;
-    padding:15px 16px;
-    border-radius:11px;
-    font-size:14.5px;
-    cursor:pointer;
-    transition:border-color .15s,background .15s;
-  }
-
-  .quiz-opt:hover{
-    border-color:var(--beacon);
-    background:#1b3350;
-  }
-
-  /* ---------- Persona ---------- */
-
-  .persona-name{
-    font-family:var(--serif);
-    font-style:italic;
-    font-weight:600;
-    font-size:clamp(28px,4vw,38px);
-    color:var(--beacon-light);
-    margin-bottom:6px;
-  }
-
-  .persona-block{
-    display:flex;
-    flex-wrap:wrap;
-    gap:32px;
-    align-items:flex-start;
-  }
-
-  .persona-copy{
-    flex:1;
-    min-width:260px;
-  }
-
-  .persona-traits{
-    min-width:220px;
-  }
-
-  .persona-traits h4{
-    font-size:12.5px;
-    text-transform:none;
-    color:var(--fog-dim);
-    margin-bottom:10px;
-    font-family:var(--sans);
-    font-weight:600;
-  }
-
-  /* ---------- Farol score ---------- */
-
-  .score-row{
-    display:flex;
-    gap:32px;
-    flex-wrap:wrap;
-    align-items:center;
-  }
-
-  .gauge-wrap{
-    position:relative;
-    width:168px;
-    height:168px;
-    flex-shrink:0;
-  }
-
-  .gauge-num{
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-  }
-
-  .gauge-num .n{
-    font-family:var(--serif);
-    font-size:44px;
-    font-weight:600;
-    color:#fff;
-    line-height:1;
-  }
-
-  .gauge-num .d{
-    font-size:11px;
-    color:var(--fog-dim);
-    letter-spacing:.02em;
-  }
-
-  .score-breakdown{
-    flex:1;
-    min-width:240px;
-    display:grid;
-    gap:12px;
-  }
-
-  .score-item{
-    display:grid;
-    grid-template-columns:120px 1fr 40px;
-    align-items:center;
-    gap:10px;
-    font-size:13px;
-    color:var(--fog);
-  }
-
-  .bar-track{
-    height:7px;
-    border-radius:4px;
-    background:var(--ink-3);
-    overflow:hidden;
-  }
-
-  .bar-fill{
-    height:100%;
-    background:linear-gradient(90deg,var(--beacon),var(--beacon-light));
-    border-radius:4px;
-  }
+  /* ---------- Farol score gauge ---------- */
+  .score-row{display:flex;gap:32px;flex-wrap:wrap;align-items:center}
+  .gauge-wrap{position:relative;width:168px;height:168px;flex-shrink:0}
+  .gauge-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .gauge-num .n{font-family:var(--serif);font-size:44px;font-weight:600;color:#fff;line-height:1}
+  .gauge-num .d{font-size:11px;color:var(--fog-dim);letter-spacing:.02em}
+  .score-breakdown{flex:1;min-width:240px;display:grid;gap:12px}
+  .score-item{display:grid;grid-template-columns:120px 1fr 40px;align-items:center;gap:10px;font-size:13px;color:var(--fog)}
+  .bar-track{height:7px;border-radius:4px;background:var(--ink-3);overflow:hidden}
+  .bar-fill{height:100%;background:linear-gradient(90deg,var(--beacon),var(--beacon-light));border-radius:4px}
 
   /* ---------- Career map ---------- */
-
-  .map-row{
-    display:flex;
-    align-items:center;
-    overflow-x:auto;
-    padding:8px 2px 18px;
-    gap:0;
-  }
-
-  .map-node{
-    flex:0 0 auto;
-    width:168px;
-    text-align:center;
-    padding:16px 12px;
-    position:relative;
-  }
-
-  .map-node .dotm{
-    width:13px;
-    height:13px;
-    border-radius:50%;
-    background:var(--ink-3);
-    border:2px solid var(--fog-dim);
-    margin:0 auto 12px;
-  }
-
-  .map-node.you .dotm{
-    background:var(--beacon);
-    border-color:var(--beacon-light);
-    box-shadow:0 0 0 5px var(--beacon-dim);
-  }
-
-  .map-node .lbl{
-    font-size:13px;
-    color:#dce6f2;
-    font-weight:500;
-  }
-
-  .map-node .sub{
-    font-size:11px;
-    color:var(--fog-dim);
-    margin-top:2px;
-  }
-
-  .map-line{
-    flex:0 0 auto;
-    width:44px;
-    height:2px;
-    background:linear-gradient(90deg,var(--fog-dim),var(--beacon-dim));
-    margin-top:-38px;
-  }
+  .map-row{display:flex;align-items:center;overflow-x:auto;padding:8px 2px 18px;gap:0}
+  .map-node{flex:0 0 auto;width:168px;text-align:center;padding:16px 12px;position:relative}
+  .map-node .dotm{width:13px;height:13px;border-radius:50%;background:var(--ink-3);border:2px solid var(--fog-dim);margin:0 auto 12px}
+  .map-node.you .dotm{background:var(--beacon);border-color:var(--beacon-light);box-shadow:0 0 0 5px var(--beacon-dim)}
+  .map-node .lbl{font-size:13px;color:#dce6f2;font-weight:500}
+  .map-node .sub{font-size:11px;color:var(--fog-dim);margin-top:2px}
+  .map-line{flex:0 0 auto;width:44px;height:2px;background:linear-gradient(90deg,var(--fog-dim),var(--beacon-dim));margin-top:-38px}
 
   /* ---------- Jobs ---------- */
-
-  .job{
-    border:1px solid var(--line);
-    border-left:3px solid var(--beacon-dim);
-    border-radius:10px;
-    padding:18px 20px;
-    margin-bottom:12px;
-    background:var(--ink-2);
-    cursor:pointer;
-  }
-
-  .job.open{
-    border-left-color:var(--beacon);
-  }
-
-  .job-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:14px;
-  }
-
-  .job-title{
-    font-size:16px;
-    color:#fff;
-    font-weight:600;
-    margin-bottom:2px;
-  }
-
-  .job-area{
-    font-size:12.5px;
-    color:var(--fog-dim);
-  }
-
-  .compat{
-    font-family:var(--serif);
-    font-size:22px;
-    font-weight:600;
-    color:var(--beacon-light);
-    white-space:nowrap;
-  }
-
-  .compat-lbl{
-    font-size:10.5px;
-    color:var(--fog-dim);
-    text-align:right;
-    margin-top:-4px;
-  }
-
-  .job-body{
-    margin-top:14px;
-    padding-top:14px;
-    border-top:1px solid var(--line);
-    display:none;
-  }
-
-  .job.open .job-body{
-    display:block;
-  }
-
-  .steps-list{
-    list-style:none;
-    margin:14px 0;
-    padding:0;
-    display:grid;
-    gap:8px;
-  }
-
-  .steps-list li{
-    font-size:13.5px;
-    color:var(--fog-dim);
-    display:flex;
-    align-items:center;
-    gap:9px;
-  }
-
-  .steps-list li .chk{
-    width:16px;
-    height:16px;
-    border-radius:50%;
-    border:1.5px solid var(--fog-dim);
-    flex-shrink:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:10px;
-  }
-
-  .steps-list li.on{
-    color:#dce6f2;
-  }
-
-  .steps-list li.on .chk{
-    background:var(--good);
-    border-color:var(--good);
-    color:#08130e;
-  }
-
-  .integrations{
-    margin-top:16px;
-    padding-top:14px;
-    border-top:1px solid var(--line);
-  }
-
-  .integrations p{
-    font-size:11.5px;
-    color:var(--fog-dim);
-    margin-bottom:8px;
-  }
-
-  .real-links{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin:14px 0 8px;
-  }
-
-  .hint-note{
-    font-size:11.5px;
-    color:var(--fog-dim);
-    margin:0 0 4px;
-  }
+  .job{border:1px solid var(--line);border-left:3px solid var(--beacon-dim);border-radius:10px;padding:18px 20px;margin-bottom:12px;background:var(--ink-2);cursor:pointer}
+  .job.open{border-left-color:var(--beacon)}
+  .job-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+  .job-title{font-size:16px;color:#fff;font-weight:600;margin-bottom:2px}
+  .job-area{font-size:12.5px;color:var(--fog-dim)}
+  .compat{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--beacon-light);white-space:nowrap}
+  .compat-lbl{font-size:10.5px;color:var(--fog-dim);text-align:right;margin-top:-4px}
+  .job-body{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);display:none}
+  .job.open .job-body{display:block}
+  .steps-list{list-style:none;margin:14px 0;padding:0;display:grid;gap:8px}
+  .steps-list li{font-size:13.5px;color:var(--fog-dim);display:flex;align-items:center;gap:9px}
+  .steps-list li .chk{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--fog-dim);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px}
+  .steps-list li.on{color:#dce6f2}
+  .steps-list li.on .chk{background:var(--good);border-color:var(--good);color:#08130e}
+  .integrations{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+  .integrations p{font-size:11.5px;color:var(--fog-dim);margin-bottom:8px}
+  .real-links{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 8px}
+  .hint-note{font-size:11.5px;color:var(--fog-dim);margin:0 0 4px}
 
   /* ---------- Progress ---------- */
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+  @media(max-width:560px){.stat-row{grid-template-columns:1fr}}
+  .stat{background:var(--ink-3);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .stat .n{font-family:var(--serif);font-size:32px;color:#fff}
+  .stat .l{font-size:12.5px;color:var(--fog-dim)}
+  .timeline{border-left:2px solid var(--ink-3);margin-left:6px;padding-left:22px;display:grid;gap:20px}
+  .tl-item{position:relative}
+  .tl-item::before{content:'';position:absolute;left:-28px;top:3px;width:11px;height:11px;border-radius:50%;background:var(--ink-3);border:2px solid var(--fog-dim)}
+  .tl-item.done::before{background:var(--good);border-color:var(--good)}
+  .tl-item.next::before{background:var(--beacon);border-color:var(--beacon-light)}
+  .tl-item .tt{font-size:14.5px;color:#eef2f7;font-weight:500}
+  .tl-item .ts{font-size:12px;color:var(--fog-dim)}
+  .advice{background:linear-gradient(135deg,#17304c,#0f2035);border:1px solid rgba(245,166,35,.22);border-radius:14px;padding:22px;margin-top:22px}
+  .advice p{color:#dce6f2;margin:0}
 
-  .stat-row{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:14px;
-    margin-bottom:24px;
-  }
+  /* ---------- Mentor chat bubble ---------- */
+  .mentor-msg{background:var(--ink-3);border-radius:4px 16px 16px 16px;padding:20px 22px;max-width:560px;margin-bottom:22px;border:1px solid var(--line)}
+  .mentor-msg p{color:#dce6f2;margin:0}
+  .mentor-hi{font-family:var(--serif);font-style:italic;color:var(--beacon-light);font-size:19px;margin-bottom:6px}
+  .suggest-chip{display:inline-flex;align-items:center;gap:6px;background:var(--ink-3);border:1px solid var(--line);color:#dce6f2;
+    padding:9px 14px;border-radius:10px;font-size:13.5px;margin:0 10px 10px 0}
 
-  @media(max-width:560px){
-    .stat-row{
-      grid-template-columns:1fr;
-    }
-  }
+  .course{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .course:last-child{border-bottom:none}
+  .course .cname{font-size:14.5px;color:#eef2f7;font-weight:500}
+  .course .cimpact{font-size:12px;color:var(--beacon-light)}
 
-  .stat{
-    background:var(--ink-3);
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:18px;
-  }
+  .mission-card{background:linear-gradient(135deg,var(--ink-3),#0f2035);border:1px solid rgba(245,166,35,.25);border-radius:14px;padding:24px;margin-top:20px}
+  .mission-card .flag{font-size:12px;color:var(--beacon-light);letter-spacing:.02em;margin-bottom:8px;font-weight:600}
+  .mission-card h3{color:#fff;font-size:19px;margin-bottom:6px}
 
-  .stat .n{
-    font-family:var(--serif);
-    font-size:32px;
-    color:#fff;
-  }
+  .empty-note{font-size:13.5px;color:var(--fog-dim);font-style:italic}
+  footer.foot{text-align:center;padding:30px 24px 50px;color:var(--fog-dim);font-size:12.5px}
 
-  .stat .l{
-    font-size:12.5px;
-    color:var(--fog-dim);
-  }
-
-  .timeline{
-    border-left:2px solid var(--ink-3);
-    margin-left:6px;
-    padding-left:22px;
-    display:grid;
-    gap:20px;
-  }
-
-  .tl-item{
-    position:relative;
-  }
-
-  .tl-item::before{
-    content:'';
-    position:absolute;
-    left:-28px;
-    top:3px;
-    width:11px;
-    height:11px;
-    border-radius:50%;
-    background:var(--ink-3);
-    border:2px solid var(--fog-dim);
-  }
-
-  .tl-item.done::before{
-    background:var(--good);
-    border-color:var(--good);
-  }
-
-  .tl-item.next::before{
-    background:var(--beacon);
-    border-color:var(--beacon-light);
-  }
-
-  .tl-item .tt{
-    font-size:14.5px;
-    color:#eef2f7;
-    font-weight:500;
-  }
-
-  .tl-item .ts{
-    font-size:12px;
-    color:var(--fog-dim);
-  }
-
-  .advice{
-    background:linear-gradient(135deg,#17304c,#0f2035);
-    border:1px solid rgba(245,166,35,.22);
-    border-radius:14px;
-    padding:22px;
-    margin-top:22px;
-  }
-
-  .advice p{
-    color:#dce6f2;
-    margin:0;
-  }
-
-  /* ---------- Mentor ---------- */
-
-  .mentor-msg{
-    background:var(--ink-3);
-    border-radius:4px 16px 16px 16px;
-    padding:20px 22px;
-    max-width:560px;
-    margin-bottom:22px;
-    border:1px solid var(--line);
-  }
-
-  .mentor-msg p{
-    color:#dce6f2;
-    margin:0;
-  }
-
-  .mentor-hi{
-    font-family:var(--serif);
-    font-style:italic;
-    color:var(--beacon-light);
-    font-size:19px;
-    margin-bottom:6px;
-  }
-
-  .suggest-chip{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    background:var(--ink-3);
-    border:1px solid var(--line);
-    color:#dce6f2;
-    padding:9px 14px;
-    border-radius:10px;
-    font-size:13.5px;
-    margin:0 10px 10px 0;
-  }
-
-  .course{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:14px;
-    padding:14px 0;
-    border-bottom:1px solid var(--line);
-  }
-
-  .course:last-child{
-    border-bottom:none;
-  }
-
-  .course .cname{
-    font-size:14.5px;
-    color:#eef2f7;
-    font-weight:500;
-  }
-
-  .course .cimpact{
-    font-size:12px;
-    color:var(--beacon-light);
-  }
-
-  .mission-card{
-    background:linear-gradient(135deg,var(--ink-3),#0f2035);
-    border:1px solid rgba(245,166,35,.25);
-    border-radius:14px;
-    padding:24px;
-    margin-top:20px;
-  }
-
-  .mission-card .flag{
-    font-size:12px;
-    color:var(--beacon-light);
-    letter-spacing:.02em;
-    margin-bottom:8px;
-    font-weight:600;
-  }
-
-  .mission-card h3{
-    color:#fff;
-    font-size:19px;
-    margin-bottom:6px;
-  }
-
-  .empty-note{
-    font-size:13.5px;
-    color:var(--fog-dim);
-    font-style:italic;
-  }
-
-  footer.foot{
-    text-align:center;
-    padding:30px 24px 50px;
-    color:var(--fog-dim);
-    font-size:12.5px;
-  }
-
-  ::selection{
-    background:var(--beacon-dim);
-    color:#fff;
-  }
-
-  /* ---------- Mobile ---------- */
-
-  @media(max-width:600px){
-    .wrap{
-      padding:0 16px;
-    }
-
-    .top-inner{
-      padding:12px 16px;
-      gap:10px;
-    }
-
-    .brand-mark{
-      font-size:20px;
-    }
-
-    nav.waypoints button{
-      padding:8px 11px;
-      font-size:12.5px;
-    }
-
-    .screen{
-      padding:28px 0 70px;
-    }
-
-    .hero{
-      padding:42px 22px;
-      border-radius:16px;
-    }
-
-    .hero h1{
-      font-size:31px;
-    }
-
-    .hero p.lede{
-      font-size:15px;
-    }
-
-    .panel{
-      padding:20px;
-    }
-
-    .score-item{
-      grid-template-columns:105px 1fr 38px;
-      font-size:12px;
-    }
-
-    .course{
-      align-items:flex-start;
-      flex-direction:column;
-    }
-
-    .job-top{
-      gap:8px;
-    }
-
-    .job{
-      padding:16px;
-    }
-
-    .real-links .btn{
-      width:100%;
-      justify-content:center;
-    }
-
-    .map-row{
-      padding-bottom:12px;
-    }
-  }
+  ::selection{background:var(--beacon-dim);color:#fff}
 </style>
 </head>
-
 <body>
 
 <header class="top">
@@ -986,13 +227,12 @@
       <span class="brand-mark">farol.ia</span>
       <span class="brand-sub">mentor digital de carreira</span>
     </div>
-
     <nav class="waypoints" id="waypoints">
-      <button type="button" data-tab="home" class="active">Início</button>
-      <button type="button" data-tab="perfil">Meu Perfil</button>
-      <button type="button" data-tab="vagas">Oportunidades</button>
-      <button type="button" data-tab="progresso">Meu Progresso</button>
-      <button type="button" data-tab="mentor">Mentor IA</button>
+      <button data-tab="home" class="active">Início</button>
+      <button data-tab="perfil">Meu Perfil</button>
+      <button data-tab="vagas">Oportunidades</button>
+      <button data-tab="progresso">Meu Progresso</button>
+      <button data-tab="mentor">Mentor IA</button>
     </nav>
   </div>
 </header>
@@ -1000,3027 +240,614 @@
 <div class="wrap">
 
   <!-- ================= HOME ================= -->
-
   <section class="screen active" id="screen-home">
-
     <div class="hero">
       <div class="hero-beam"></div>
-
       <div class="hero-content">
-
         <span class="hero-tag">🧭 mentor de carreira com IA</span>
-
-        <h1>
-          Porque encontrar uma vaga é importante.<br>
-          Encontrar seu caminho é essencial.
-        </h1>
-
-        <p class="lede">
-          O Farol.IA descobre seu potencial, traduz suas experiências em competências
-          e te mostra as oportunidades certas — sem substituir o LinkedIn, a Gupy ou o CIEE,
-          mas iluminando o caminho entre eles.
-        </p>
-
-        <button type="button" class="btn" id="btn-start">
-          Iniciar minha jornada
-        </button>
-
+        <h1>Porque encontrar uma vaga é importante.<br>Encontrar seu caminho é essencial.</h1>
+        <p class="lede">O Farol.IA descobre seu potencial, traduz suas experiências em competências e te mostra as oportunidades certas — sem substituir o LinkedIn, a Gupy ou o CIEE, mas iluminando o caminho entre eles.</p>
+        <button class="btn" id="btn-start">Iniciar minha jornada</button>
       </div>
     </div>
-
     <div id="home-snapshot"></div>
-
   </section>
 
-
   <!-- ================= MEU PERFIL ================= -->
-
   <section class="screen" id="screen-perfil">
     <div id="perfil-content"></div>
   </section>
 
-
   <!-- ================= OPORTUNIDADES ================= -->
-
   <section class="screen" id="screen-vagas">
-
     <div class="section-head">
       <h2>Oportunidades compatíveis</h2>
       <span class="hint">Ordenadas pela sua aderência de perfil</span>
     </div>
-
     <div id="vagas-list"></div>
-
   </section>
-
 
   <!-- ================= PROGRESSO ================= -->
-
   <section class="screen" id="screen-progresso">
-
-    <div class="section-head">
-      <h2>Meu progresso</h2>
-    </div>
-
+    <div class="section-head"><h2>Meu progresso</h2></div>
     <div id="progresso-content"></div>
-
   </section>
 
-
   <!-- ================= MENTOR ================= -->
-
   <section class="screen" id="screen-mentor">
-
-    <div class="section-head">
-      <h2>Mentor IA</h2>
-    </div>
-
+    <div class="section-head"><h2>Mentor IA</h2></div>
     <div id="mentor-content"></div>
-
   </section>
 
 </div>
 
-<footer class="foot">
-  Farol.IA — protótipo de produto, dados simulados localmente no seu navegador.
-</footer>
-
+<footer class="foot">Farol.IA — protótipo de produto, dados simulados localmente no seu navegador.</footer>
 
 <script>
-
 /* =======================================================================
    STATE
 ======================================================================= */
-
 const DEFAULT_STATE = {
-  dados:{
-    nome:'',
-    email:'',
-    telefone:'',
-    formacao:'',
-    instituicao:'',
-    funcao:'',
-    experiencias:[],
-    cursosComp:[]
-  },
-
-  quiz:[],
-
-  persona:null,
-
+  dados: { nome:'', email:'', telefone:'', formacao:'', instituicao:'', funcao:'', experiencias:[], cursosComp:[] },
+  quiz: [],            // array of dimension letters answered, e.g. ['c','a',...]
+  persona: null,       // 'c' | 'a' | 'm' | 'o'
   potencialTexto:'',
-
-  competencias:[],
-
-  cursosFeitos:[],
-
-  candidaturas:[],
-
-  perfilStep:0,
-
-  chatHistory:[]
+  competencias: [],
+  cursosFeitos: [],    // {nome, impacto}
+  candidaturas: [],    // {titulo, data}
+  perfilStep: 0,       // 0 dados, 1 diagnostico, 2 potencial, 3 resultado
+  chatHistory: []      // {role:'mentor'|'user', text}
 };
-
 let state = loadState();
 
-
 function loadState(){
-
   try{
-
     const raw = localStorage.getItem('faroliaState_v1');
-
-    if(!raw){
-      return structuredClone(DEFAULT_STATE);
-    }
-
+    if(!raw) return structuredClone(DEFAULT_STATE);
     const parsed = JSON.parse(raw);
-
-    return Object.assign(
-      structuredClone(DEFAULT_STATE),
-      parsed
-    );
-
-  }catch(e){
-
-    return structuredClone(DEFAULT_STATE);
-
-  }
-
+    return Object.assign(structuredClone(DEFAULT_STATE), parsed);
+  }catch(e){ return structuredClone(DEFAULT_STATE); }
 }
-
-
 function saveState(){
-
-  try{
-
-    localStorage.setItem(
-      'faroliaState_v1',
-      JSON.stringify(state)
-    );
-
-  }catch(e){
-
-    /* storage unavailable — continue without persistence */
-
-  }
-
+  try{ localStorage.setItem('faroliaState_v1', JSON.stringify(state)); }
+  catch(e){ /* storage unavailable — continue without persistence */ }
 }
-
 
 /* =======================================================================
    REFERENCE DATA
 ======================================================================= */
-
 const QUESTIONS = [
-
-  {
-    q:'Quando você precisa resolver algo novo, o que costuma fazer?',
-    opts:[
-      {
-        t:'Procurar informações e entender o contexto',
-        d:'a'
-      },
-      {
-        t:'Pensar em ideias diferentes das óbvias',
-        d:'c'
-      },
-      {
-        t:'Conversar com pessoas que já passaram por isso',
-        d:'m'
-      },
-      {
-        t:'Criar um plano com etapas claras',
-        d:'o'
-      }
-    ]
-  },
-
-  {
-    q:'Qual papel você costuma assumir em trabalhos em grupo?',
-    opts:[
-      {
-        t:'Organizar tarefas e prazos',
-        d:'o'
-      },
-      {
-        t:'Motivar e alinhar as pessoas',
-        d:'m'
-      },
-      {
-        t:'Propor soluções criativas',
-        d:'c'
-      },
-      {
-        t:'Analisar informações antes de decidir',
-        d:'a'
-      }
-    ]
-  },
-
-  {
-    q:'O que mais te dá energia no dia a dia?',
-    opts:[
-      {
-        t:'Resolver um problema lógico ou um quebra-cabeça',
-        d:'a'
-      },
-      {
-        t:'Imaginar algo novo do zero',
-        d:'c'
-      },
-      {
-        t:'Ajudar alguém que precisa de apoio',
-        d:'m'
-      },
-      {
-        t:'Ver um plano sair exatamente como o previsto',
-        d:'o'
-      }
-    ]
-  },
-
-  {
-    q:'Como você reage quando um projeto muda de direção de repente?',
-    opts:[
-      {
-        t:'Busco entender os dados antes de agir',
-        d:'a'
-      },
-      {
-        t:'Vejo como uma chance de tentar algo diferente',
-        d:'c'
-      },
-      {
-        t:'Converso com o time para realinhar todo mundo',
-        d:'m'
-      },
-      {
-        t:'Reorganizo o cronograma e as prioridades',
-        d:'o'
-      }
-    ]
-  },
-
-  {
-    q:'Em uma apresentação, o que você prefere fazer?',
-    opts:[
-      {
-        t:'Mostrar números e evidências',
-        d:'a'
-      },
-      {
-        t:'Contar uma história envolvente',
-        d:'c'
-      },
-      {
-        t:'Conduzir a conversa com a plateia',
-        d:'m'
-      },
-      {
-        t:'Estruturar a lógica da apresentação',
-        d:'o'
-      }
-    ]
-  },
-
-  {
-    q:'O que te deixa mais frustrado no trabalho?',
-    opts:[
-      {
-        t:'Decisões tomadas sem dados',
-        d:'a'
-      },
-      {
-        t:'Falta de espaço para inovar',
-        d:'c'
-      },
-      {
-        t:'Falta de conexão entre as pessoas',
-        d:'m'
-      },
-      {
-        t:'Falta de organização e prazos',
-        d:'o'
-      }
-    ]
-  }
-
+  { q:'Quando você precisa resolver algo novo, o que costuma fazer?', opts:[
+    {t:'Procurar informações e entender o contexto', d:'a'},
+    {t:'Pensar em ideias diferentes das óbvias', d:'c'},
+    {t:'Conversar com pessoas que já passaram por isso', d:'m'},
+    {t:'Criar um plano com etapas claras', d:'o'} ]},
+  { q:'Qual papel você costuma assumir em trabalhos em grupo?', opts:[
+    {t:'Organizar tarefas e prazos', d:'o'},
+    {t:'Motivar e alinhar as pessoas', d:'m'},
+    {t:'Propor soluções criativas', d:'c'},
+    {t:'Analisar informações antes de decidir', d:'a'} ]},
+  { q:'O que mais te dá energia no dia a dia?', opts:[
+    {t:'Resolver um problema lógico ou um quebra-cabeça', d:'a'},
+    {t:'Imaginar algo novo do zero', d:'c'},
+    {t:'Ajudar alguém que precisa de apoio', d:'m'},
+    {t:'Ver um plano sair exatamente como o previsto', d:'o'} ]},
+  { q:'Como você reage quando um projeto muda de direção de repente?', opts:[
+    {t:'Busco entender os dados antes de agir', d:'a'},
+    {t:'Vejo como uma chance de tentar algo diferente', d:'c'},
+    {t:'Converso com o time para realinhar todo mundo', d:'m'},
+    {t:'Reorganizo o cronograma e as prioridades', d:'o'} ]},
+  { q:'Em uma apresentação, o que você prefere fazer?', opts:[
+    {t:'Mostrar números e evidências', d:'a'},
+    {t:'Contar uma história envolvente', d:'c'},
+    {t:'Conduzir a conversa com a plateia', d:'m'},
+    {t:'Estruturar a lógica da apresentação', d:'o'} ]},
+  { q:'O que te deixa mais frustrado no trabalho?', opts:[
+    {t:'Decisões tomadas sem dados', d:'a'},
+    {t:'Falta de espaço para inovar', d:'c'},
+    {t:'Falta de conexão entre as pessoas', d:'m'},
+    {t:'Falta de organização e prazos', d:'o'} ]}
 ];
-
 
 const PERSONAS = {
-
-  c:{
-    name:'Criativa Estratégica',
-    desc:'Você enxerga possibilidades onde outros veem obstáculos e sabe transformar ideias soltas em direção.',
-    traits:[
-      'Criatividade',
-      'Comunicação',
-      'Autonomia',
-      'Iniciativa'
-    ],
-    areas:[
-      'Marketing',
-      'Design',
-      'Conteúdo',
-      'Produto'
-    ]
-  },
-
-  a:{
-    name:'Analítica Orientada a Dados',
-    desc:'Você decide com base em evidências e enxerga padrões que passam despercebidos para os outros.',
-    traits:[
-      'Lógica',
-      'Atenção a detalhes',
-      'Curiosidade',
-      'Organização'
-    ],
-    areas:[
-      'Dados',
-      'BI',
-      'Finanças',
-      'Growth'
-    ]
-  },
-
-  m:{
-    name:'Conectora Comunicativa',
-    desc:'Você constrói pontes entre pessoas e faz as coisas acontecerem por meio de relações genuínas.',
-    traits:[
-      'Empatia',
-      'Comunicação',
-      'Persuasão',
-      'Trabalho em equipe'
-    ],
-    areas:[
-      'RH',
-      'Atendimento',
-      'Comercial',
-      'Vendas'
-    ]
-  },
-
-  o:{
-    name:'Estrategista Organizada',
-    desc:'Você transforma caos em processo e garante que tudo saia do papel dentro do prazo.',
-    traits:[
-      'Planejamento',
-      'Organização',
-      'Liderança',
-      'Foco em resultados'
-    ],
-    areas:[
-      'Operações',
-      'Projetos',
-      'Administração',
-      'Processos'
-    ]
-  }
-
+  c:{ name:'Criativa Estratégica', desc:'Você enxerga possibilidades onde outros veem obstáculos e sabe transformar ideias soltas em direção.', traits:['Criatividade','Comunicação','Autonomia','Iniciativa'], areas:['Marketing','Design','Conteúdo','Produto'] },
+  a:{ name:'Analítica Orientada a Dados', desc:'Você decide com base em evidências e enxerga padrões que passam despercebidos para os outros.', traits:['Lógica','Atenção a detalhes','Curiosidade','Organização'], areas:['Dados','BI','Finanças','Growth'] },
+  m:{ name:'Conectora Comunicativa', desc:'Você constrói pontes entre pessoas e faz as coisas acontecerem por meio de relações genuínas.', traits:['Empatia','Comunicação','Persuasão','Trabalho em equipe'], areas:['RH','Atendimento','Comercial','Vendas'] },
+  o:{ name:'Estrategista Organizada', desc:'Você transforma caos em processo e garante que tudo saia do papel dentro do prazo.', traits:['Planejamento','Organização','Liderança','Foco em resultados'], areas:['Operações','Projetos','Administração','Processos'] }
 };
 
-
 const KEYWORD_MAP = [
-
-  {
-    k:['organiz'],
-    comp:'Organização'
-  },
-
-  {
-    k:['equipe','grupo','time'],
-    comp:'Trabalho em Equipe'
-  },
-
-  {
-    k:['comuniqu','apresent','falei','convers'],
-    comp:'Comunicação'
-  },
-
-  {
-    k:['planej','plano'],
-    comp:'Planejamento'
-  },
-
-  {
-    k:['criei','ideia','invent','criativ'],
-    comp:'Criatividade'
-  },
-
-  {
-    k:['lider','coorden','conduzi'],
-    comp:'Liderança'
-  },
-
-  {
-    k:['resolvi','solucion','problema'],
-    comp:'Resolução de Problemas'
-  },
-
-  {
-    k:['dado','analis','número','numero','planilha'],
-    comp:'Análise de Dados'
-  },
-
-  {
-    k:['ajud','apoi','voluntari'],
-    comp:'Empatia'
-  },
-
-  {
-    k:['vend','negocia','client'],
-    comp:'Negociação'
-  }
-
+  { k:['organiz'], comp:'Organização' },
+  { k:['equipe','grupo','time'], comp:'Trabalho em Equipe' },
+  { k:['comuniqu','apresent','falei','convers'], comp:'Comunicação' },
+  { k:['planej','plano'], comp:'Planejamento' },
+  { k:['criei','ideia','invent','criativ'], comp:'Criatividade' },
+  { k:['lider','coorden','conduzi'], comp:'Liderança' },
+  { k:['resolvi','solucion','problema'], comp:'Resolução de Problemas' },
+  { k:['dado','analis','número','numero','planilha'], comp:'Análise de Dados' },
+  { k:['ajud','apoi','voluntari'], comp:'Empatia' },
+  { k:['vend','negocia','client'], comp:'Negociação' }
 ];
-
 
 const JOBS = [
-
-  {
-    title:'Analista de Conteúdo',
-    area:'Conteúdo',
-    tags:[
-      'Comunicação',
-      'Criatividade'
-    ]
-  },
-
-  {
-    title:'Assistente de Marketing Digital',
-    area:'Marketing',
-    tags:[
-      'Criatividade',
-      'Comunicação'
-    ]
-  },
-
-  {
-    title:'UX Design Jr.',
-    area:'Design',
-    tags:[
-      'Criatividade',
-      'Organização'
-    ]
-  },
-
-  {
-    title:'Analista de Dados Jr.',
-    area:'Dados',
-    tags:[
-      'Análise de Dados',
-      'Organização'
-    ]
-  },
-
-  {
-    title:'Business Intelligence Trainee',
-    area:'BI',
-    tags:[
-      'Análise de Dados',
-      'Planejamento'
-    ]
-  },
-
-  {
-    title:'Assistente Financeiro',
-    area:'Finanças',
-    tags:[
-      'Organização',
-      'Análise de Dados'
-    ]
-  },
-
-  {
-    title:'Analista de RH Jr.',
-    area:'RH',
-    tags:[
-      'Empatia',
-      'Comunicação'
-    ]
-  },
-
-  {
-    title:'Atendimento ao Cliente',
-    area:'Atendimento',
-    tags:[
-      'Empatia',
-      'Comunicação'
-    ]
-  },
-
-  {
-    title:'SDR / Pré-vendas',
-    area:'Comercial',
-    tags:[
-      'Comunicação',
-      'Negociação'
-    ]
-  },
-
-  {
-    title:'Assistente de Operações',
-    area:'Operações',
-    tags:[
-      'Organização',
-      'Planejamento'
-    ]
-  },
-
-  {
-    title:'Analista de Projetos Jr.',
-    area:'Projetos',
-    tags:[
-      'Planejamento',
-      'Liderança'
-    ]
-  },
-
-  {
-    title:'Assistente Administrativo',
-    area:'Administração',
-    tags:[
-      'Organização',
-      'Planejamento'
-    ]
-  }
-
+  { title:'Analista de Conteúdo', area:'Conteúdo', tags:['Comunicação','Criatividade'] },
+  { title:'Assistente de Marketing Digital', area:'Marketing', tags:['Criatividade','Comunicação'] },
+  { title:'UX Design Jr.', area:'Design', tags:['Criatividade','Organização'] },
+  { title:'Analista de Dados Jr.', area:'Dados', tags:['Análise de Dados','Organização'] },
+  { title:'Business Intelligence Trainee', area:'BI', tags:['Análise de Dados','Planejamento'] },
+  { title:'Assistente Financeiro', area:'Finanças', tags:['Organização','Análise de Dados'] },
+  { title:'Analista de RH Jr.', area:'RH', tags:['Empatia','Comunicação'] },
+  { title:'Atendimento ao Cliente', area:'Atendimento', tags:['Empatia','Comunicação'] },
+  { title:'SDR / Pré-vendas', area:'Comercial', tags:['Comunicação','Negociação'] },
+  { title:'Assistente de Operações', area:'Operações', tags:['Organização','Planejamento'] },
+  { title:'Analista de Projetos Jr.', area:'Projetos', tags:['Planejamento','Liderança'] },
+  { title:'Assistente Administrativo', area:'Administração', tags:['Organização','Planejamento'] }
 ];
-
 
 const COURSES = [
-
-  {
-    nome:'Excel Básico',
-    impacto:8,
-    fit:['a','o'],
-    provedor:'Escola Virtual — Fundação Bradesco',
-    url:'https://www.ev.org.br/cursos'
-  },
-
-  {
-    nome:'Power BI',
-    impacto:12,
-    fit:['a'],
-    provedor:'Escola Virtual — Fundação Bradesco',
-    url:'https://www.ev.org.br/cursos/analise-de-dados-no-power-bi'
-  },
-
-  {
-    nome:'SQL para Iniciantes',
-    impacto:12,
-    fit:['a'],
-    provedor:'W3Schools',
-    url:'https://www.w3schools.com/sql/'
-  },
-
-  {
-    nome:'Canva para o dia a dia',
-    impacto:5,
-    fit:['c'],
-    provedor:'Canva Design School',
-    url:'https://www.canva.com/design-school/'
-  },
-
-  {
-    nome:'Storytelling',
-    impacto:6,
-    fit:['c','m'],
-    provedor:'Rock Content University',
-    url:'https://university.br.rockcontent.com/'
-  },
-
-  {
-    nome:'Oratória e Apresentação',
-    impacto:7,
-    fit:['m'],
-    provedor:'Escola Virtual — Fundação Bradesco',
-    url:'https://www.ev.org.br/cursos/comunicacao-empresarial'
-  },
-
-  {
-    nome:'Gestão Ágil (Scrum)',
-    impacto:10,
-    fit:['o'],
-    provedor:'Scrum.org (Open Assessments)',
-    url:'https://www.scrum.org/node/224'
-  },
-
-  {
-    nome:'Introdução a UX',
-    impacto:9,
-    fit:['c'],
-    provedor:'Coursera — Google',
-    url:'https://www.coursera.org/learn/fundamentos-do-design-da-experiencia-do-usuario-ux'
-  }
-
+  { nome:'Excel Básico', impacto:8, fit:['a','o'], provedor:'Escola Virtual — Fundação Bradesco', url:'https://www.ev.org.br/cursos' },
+  { nome:'Power BI', impacto:12, fit:['a'], provedor:'Escola Virtual — Fundação Bradesco', url:'https://www.ev.org.br/cursos/analise-de-dados-no-power-bi' },
+  { nome:'SQL para Iniciantes', impacto:12, fit:['a'], provedor:'W3Schools', url:'https://www.w3schools.com/sql/' },
+  { nome:'Canva para o dia a dia', impacto:5, fit:['c'], provedor:'Canva Design School', url:'https://www.canva.com/design-school/' },
+  { nome:'Storytelling', impacto:6, fit:['c','m'], provedor:'Rock Content University', url:'https://university.br.rockcontent.com/' },
+  { nome:'Oratória e Apresentação', impacto:7, fit:['m'], provedor:'Escola Virtual — Fundação Bradesco', url:'https://www.ev.org.br/cursos/comunicacao-empresarial' },
+  { nome:'Gestão Ágil (Scrum)', impacto:10, fit:['o'], provedor:'Scrum.org (Open Assessments)', url:'https://www.scrum.org/node/224' },
+  { nome:'Introdução a UX', impacto:9, fit:['c'], provedor:'Coursera — Google', url:'https://www.coursera.org/learn/fundamentos-do-design-da-experiencia-do-usuario-ux' }
 ];
 
-
-const APPLY_STEPS = [
-
-  'Ajustando currículo',
-  'Destacando competências',
-  'Gerando apresentação personalizada',
-  'Enviando candidatura',
-  'Registrando processo'
-
-];
-
+const APPLY_STEPS = ['Ajustando currículo', 'Destacando competências', 'Gerando apresentação personalizada', 'Enviando candidatura', 'Registrando processo'];
 
 /* =======================================================================
    DERIVED / SCORE
 ======================================================================= */
-
 function recalcScore(){
-
-  const comportamental = Math.round(
-    (state.quiz.length / QUESTIONS.length) * 25
-  );
-
+  const comportamental = Math.round((state.quiz.length / QUESTIONS.length) * 25);
   const d = state.dados;
-
-  const fields = [
-    d.nome,
-    d.email,
-    d.telefone,
-    d.formacao,
-    d.instituicao,
-    d.funcao
-  ];
-
-  const filled = fields.filter(
-    v => v && v.trim()
-  ).length;
-
-  const hasExp =
-    d.experiencias.length > 0 ? 1 : 0;
-
-  const curriculo = Math.round(
-    ((filled + hasExp) / (fields.length + 1)) * 25
-  );
-
-  const experiencia = Math.min(
-    25,
-    state.competencias.length * 5 +
-    d.experiencias.length * 3
-  );
-
-  const capacitacao = Math.min(
-    25,
-    state.cursosFeitos.reduce(
-      (s,c) => s + c.impacto,
-      0
-    )
-  );
-
-  const total =
-    comportamental +
-    curriculo +
-    experiencia +
-    capacitacao;
-
-  return {
-    comportamental,
-    curriculo,
-    experiencia,
-    capacitacao,
-    total
-  };
-
+  const fields = [d.nome, d.email, d.telefone, d.formacao, d.instituicao, d.funcao];
+  const filled = fields.filter(v => v && v.trim()).length;
+  const hasExp = d.experiencias.length > 0 ? 1 : 0;
+  const curriculo = Math.round(((filled + hasExp) / (fields.length + 1)) * 25);
+  const experiencia = Math.min(25, state.competencias.length * 5 + d.experiencias.length * 3);
+  const capacitacao = Math.min(25, state.cursosFeitos.reduce((s,c) => s + c.impacto, 0));
+  const total = comportamental + curriculo + experiencia + capacitacao;
+  return { comportamental, curriculo, experiencia, capacitacao, total };
 }
 
-
-function personaData(){
-
-  return state.persona
-    ? PERSONAS[state.persona]
-    : null;
-
-}
-
+function personaData(){ return state.persona ? PERSONAS[state.persona] : null; }
 
 function jobsSorted(){
-
   const p = personaData();
-
-  const comp = new Set([
-    ...state.competencias,
-    ...(p ? p.traits : [])
-  ]);
-
+  const comp = new Set([...state.competencias, ...(p ? p.traits : [])]);
   const score = recalcScore().total;
-
-  return JOBS
-    .map(j => {
-
-      const overlap = j.tags.filter(
-        t => comp.has(t)
-      ).length;
-
-      const areaMatch =
-        p && p.areas.includes(j.area)
-          ? 1
-          : 0;
-
-      let pct =
-        62 +
-        overlap * 9 +
-        areaMatch * 10 +
-        Math.round(score / 100 * 8);
-
-      pct = Math.max(
-        58,
-        Math.min(98,pct)
-      );
-
-      const motivos =
-        j.tags.filter(
-          t => comp.has(t)
-        );
-
-      return {
-        ...j,
-        pct,
-        motivos:
-          motivos.length
-            ? motivos
-            : j.tags.slice(0,2)
-      };
-
-    })
-    .sort((a,b) => b.pct - a.pct);
-
+  return JOBS.map(j => {
+    const overlap = j.tags.filter(t => comp.has(t)).length;
+    const areaMatch = p && p.areas.includes(j.area) ? 1 : 0;
+    let pct = 62 + overlap*9 + areaMatch*10 + Math.round(score/100*8);
+    pct = Math.max(58, Math.min(98, pct));
+    const motivos = j.tags.filter(t => comp.has(t));
+    return { ...j, pct, motivos: motivos.length ? motivos : j.tags.slice(0,2) };
+  }).sort((a,b) => b.pct - a.pct);
 }
-
 
 function generateAdvice(){
-
   const n = state.candidaturas.length;
-
-  const entrevistas =
-    Math.floor(n / 3);
-
-  const propostas =
-    Math.floor(n / 6);
-
-  if(n === 0){
-
-    return 'Você ainda não enviou nenhuma candidatura. Vá até Oportunidades e dê o primeiro passo — é mais rápido do que parece.';
-
-  }
-
-  if(entrevistas === 0){
-
-    return 'Seu currículo já está pronto e ativo. Continue se candidatando: no seu ritmo atual, as primeiras entrevistas estão perto de aparecer.';
-
-  }
-
-  if(propostas === 0){
-
-    return 'Seu currículo está funcionando — você está sendo chamada(o) para entrevistas. Seu principal ponto de melhoria agora é a preparação para a etapa de entrevista.';
-
-  }
-
+  const entrevistas = Math.floor(n/3);
+  const propostas = Math.floor(n/6);
+  if(n === 0) return 'Você ainda não enviou nenhuma candidatura. Vá até Oportunidades e dê o primeiro passo — é mais rápido do que parece.';
+  if(entrevistas === 0) return 'Seu currículo já está pronto e ativo. Continue se candidatando: no seu ritmo atual, as primeiras entrevistas estão perto de aparecer.';
+  if(propostas === 0) return 'Seu currículo está funcionando — você está sendo chamada(o) para entrevistas. Seu principal ponto de melhoria agora é a preparação para a etapa de entrevista.';
   return 'Você já recebeu propostas. Este é o momento de negociar com confiança e escolher o caminho que faz mais sentido para você.';
-
 }
-
 
 function nextMission(){
-
-  if(!state.persona){
-
-    return {
-      title:'Complete o Diagnóstico IA',
-      impact:25,
-      action:() => goPerfilStep(1)
-    };
-
-  }
-
-  if(state.competencias.length === 0){
-
-    return {
-      title:'Conte uma conquista sua em Descoberta de Potencial',
-      impact:6,
-      action:() => goPerfilStep(2)
-    };
-
-  }
-
-  const doneCourses =
-    new Set(
-      state.cursosFeitos.map(
-        c => c.nome
-      )
-    );
-
-  const pending =
-    COURSES
-      .filter(
-        c => !doneCourses.has(c.nome)
-      )
-      .sort(
-        (a,b) =>
-          (b.fit.includes(state.persona) ? 1 : 0) -
-          (a.fit.includes(state.persona) ? 1 : 0)
-      );
-
-  if(
-    pending.length &&
-    state.cursosFeitos.length === 0
-  ){
-
-    return {
-      title:'Fazer o curso "' + pending[0].nome + '"',
-      impact:pending[0].impacto,
-      action:() => setTab('mentor')
-    };
-
-  }
-
-  if(state.candidaturas.length === 0){
-
-    return {
-      title:'Enviar sua primeira candidatura inteligente',
-      impact:8,
-      action:() => setTab('vagas')
-    };
-
-  }
-
-  return {
-    title:'Criar um portfólio simples com seus projetos',
-    impact:6,
-    action:() => setTab('mentor')
-  };
-
+  if(!state.persona) return { title:'Complete o Diagnóstico IA', impact:25, action:() => goPerfilStep(1) };
+  if(state.competencias.length === 0) return { title:'Conte uma conquista sua em Descoberta de Potencial', impact:6, action:() => goPerfilStep(2) };
+  const doneCourses = new Set(state.cursosFeitos.map(c => c.nome));
+  const pending = COURSES.filter(c => !doneCourses.has(c.nome)).sort((a,b) => (b.fit.includes(state.persona)?1:0) - (a.fit.includes(state.persona)?1:0));
+  if(pending.length && state.cursosFeitos.length === 0) return { title:'Fazer o curso "'+pending[0].nome+'"', impact:pending[0].impacto, action:() => setTab('mentor') };
+  if(state.candidaturas.length === 0) return { title:'Enviar sua primeira candidatura inteligente', impact:8, action:() => setTab('vagas') };
+  return { title:'Criar um portfólio simples com seus projetos', impact:6, action:() => setTab('mentor') };
 }
-
 
 /* =======================================================================
    NAV
 ======================================================================= */
-
-/*
-  CORREÇÃO MOBILE:
-  - valida se a tela existe
-  - usa scrollTo(0, 0), mais compatível com Safari/iPhone
-  - mantém a tela ativa antes de renderizar
-*/
-
 function setTab(tab){
-
-  document
-    .querySelectorAll('.screen')
-    .forEach(s => {
-      s.classList.remove('active');
-    });
-
-  const target =
-    document.getElementById(
-      'screen-' + tab
-    );
-
-  if(!target){
-    return;
-  }
-
-  target.classList.add('active');
-
-  document
-    .querySelectorAll('#waypoints button')
-    .forEach(b => {
-
-      b.classList.toggle(
-        'active',
-        b.dataset.tab === tab
-      );
-
-    });
-
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-'+tab).classList.add('active');
+  document.querySelectorAll('#waypoints button').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
   renderAll();
-
-  window.scrollTo(0,0);
-
+  window.scrollTo({top:0, behavior:'instant'});
 }
+document.getElementById('waypoints').addEventListener('click', e => {
+  const b = e.target.closest('button[data-tab]');
+  if(b) setTab(b.dataset.tab);
+});
+document.getElementById('btn-start').addEventListener('click', () => setTab('perfil'));
 
-
-document
-  .getElementById('waypoints')
-  .addEventListener('click',e => {
-
-    const b =
-      e.target.closest(
-        'button[data-tab]'
-      );
-
-    if(b){
-      e.preventDefault();
-      setTab(b.dataset.tab);
-    }
-
-  });
-
-
-document
-  .getElementById('btn-start')
-  .addEventListener('click',e => {
-
-    e.preventDefault();
-
-    goPerfilStep(0);
-
-  });
-
-
-function goPerfilStep(step){
-
-  state.perfilStep = step;
-
-  saveState();
-
-  setTab('perfil');
-
-}
-
+function goPerfilStep(step){ state.perfilStep = step; saveState(); setTab('perfil'); }
 
 /* =======================================================================
    RENDER: HOME
 ======================================================================= */
-
 function renderHome(){
-
-  const box =
-    document.getElementById(
-      'home-snapshot'
-    );
-
-  if(!state.persona){
-
-    box.innerHTML = '';
-
-    return;
-
-  }
-
+  const box = document.getElementById('home-snapshot');
+  if(!state.persona){ box.innerHTML=''; return; }
   const p = personaData();
-
   const s = recalcScore();
+  const m = nextMission();
+  box.innerHTML = `
+    <div class="panel" style="margin-top:8px">
+      <div class="section-head"><h2>Sua jornada até aqui</h2><span class="hint">Continue de onde parou</span></div>
+      <div class="score-row">
+        <div class="gauge-wrap">${gaugeSVG(s.total)}</div>
+        <div style="flex:1;min-width:220px">
+          <div class="persona-name" style="font-size:22px">${p.name}</div>
+          <p style="margin-bottom:14px">${p.desc}</p>
+          <div class="mission-card" style="padding:16px 18px;margin-top:0">
+            <div class="flag">próxima missão</div>
+            <h3 style="font-size:16px">${m.title}</h3>
+            <p style="margin:0 0 12px;font-size:13px">Impacto estimado: +${m.impact} pontos no Farol Score</p>
+            <button class="btn btn-sm" id="home-mission-btn">Ir agora</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById('home-mission-btn').addEventListener('click', m.action);
+}
 
+function gaugeSVG(total){
+  const r = 70, c = 2*Math.PI*r, pct = Math.max(0,Math.min(100,total))/100;
+  return `<svg width="168" height="168" viewBox="0 0 168 168" style="display:block">
+    <circle cx="84" cy="84" r="${r}" fill="none" stroke="#16283e" stroke-width="12"/>
+    <circle cx="84" cy="84" r="${r}" fill="none" stroke="url(#gg)" stroke-width="12" stroke-linecap="round"
+      stroke-dasharray="${c}" stroke-dashoffset="${c*(1-pct)}" transform="rotate(-90 84 84)"/>
+    <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5a623"/><stop offset="100%" stop-color="#ffd280"/>
+    </linearGradient></defs>
+  </svg>
+  <div class="gauge-num"><span class="n">${total}</span><span class="d">de 100</span></div>`;
+}
+
+/* =======================================================================
+   RENDER: MEU PERFIL (multi-step)
+======================================================================= */
+function renderPerfil(){
+  const box = document.getElementById('perfil-content');
+  if(state.persona && state.perfilStep < 3) state.perfilStep = 3;
+  const step = state.perfilStep;
+
+  if(step === 3 && state.persona){ renderPerfilResultado(box); return; }
+
+  const dots = [0,1,2].map(i => `<div class="dot ${i<step?'done':i===step?'now':''}"></div>`).join('');
+
+  if(step === 0) renderDados(box, dots);
+  else if(step === 1) renderDiagnostico(box, dots);
+  else renderPotencial(box, dots);
+}
+
+function renderDados(box, dots){
+  const d = state.dados;
+  box.innerHTML = `
+    <div class="panel">
+      <div class="dots">${dots}</div>
+      <div class="section-head"><h2>Meus dados</h2><span class="hint">Isso vira a base do seu currículo automático</span></div>
+      <div class="grid2">
+        <div class="field"><label>Nome</label><input id="f-nome" value="${esc(d.nome)}" placeholder="Seu nome completo"></div>
+        <div class="field"><label>E-mail</label><input id="f-email" value="${esc(d.email)}" placeholder="voce@email.com"></div>
+        <div class="field"><label>Telefone</label><input id="f-telefone" value="${esc(d.telefone)}" placeholder="(11) 90000-0000"></div>
+        <div class="field"><label>Função ou área desejada</label><input id="f-funcao" value="${esc(d.funcao)}" placeholder="Ex: Marketing, Dados, RH..."></div>
+        <div class="field"><label>Formação</label><input id="f-formacao" value="${esc(d.formacao)}" placeholder="Ex: Administração, 6º semestre"></div>
+        <div class="field"><label>Instituição</label><input id="f-instituicao" value="${esc(d.instituicao)}" placeholder="Nome da instituição"></div>
+      </div>
+      <div class="field"><label>Experiências (uma por linha — estágios, projetos, trabalhos voluntários)</label>
+        <textarea id="f-exp" placeholder="Ex: Organizei uma festa beneficente na faculdade">${esc(d.experiencias.join('\n'))}</textarea></div>
+      <div class="field"><label>Cursos complementares (separados por vírgula)</label>
+        <input id="f-cursos" value="${esc(d.cursosComp.join(', '))}" placeholder="Ex: Excel, Inglês intermediário"></div>
+      <button class="btn" id="dados-continue">Continuar para o diagnóstico</button>
+    </div>`;
+  document.getElementById('dados-continue').addEventListener('click', () => {
+    d.nome = val('f-nome'); d.email = val('f-email'); d.telefone = val('f-telefone');
+    d.funcao = val('f-funcao'); d.formacao = val('f-formacao'); d.instituicao = val('f-instituicao');
+    d.experiencias = val('f-exp').split('\n').map(s=>s.trim()).filter(Boolean);
+    d.cursosComp = val('f-cursos').split(',').map(s=>s.trim()).filter(Boolean);
+    goPerfilStep(1);
+  });
+}
+
+let quizIndex = 0;
+function renderDiagnostico(box, dots){
+  if(quizIndex >= QUESTIONS.length) quizIndex = state.quiz.length;
+  const q = QUESTIONS[quizIndex];
+  const stepDots = QUESTIONS.map((_,i) => `<div class="dot ${i<quizIndex?'done':i===quizIndex?'now':''}"></div>`).join('');
+  box.innerHTML = `
+    <div class="panel">
+      <div class="dots">${stepDots}</div>
+      <div class="section-head"><h2>Diagnóstico IA</h2><span class="hint">Pergunta ${quizIndex+1} de ${QUESTIONS.length}</span></div>
+      <div class="quiz-q">${q.q}</div>
+      <div class="quiz-opts">${q.opts.map((o,i) => `<button class="quiz-opt" data-d="${o.d}">${o.t}</button>`).join('')}</div>
+    </div>`;
+  box.querySelectorAll('.quiz-opt').forEach(btn => btn.addEventListener('click', () => {
+    state.quiz[quizIndex] = btn.dataset.d;
+    quizIndex++;
+    if(quizIndex >= QUESTIONS.length){
+      const counts = {c:0,a:0,m:0,o:0};
+      state.quiz.forEach(d => counts[d]++);
+      state.persona = Object.keys(counts).sort((x,y) => counts[y]-counts[x])[0];
+      quizIndex = 0;
+      goPerfilStep(2);
+    } else {
+      saveState();
+      renderPerfil();
+    }
+  }));
+}
+
+function renderPotencial(box, dots){
+  box.innerHTML = `
+    <div class="panel">
+      <div class="dots">${dots}</div>
+      <div class="section-head"><h2>Descoberta de potencial</h2><span class="hint">Conte algo que você já realizou</span></div>
+      <div class="field"><textarea id="f-potencial" placeholder="Ex: Ajudei a organizar uma festa beneficente na faculdade, cuidando do cronograma e da comunicação com os fornecedores.">${esc(state.potencialTexto)}</textarea></div>
+      <button class="btn" id="potencial-continue">Analisar e ver meu perfil</button>
+    </div>`;
+  document.getElementById('potencial-continue').addEventListener('click', () => {
+    state.potencialTexto = val('f-potencial');
+    const text = state.potencialTexto.toLowerCase();
+    let found = [];
+    KEYWORD_MAP.forEach(entry => {
+      if(entry.k.some(k => text.includes(k)) && !found.includes(entry.comp)) found.push(entry.comp);
+    });
+    if(found.length === 0 && state.persona) found = PERSONAS[state.persona].traits.slice(0,2);
+    state.competencias = found;
+    goPerfilStep(3);
+  });
+}
+
+function renderPerfilResultado(box){
+  const p = personaData();
+  const s = recalcScore();
+  const doneCourses = new Set(state.cursosFeitos.map(c=>c.nome));
+  box.innerHTML = `
+    <div class="panel">
+      <div class="section-head"><h2>Seu perfil profissional</h2>
+        <span class="hint"><a href="#" id="edit-dados" style="text-decoration:underline">editar dados</a> · <a href="#" id="redo-quiz" style="text-decoration:underline">refazer diagnóstico</a></span></div>
+      <div class="persona-block">
+        <div class="persona-copy">
+          <div class="persona-name">${p.name}</div>
+          <p>${p.desc}</p>
+          <div>${state.competencias.map(c => `<span class="tag good">✓ ${c}</span>`).join('')}</div>
+        </div>
+        <div class="persona-traits">
+          <h4>Características</h4>
+          <div>${p.traits.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+          <h4 style="margin-top:16px">Áreas recomendadas</h4>
+          <div>${p.areas.map(a => `<span class="tag gold">${a}</span>`).join('')}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="section-head"><h2>Farol Score</h2><span class="hint">Sua preparação profissional, de 0 a 100</span></div>
+      <div class="score-row">
+        <div class="gauge-wrap">${gaugeSVG(s.total)}</div>
+        <div class="score-breakdown">
+          ${scoreBar('Perfil comportamental', s.comportamental)}
+          ${scoreBar('Currículo', s.curriculo)}
+          ${scoreBar('Experiência', s.experiencia)}
+          ${scoreBar('Capacitação', s.capacitacao)}
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="section-head"><h2>Mapa de carreira</h2><span class="hint">Um caminho possível a partir de onde você está</span></div>
+      <div class="map-row">${careerMap(p)}</div>
+    </div>`;
+
+  document.getElementById('edit-dados').addEventListener('click', e => { e.preventDefault(); goPerfilStep(0); });
+  document.getElementById('redo-quiz').addEventListener('click', e => { e.preventDefault(); state.quiz = []; quizIndex = 0; goPerfilStep(1); });
+}
+
+function scoreBar(label, val){
+  return `<div class="score-item"><span>${label}</span><div class="bar-track"><div class="bar-fill" style="width:${(val/25)*100}%"></div></div><span>${val}/25</span></div>`;
+}
+
+function careerMap(p){
+  const area = p.areas[0];
+  const steps = [
+    {lbl:'Você', sub:p.name, you:true},
+    {lbl:'Assistente de '+area, sub:'ponto de partida'},
+    {lbl:'Analista de '+area, sub:'1–2 anos'},
+    {lbl:'Especialista em '+area, sub:'3–5 anos'},
+    {lbl:'Coordenador(a) de '+area, sub:'liderança'}
+  ];
+  return steps.map((s,i) => `
+    <div class="map-node ${s.you?'you':''}"><div class="dotm"></div><div class="lbl">${s.lbl}</div><div class="sub">${s.sub}</div></div>
+    ${i<steps.length-1 ? '<div class="map-line"></div>' : ''}`).join('');
+}
+
+/* =======================================================================
+   RENDER: VAGAS (Oportunidades + Candidatura Inteligente)
+======================================================================= */
+let openJobIdx = -1;
+function renderVagas(){
+  const box = document.getElementById('vagas-list');
+  if(!state.persona){
+    box.innerHTML = `<p class="empty-note">Complete seu perfil em "Meu Perfil" para ver oportunidades compatíveis com você.</p>`;
+    return;
+  }
+  const jobs = jobsSorted();
+  box.innerHTML = jobs.map((j,i) => `
+    <div class="job ${openJobIdx===i?'open':''}" data-idx="${i}">
+      <div class="job-top">
+        <div><div class="job-title">${j.title}</div><div class="job-area">${j.area}</div>
+          <div style="margin-top:8px">${j.motivos.map(m => `<span class="tag">✓ ${m}</span>`).join('')}</div>
+        </div>
+        <div><div class="compat">${j.pct}%</div><div class="compat-lbl">compatibilidade</div></div>
+      </div>
+      <div class="job-body">
+        <p style="margin:0 0 4px">Esta vaga tem alta aderência ao seu perfil devido à sua capacidade em <strong>${j.motivos.join(' e ')}</strong>, características centrais do perfil ${personaData().name}.</p>
+        <div class="real-links">
+          <a class="btn btn-sm btn-ghost" href="${jobSearchLinks(j).linkedin}" target="_blank" rel="noopener">Ver vagas reais no LinkedIn</a>
+          <a class="btn btn-sm btn-ghost" href="${jobSearchLinks(j).indeed}" target="_blank" rel="noopener">Ver vagas reais no Indeed</a>
+        </div>
+        <p class="hint-note">A inscrição em si acontece na plataforma de origem — a maioria dos sites de vagas não expõe suas vagas por API pública e gratuita, então levamos você direto para a busca já filtrada por esse cargo.</p>
+        <h4 style="margin:18px 0 8px;font-size:12.5px;color:var(--fog);font-family:var(--sans);font-weight:600">Antes de se candidatar</h4>
+        <ul class="steps-list" id="steps-${i}">
+          ${APPLY_STEPS.map(s => `<li><span class="chk"></span>${s}</li>`).join('')}
+        </ul>
+        <button class="btn btn-sm" data-apply="${i}">🚀 Preparar candidatura inteligente</button>
+        <div class="integrations">
+          <p>Integrações diretas em desenvolvimento: CIEE, Gupy, Catho, InfoJobs, Nube</p>
+        </div>
+      </div>
+    </div>`).join('');
+
+  box.querySelectorAll('.job').forEach(el => el.addEventListener('click', e => {
+    if(e.target.closest('[data-apply]')) return;
+    const idx = Number(el.dataset.idx);
+    openJobIdx = openJobIdx === idx ? -1 : idx;
+    renderVagas();
+  }));
+  box.querySelectorAll('[data-apply]').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    runApplyFlow(Number(btn.dataset.apply), jobs[Number(btn.dataset.apply)], btn);
+  }));
+}
+
+function jobSearchLinks(job){
+  const q = encodeURIComponent(job.title);
+  return {
+    linkedin: 'https://www.linkedin.com/jobs/search/?keywords=' + q,
+    indeed: 'https://br.indeed.com/jobs?q=' + q
+  };
+}
+
+function runApplyFlow(idx, job, btn){
+  btn.disabled = true;
+  const items = document.querySelectorAll('#steps-'+idx+' li');
+  let i = 0;
+  const tick = () => {
+    if(i < items.length){
+      items[i].classList.add('on');
+      items[i].querySelector('.chk').textContent = '✓';
+      i++;
+      setTimeout(tick, 480);
+    } else {
+      state.candidaturas.push({ titulo: job.title, data: new Date().toISOString() });
+      saveState();
+      btn.textContent = 'Pronto — candidate-se pelos links acima ✓';
+      renderProgresso();
+      renderMentor();
+    }
+  };
+  tick();
+}
+
+/* =======================================================================
+   RENDER: PROGRESSO
+======================================================================= */
+function renderProgresso(){
+  const box = document.getElementById('progresso-content');
+  const n = state.candidaturas.length;
+  const entrevistas = Math.floor(n/3);
+  const propostas = Math.floor(n/6);
+  const milestones = [
+    { label:'Perfil criado', done: !!state.persona },
+    { label:'Currículo gerado', done: !!(state.dados.nome && state.dados.email) },
+    { label:'Diagnóstico concluído', done: state.quiz.length >= QUESTIONS.length },
+    { label:'Primeira candidatura', done: n >= 1 },
+    { label:'Primeira entrevista', done: entrevistas >= 1 },
+    { label:'Próxima meta: ' + nextMission().title, done:false, next:true }
+  ];
+  box.innerHTML = `
+    <div class="stat-row">
+      <div class="stat"><div class="n">${n}</div><div class="l">candidaturas</div></div>
+      <div class="stat"><div class="n">${entrevistas}</div><div class="l">entrevistas</div></div>
+      <div class="stat"><div class="n">${propostas}</div><div class="l">propostas</div></div>
+    </div>
+    <div class="panel">
+      <div class="section-head"><h2>Linha do tempo</h2></div>
+      <div class="timeline">
+        ${milestones.map(m => `<div class="tl-item ${m.done?'done':m.next?'next':''}"><div class="tt">${m.done?'✅':m.next?'🟡':'—'} ${m.label}</div></div>`).join('')}
+      </div>
+    </div>
+    <div class="advice"><p><strong>Conselho do Farol —</strong> ${generateAdvice()}</p></div>`;
+}
+
+/* =======================================================================
+   RENDER: MENTOR
+======================================================================= */
+function renderMentor(){
+  const box = document.getElementById('mentor-content');
+  if(!state.persona){
+    box.innerHTML = `<p class="empty-note">Complete seu perfil para desbloquear o Mentor IA.</p>`;
+    return;
+  }
+  const p = personaData();
+  const nome = state.dados.nome ? state.dados.nome.split(' ')[0] : 'você';
+  const suggestionsPool = {
+    a:['Aprender Power BI','Praticar SQL','Montar um dashboard pessoal','Atualizar o LinkedIn'],
+    c:['Criar um portfólio visual','Atualizar o LinkedIn','Testar uma ferramenta de design','Escrever sobre um projeto seu'],
+    m:['Atualizar o LinkedIn','Praticar entrevistas','Fazer networking em um evento','Pedir uma recomendação'],
+    o:['Organizar um cronograma pessoal','Aprender gestão ágil','Atualizar o LinkedIn','Revisar suas metas do mês']
+  };
+  const sugestoes = suggestionsPool[state.persona];
+  const doneCourses = new Set(state.cursosFeitos.map(c=>c.nome));
   const m = nextMission();
 
   box.innerHTML = `
-
-    <div class="panel" style="margin-top:8px">
-
-      <div class="section-head">
-
-        <h2>Sua jornada até aqui</h2>
-
-        <span class="hint">
-          Continue de onde parou
-        </span>
-
-      </div>
-
-      <div class="score-row">
-
-        <div class="gauge-wrap">
-          ${gaugeSVG(s.total)}
-        </div>
-
-        <div style="flex:1;min-width:220px">
-
-          <div
-            class="persona-name"
-            style="font-size:22px"
-          >
-            ${esc(p.name)}
-          </div>
-
-          <p style="margin-bottom:14px">
-            ${esc(p.desc)}
-          </p>
-
-          <div
-            class="mission-card"
-            style="padding:16px 18px;margin-top:0"
-          >
-
-            <div class="flag">
-              próxima missão
-            </div>
-
-            <h3 style="font-size:16px">
-              ${esc(m.title)}
-            </h3>
-
-            <p
-              style="margin:0 0 12px;font-size:13px"
-            >
-              Impacto estimado:
-              +${m.impact}
-              pontos no Farol Score
-            </p>
-
-            <button
-              type="button"
-              class="btn btn-sm"
-              id="home-mission-btn"
-            >
-              Ir agora
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  `;
-
-  document
-    .getElementById('home-mission-btn')
-    .addEventListener(
-      'click',
-      m.action
-    );
-
-}
-
-
-function gaugeSVG(total){
-
-  const r = 70;
-
-  const c =
-    2 * Math.PI * r;
-
-  const pct =
-    Math.max(
-      0,
-      Math.min(100,total)
-    ) / 100;
-
-  return `
-
-    <svg
-      width="168"
-      height="168"
-      viewBox="0 0 168 168"
-      style="display:block"
-    >
-
-      <circle
-        cx="84"
-        cy="84"
-        r="${r}"
-        fill="none"
-        stroke="#16283e"
-        stroke-width="12"
-      />
-
-      <circle
-        cx="84"
-        cy="84"
-        r="${r}"
-        fill="none"
-        stroke="url(#gg)"
-        stroke-width="12"
-        stroke-linecap="round"
-        stroke-dasharray="${c}"
-        stroke-dashoffset="${c * (1-pct)}"
-        transform="rotate(-90 84 84)"
-      />
-
-      <defs>
-
-        <linearGradient
-          id="gg"
-          x1="0"
-          y1="0"
-          x2="1"
-          y2="1"
-        >
-
-          <stop
-            offset="0%"
-            stop-color="#f5a623"
-          />
-
-          <stop
-            offset="100%"
-            stop-color="#ffd280"
-          />
-
-        </linearGradient>
-
-      </defs>
-
-    </svg>
-
-    <div class="gauge-num">
-
-      <span class="n">
-        ${total}
-      </span>
-
-      <span class="d">
-        de 100
-      </span>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =======================================================================
-   RENDER: MEU PERFIL
-======================================================================= */
-
-function renderPerfil(){
-
-  const box =
-    document.getElementById(
-      'perfil-content'
-    );
-
-  if(
-    state.persona &&
-    state.perfilStep < 3
-  ){
-
-    state.perfilStep = 3;
-
-  }
-
-  const step =
-    state.perfilStep;
-
-  if(
-    step === 3 &&
-    state.persona
-  ){
-
-    renderPerfilResultado(box);
-
-    return;
-
-  }
-
-  const dots =
-    [0,1,2]
-      .map(i => `
-
-        <div
-          class="dot ${
-            i < step
-              ? 'done'
-              : i === step
-                ? 'now'
-                : ''
-          }"
-        ></div>
-
-      `)
-      .join('');
-
-  if(step === 0){
-
-    renderDados(
-      box,
-      dots
-    );
-
-  }else if(step === 1){
-
-    renderDiagnostico(
-      box,
-      dots
-    );
-
-  }else{
-
-    renderPotencial(
-      box,
-      dots
-    );
-
-  }
-
-}
-
-
-/* =======================================================================
-   RENDER: DADOS
-======================================================================= */
-
-function renderDados(box,dots){
-
-  const d = state.dados;
-
-  box.innerHTML = `
-
-    <div class="panel">
-
-      <div class="dots">
-        ${dots}
-      </div>
-
-      <div class="section-head">
-
-        <h2>Meus dados</h2>
-
-        <span class="hint">
-          Isso vira a base do seu currículo automático
-        </span>
-
-      </div>
-
-      <div class="grid2">
-
-        <div class="field">
-
-          <label>Nome</label>
-
-          <input
-            id="f-nome"
-            type="text"
-            autocomplete="name"
-            value="${esc(d.nome)}"
-            placeholder="Seu nome completo"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label>E-mail</label>
-
-          <input
-            id="f-email"
-            type="email"
-            autocomplete="email"
-            value="${esc(d.email)}"
-            placeholder="voce@email.com"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label>Telefone</label>
-
-          <input
-            id="f-telefone"
-            type="tel"
-            inputmode="tel"
-            autocomplete="tel"
-            value="${esc(d.telefone)}"
-            placeholder="(11) 90000-0000"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label>Função ou área desejada</label>
-
-          <input
-            id="f-funcao"
-            type="text"
-            value="${esc(d.funcao)}"
-            placeholder="Ex: Marketing, Dados, RH..."
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label>Formação</label>
-
-          <input
-            id="f-formacao"
-            type="text"
-            value="${esc(d.formacao)}"
-            placeholder="Ex: Administração, 6º semestre"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label>Instituição</label>
-
-          <input
-            id="f-instituicao"
-            type="text"
-            value="${esc(d.instituicao)}"
-            placeholder="Nome da instituição"
-          >
-
-        </div>
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Experiências
-          (uma por linha — estágios, projetos, trabalhos voluntários)
-        </label>
-
-        <textarea
-          id="f-exp"
-          placeholder="Ex: Organizei uma festa beneficente na faculdade"
-        >${esc(d.experiencias.join('\n'))}</textarea>
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Cursos complementares
-          (separados por vírgula)
-        </label>
-
-        <input
-          id="f-cursos"
-          type="text"
-          value="${esc(d.cursosComp.join(', '))}"
-          placeholder="Ex: Excel, Inglês intermediário"
-        >
-
-      </div>
-
-
-      <button
-        type="button"
-        class="btn"
-        id="dados-continue"
-      >
-        Continuar para o diagnóstico
-      </button>
-
-    </div>
-
-  `;
-
-
-  /*
-    CORREÇÃO PRINCIPAL DO CADASTRO NO CELULAR.
-
-    O botão agora:
-    - é explicitamente type="button"
-    - impede qualquer comportamento padrão
-    - salva os dados antes da mudança
-    - muda diretamente para a etapa 1
-    - renderiza novamente o perfil
-    - força a tela de perfil a permanecer ativa
-    - volta ao topo
-  */
-
-  const continueBtn =
-    document.getElementById(
-      'dados-continue'
-    );
-
-
-  continueBtn.addEventListener(
-    'click',
-    function(e){
-
-      e.preventDefault();
-
-
-      d.nome =
-        val('f-nome');
-
-      d.email =
-        val('f-email');
-
-      d.telefone =
-        val('f-telefone');
-
-      d.funcao =
-        val('f-funcao');
-
-      d.formacao =
-        val('f-formacao');
-
-      d.instituicao =
-        val('f-instituicao');
-
-
-      d.experiencias =
-        val('f-exp')
-          .split('\n')
-          .map(
-            s => s.trim()
-          )
-          .filter(Boolean);
-
-
-      d.cursosComp =
-        val('f-cursos')
-          .split(',')
-          .map(
-            s => s.trim()
-          )
-          .filter(Boolean);
-
-
-      // Vai para o diagnóstico
-      state.perfilStep = 1;
-
-      saveState();
-
-
-      // Garante que a pergunta 1 seja exibida
-      quizIndex = state.quiz.length;
-
-      if(
-        quizIndex >= QUESTIONS.length
-      ){
-        quizIndex = 0;
-      }
-
-
-      // Mantém a tela de perfil ativa
-      document
-        .querySelectorAll('.screen')
-        .forEach(s => {
-          s.classList.remove('active');
-        });
-
-
-      const perfilScreen =
-        document.getElementById(
-          'screen-perfil'
-        );
-
-
-      if(perfilScreen){
-
-        perfilScreen.classList.add(
-          'active'
-        );
-
-      }
-
-
-      document
-        .querySelectorAll(
-          '#waypoints button'
-        )
-        .forEach(b => {
-
-          b.classList.toggle(
-            'active',
-            b.dataset.tab === 'perfil'
-          );
-
-        });
-
-
-      // Renderiza somente o conteúdo do perfil
-      renderPerfil();
-
-
-      // Compatível com Safari/iPhone
-      window.scrollTo(0,0);
-
-    }
-  );
-
-}
-
-
-/* =======================================================================
-   DIAGNÓSTICO
-======================================================================= */
-
-let quizIndex = 0;
-
-
-function renderDiagnostico(box,dots){
-
-  if(
-    quizIndex >= QUESTIONS.length
-  ){
-
-    quizIndex =
-      state.quiz.length;
-
-  }
-
-
-  if(
-    quizIndex >= QUESTIONS.length
-  ){
-
-    quizIndex = 0;
-
-  }
-
-
-  const q =
-    QUESTIONS[quizIndex];
-
-
-  const stepDots =
-    QUESTIONS
-      .map(
-        (_,i) => `
-
-          <div
-            class="dot ${
-              i < quizIndex
-                ? 'done'
-                : i === quizIndex
-                  ? 'now'
-                  : ''
-            }"
-          ></div>
-
-        `
-      )
-      .join('');
-
-
-  box.innerHTML = `
-
-    <div class="panel">
-
-      <div class="dots">
-        ${stepDots}
-      </div>
-
-      <div class="section-head">
-
-        <h2>Diagnóstico IA</h2>
-
-        <span class="hint">
-          Pergunta ${quizIndex + 1}
-          de ${QUESTIONS.length}
-        </span>
-
-      </div>
-
-      <div class="quiz-q">
-        ${esc(q.q)}
-      </div>
-
-      <div class="quiz-opts">
-
-        ${q.opts
-          .map(
-            o => `
-
-              <button
-                type="button"
-                class="quiz-opt"
-                data-d="${o.d}"
-              >
-                ${esc(o.t)}
-              </button>
-
-            `
-          )
-          .join('')}
-
-      </div>
-
-    </div>
-
-  `;
-
-
-  box
-    .querySelectorAll('.quiz-opt')
-    .forEach(btn => {
-
-      btn.addEventListener(
-        'click',
-        () => {
-
-          state.quiz[quizIndex] =
-            btn.dataset.d;
-
-          quizIndex++;
-
-
-          if(
-            quizIndex >= QUESTIONS.length
-          ){
-
-            const counts = {
-              c:0,
-              a:0,
-              m:0,
-              o:0
-            };
-
-
-            state.quiz.forEach(
-              d => {
-
-                if(counts[d] !== undefined){
-                  counts[d]++;
-                }
-
-              }
-            );
-
-
-            state.persona =
-              Object.keys(counts)
-                .sort(
-                  (x,y) =>
-                    counts[y] -
-                    counts[x]
-                )[0];
-
-
-            quizIndex = 0;
-
-            saveState();
-
-            goPerfilStep(2);
-
-          }else{
-
-            saveState();
-
-            renderPerfil();
-
-            window.scrollTo(0,0);
-
-          }
-
-        }
-      );
-
-    });
-
-}
-
-
-/* =======================================================================
-   DESCOBERTA DE POTENCIAL
-======================================================================= */
-
-function renderPotencial(box,dots){
-
-  box.innerHTML = `
-
-    <div class="panel">
-
-      <div class="dots">
-        ${dots}
-      </div>
-
-      <div class="section-head">
-
-        <h2>Descoberta de potencial</h2>
-
-        <span class="hint">
-          Conte algo que você já realizou
-        </span>
-
-      </div>
-
-      <div class="field">
-
-        <textarea
-          id="f-potencial"
-          placeholder="Ex: Ajudei a organizar uma festa beneficente na faculdade, cuidando do cronograma e da comunicação com os fornecedores."
-        >${esc(state.potencialTexto)}</textarea>
-
-      </div>
-
-      <button
-        type="button"
-        class="btn"
-        id="potencial-continue"
-      >
-        Analisar e ver meu perfil
-      </button>
-
-    </div>
-
-  `;
-
-
-  document
-    .getElementById('potencial-continue')
-    .addEventListener(
-      'click',
-      e => {
-
-        e.preventDefault();
-
-
-        state.potencialTexto =
-          val('f-potencial');
-
-
-        const text =
-          state.potencialTexto.toLowerCase();
-
-
-        let found = [];
-
-
-        KEYWORD_MAP.forEach(
-          entry => {
-
-            if(
-              entry.k.some(
-                k => text.includes(k)
-              ) &&
-              !found.includes(
-                entry.comp
-              )
-            ){
-
-              found.push(
-                entry.comp
-              );
-
-            }
-
-          }
-        );
-
-
-        if(
-          found.length === 0 &&
-          state.persona
-        ){
-
-          found =
-            PERSONAS[
-              state.persona
-            ].traits.slice(0,2);
-
-        }
-
-
-        state.competencias =
-          found;
-
-
-        saveState();
-
-        goPerfilStep(3);
-
-      }
-    );
-
-}
-
-
-/* =======================================================================
-   RESULTADO DO PERFIL
-======================================================================= */
-
-function renderPerfilResultado(box){
-
-  const p =
-    personaData();
-
-  const s =
-    recalcScore();
-
-
-  box.innerHTML = `
-
-    <div class="panel">
-
-      <div class="section-head">
-
-        <h2>Seu perfil profissional</h2>
-
-        <span class="hint">
-
-          <a
-            href="#"
-            id="edit-dados"
-            style="text-decoration:underline"
-          >
-            editar dados
-          </a>
-
-          ·
-
-          <a
-            href="#"
-            id="redo-quiz"
-            style="text-decoration:underline"
-          >
-            refazer diagnóstico
-          </a>
-
-        </span>
-
-      </div>
-
-
-      <div class="persona-block">
-
-        <div class="persona-copy">
-
-          <div class="persona-name">
-            ${esc(p.name)}
-          </div>
-
-          <p>
-            ${esc(p.desc)}
-          </p>
-
-          <div>
-
-            ${
-              state.competencias
-                .map(
-                  c => `
-                    <span class="tag good">
-                      ✓ ${esc(c)}
-                    </span>
-                  `
-                )
-                .join('')
-            }
-
-          </div>
-
-        </div>
-
-
-        <div class="persona-traits">
-
-          <h4>
-            Características
-          </h4>
-
-          <div>
-
-            ${
-              p.traits
-                .map(
-                  t => `
-                    <span class="tag">
-                      ${esc(t)}
-                    </span>
-                  `
-                )
-                .join('')
-            }
-
-          </div>
-
-
-          <h4 style="margin-top:16px">
-            Áreas recomendadas
-          </h4>
-
-          <div>
-
-            ${
-              p.areas
-                .map(
-                  a => `
-                    <span class="tag gold">
-                      ${esc(a)}
-                    </span>
-                  `
-                )
-                .join('')
-            }
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="panel">
-
-      <div class="section-head">
-
-        <h2>Farol Score</h2>
-
-        <span class="hint">
-          Sua preparação profissional, de 0 a 100
-        </span>
-
-      </div>
-
-
-      <div class="score-row">
-
-        <div class="gauge-wrap">
-          ${gaugeSVG(s.total)}
-        </div>
-
-
-        <div class="score-breakdown">
-
-          ${scoreBar(
-            'Perfil comportamental',
-            s.comportamental
-          )}
-
-          ${scoreBar(
-            'Currículo',
-            s.curriculo
-          )}
-
-          ${scoreBar(
-            'Experiência',
-            s.experiencia
-          )}
-
-          ${scoreBar(
-            'Capacitação',
-            s.capacitacao
-          )}
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="panel">
-
-      <div class="section-head">
-
-        <h2>Mapa de carreira</h2>
-
-        <span class="hint">
-          Um caminho possível a partir de onde você está
-        </span>
-
-      </div>
-
-      <div class="map-row">
-        ${careerMap(p)}
-      </div>
-
-    </div>
-
-  `;
-
-
-  document
-    .getElementById('edit-dados')
-    .addEventListener(
-      'click',
-      e => {
-
-        e.preventDefault();
-
-        goPerfilStep(0);
-
-      }
-    );
-
-
-  document
-    .getElementById('redo-quiz')
-    .addEventListener(
-      'click',
-      e => {
-
-        e.preventDefault();
-
-        state.quiz = [];
-
-        state.persona = null;
-
-        quizIndex = 0;
-
-        saveState();
-
-        goPerfilStep(1);
-
-      }
-    );
-
-}
-
-
-function scoreBar(label,val){
-
-  return `
-
-    <div class="score-item">
-
-      <span>
-        ${esc(label)}
-      </span>
-
-      <div class="bar-track">
-
-        <div
-          class="bar-fill"
-          style="width:${(val/25)*100}%"
-        ></div>
-
-      </div>
-
-      <span>
-        ${val}/25
-      </span>
-
-    </div>
-
-  `;
-
-}
-
-
-function careerMap(p){
-
-  const area =
-    p.areas[0];
-
-
-  const steps = [
-
-    {
-      lbl:'Você',
-      sub:p.name,
-      you:true
-    },
-
-    {
-      lbl:'Assistente de ' + area,
-      sub:'ponto de partida'
-    },
-
-    {
-      lbl:'Analista de ' + area,
-      sub:'1–2 anos'
-    },
-
-    {
-      lbl:'Especialista em ' + area,
-      sub:'3–5 anos'
-    },
-
-    {
-      lbl:'Coordenador(a) de ' + area,
-      sub:'liderança'
-    }
-
-  ];
-
-
-  return steps
-    .map(
-      (s,i) => `
-
-        <div
-          class="map-node ${s.you ? 'you' : ''}"
-        >
-
-          <div class="dotm"></div>
-
-          <div class="lbl">
-            ${esc(s.lbl)}
-          </div>
-
-          <div class="sub">
-            ${esc(s.sub)}
-          </div>
-
-        </div>
-
-        ${
-          i < steps.length - 1
-            ? '<div class="map-line"></div>'
-            : ''
-        }
-
-      `
-    )
-    .join('');
-
-}
-
-
-/* =======================================================================
-   VAGAS
-======================================================================= */
-
-let openJobIdx = -1;
-
-
-function renderVagas(){
-
-  const box =
-    document.getElementById(
-      'vagas-list'
-    );
-
-
-  if(!state.persona){
-
-    box.innerHTML = `
-
-      <p class="empty-note">
-        Complete seu perfil em
-        "Meu Perfil"
-        para ver oportunidades compatíveis
-        com você.
-      </p>
-
-    `;
-
-    return;
-
-  }
-
-
-  const jobs =
-    jobsSorted();
-
-
-  box.innerHTML = jobs
-    .map(
-      (j,i) => `
-
-        <div
-          class="job ${
-            openJobIdx === i
-              ? 'open'
-              : ''
-          }"
-          data-idx="${i}"
-        >
-
-          <div class="job-top">
-
-            <div>
-
-              <div class="job-title">
-                ${esc(j.title)}
-              </div>
-
-              <div class="job-area">
-                ${esc(j.area)}
-              </div>
-
-              <div style="margin-top:8px">
-
-                ${
-                  j.motivos
-                    .map(
-                      m => `
-                        <span class="tag">
-                          ✓ ${esc(m)}
-                        </span>
-                      `
-                    )
-                    .join('')
-                }
-
-              </div>
-
-            </div>
-
-
-            <div>
-
-              <div class="compat">
-                ${j.pct}%
-              </div>
-
-              <div class="compat-lbl">
-                compatibilidade
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="job-body">
-
-            <p style="margin:0 0 4px">
-
-              Esta vaga tem alta aderência ao
-              seu perfil devido à sua capacidade
-              em
-
-              <strong>
-                ${j.motivos
-                  .map(m => esc(m))
-                  .join(' e ')}
-              </strong>,
-
-              características centrais do perfil
-              ${esc(personaData().name)}.
-
-            </p>
-
-
-            <div class="real-links">
-
-              <a
-                class="btn btn-sm btn-ghost"
-                href="${jobSearchLinks(j).linkedin}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ver vagas reais no LinkedIn
-              </a>
-
-
-              <a
-                class="btn btn-sm btn-ghost"
-                href="${jobSearchLinks(j).indeed}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Ver vagas reais no Indeed
-              </a>
-
-            </div>
-
-
-            <p class="hint-note">
-
-              A inscrição em si acontece na
-              plataforma de origem — a maioria
-              dos sites de vagas não expõe suas
-              vagas por API pública e gratuita,
-              então levamos você direto para a
-              busca já filtrada por esse cargo.
-
-            </p>
-
-
-            <h4
-              style="
-                margin:18px 0 8px;
-                font-size:12.5px;
-                color:var(--fog);
-                font-family:var(--sans);
-                font-weight:600
-              "
-            >
-              Antes de se candidatar
-            </h4>
-
-
-            <ul
-              class="steps-list"
-              id="steps-${i}"
-            >
-
-              ${
-                APPLY_STEPS
-                  .map(
-                    s => `
-                      <li>
-                        <span class="chk"></span>
-                        ${esc(s)}
-                      </li>
-                    `
-                  )
-                  .join('')
-              }
-
-            </ul>
-
-
-            <button
-              type="button"
-              class="btn btn-sm"
-              data-apply="${i}"
-            >
-              🚀 Preparar candidatura inteligente
-            </button>
-
-
-            <div class="integrations">
-
-              <p>
-                Integrações diretas em desenvolvimento:
-                CIEE, Gupy, Catho, InfoJobs, Nube
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      `
-    )
-    .join('');
-
-
-  box
-    .querySelectorAll('.job')
-    .forEach(el => {
-
-      el.addEventListener(
-        'click',
-        e => {
-
-          if(
-            e.target.closest(
-              '[data-apply]'
-            )
-          ){
-            return;
-          }
-
-
-          const idx =
-            Number(
-              el.dataset.idx
-            );
-
-
-          openJobIdx =
-            openJobIdx === idx
-              ? -1
-              : idx;
-
-
-          renderVagas();
-
-        }
-      );
-
-    });
-
-
-  box
-    .querySelectorAll('[data-apply]')
-    .forEach(btn => {
-
-      btn.addEventListener(
-        'click',
-        e => {
-
-          e.stopPropagation();
-
-          runApplyFlow(
-            Number(btn.dataset.apply),
-            jobs[
-              Number(btn.dataset.apply)
-            ],
-            btn
-          );
-
-        }
-      );
-
-    });
-
-}
-
-
-function jobSearchLinks(job){
-
-  const q =
-    encodeURIComponent(
-      job.title
-    );
-
-
-  return {
-
-    linkedin:
-      'https://www.linkedin.com/jobs/search/?keywords=' +
-      q,
-
-    indeed:
-      'https://br.indeed.com/jobs?q=' +
-      q
-
-  };
-
-}
-
-
-function runApplyFlow(idx,job,btn){
-
-  btn.disabled = true;
-
-
-  const items =
-    document.querySelectorAll(
-      '#steps-' + idx + ' li'
-    );
-
-
-  let i = 0;
-
-
-  const tick = () => {
-
-    if(i < items.length){
-
-      items[i]
-        .classList.add('on');
-
-
-      items[i]
-        .querySelector('.chk')
-        .textContent = '✓';
-
-
-      i++;
-
-
-      setTimeout(
-        tick,
-        480
-      );
-
-    }else{
-
-      state.candidaturas.push({
-
-        titulo:job.title,
-
-        data:new Date()
-          .toISOString()
-
-      });
-
-
-      saveState();
-
-
-      btn.textContent =
-        'Pronto — candidate-se pelos links acima ✓';
-
-
-      renderProgresso();
-
-      renderMentor();
-
-    }
-
-  };
-
-
-  tick();
-
-}
-
-
-/* =======================================================================
-   PROGRESSO
-======================================================================= */
-
-function renderProgresso(){
-
-  const box =
-    document.getElementById(
-      'progresso-content'
-    );
-
-
-  const n =
-    state.candidaturas.length;
-
-
-  const entrevistas =
-    Math.floor(n / 3);
-
-
-  const propostas =
-    Math.floor(n / 6);
-
-
-  const milestones = [
-
-    {
-      label:'Perfil criado',
-      done:!!state.persona
-    },
-
-    {
-      label:'Currículo gerado',
-      done:!!(
-        state.dados.nome &&
-        state.dados.email
-      )
-    },
-
-    {
-      label:'Diagnóstico concluído',
-      done:
-        state.quiz.length >=
-        QUESTIONS.length
-    },
-
-    {
-      label:'Primeira candidatura',
-      done:n >= 1
-    },
-
-    {
-      label:'Primeira entrevista',
-      done:entrevistas >= 1
-    },
-
-    {
-      label:
-        'Próxima meta: ' +
-        nextMission().title,
-
-      done:false,
-
-      next:true
-    }
-
-  ];
-
-
-  box.innerHTML = `
-
-    <div class="stat-row">
-
-      <div class="stat">
-
-        <div class="n">
-          ${n}
-        </div>
-
-        <div class="l">
-          candidaturas
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="n">
-          ${entrevistas}
-        </div>
-
-        <div class="l">
-          entrevistas
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="n">
-          ${propostas}
-        </div>
-
-        <div class="l">
-          propostas
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="panel">
-
-      <div class="section-head">
-
-        <h2>
-          Linha do tempo
-        </h2>
-
-      </div>
-
-
-      <div class="timeline">
-
-        ${
-          milestones
-            .map(
-              m => `
-
-                <div
-                  class="tl-item ${
-                    m.done
-                      ? 'done'
-                      : m.next
-                        ? 'next'
-                        : ''
-                  }"
-                >
-
-                  <div class="tt">
-
-                    ${
-                      m.done
-                        ? '✅'
-                        : m.next
-                          ? '🟡'
-                          : '—'
-                    }
-
-                    ${esc(m.label)}
-
-                  </div>
-
-                </div>
-
-              `
-            )
-            .join('')
-        }
-
-      </div>
-
-    </div>
-
-
-    <div class="advice">
-
-      <p>
-
-        <strong>
-          Conselho do Farol —
-        </strong>
-
-        ${generateAdvice()}
-
-      </p>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =======================================================================
-   MENTOR
-======================================================================= */
-
-function renderMentor(){
-
-  const box =
-    document.getElementById(
-      'mentor-content'
-    );
-
-
-  if(!state.persona){
-
-    box.innerHTML = `
-
-      <p class="empty-note">
-        Complete seu perfil para desbloquear
-        o Mentor IA.
-      </p>
-
-    `;
-
-    return;
-
-  }
-
-
-  const p =
-    personaData();
-
-
-  const nome =
-    state.dados.nome
-      ? state.dados.nome
-          .split(' ')[0]
-      : 'você';
-
-
-  const suggestionsPool = {
-
-    a:[
-      'Aprender Power BI',
-      'Praticar SQL',
-      'Montar um dashboard pessoal',
-      'Atualizar o LinkedIn'
-    ],
-
-    c:[
-      'Criar um portfólio visual',
-      'Atualizar o LinkedIn',
-      'Testar uma ferramenta de design',
-      'Escrever sobre um projeto seu'
-    ],
-
-    m:[
-      'Atualizar o LinkedIn',
-      'Praticar entrevistas',
-      'Fazer networking em um evento',
-      'Pedir uma recomendação'
-    ],
-
-    o:[
-      'Organizar um cronograma pessoal',
-      'Aprender gestão ágil',
-      'Atualizar o LinkedIn',
-      'Revisar suas metas do mês'
-    ]
-
-  };
-
-
-  const sugestoes =
-    suggestionsPool[
-      state.persona
-    ];
-
-
-  const doneCourses =
-    new Set(
-      state.cursosFeitos.map(
-        c => c.nome
-      )
-    );
-
-
-  const m =
-    nextMission();
-
-
-  box.innerHTML = `
-
     <div class="mentor-msg">
-
-      <div class="mentor-hi">
-        Olá, ${esc(nome)}.
-      </div>
-
-      <p>
-
-        ${generateAdvice()}
-
-        Seu perfil
-        ${esc(p.name.toLowerCase())}
-        tem se mostrado consistente
-        nas suas respostas —
-        continue nessa direção.
-
-      </p>
-
+      <div class="mentor-hi">Olá, ${esc(nome)}.</div>
+      <p>${generateAdvice()} Seu perfil ${p.name.toLowerCase()} tem se mostrado consistente nas suas respostas — continue nessa direção.</p>
     </div>
-
 
     <div class="panel">
-
-      <div class="section-head">
-
-        <h2>
-          Sugestões para você
-        </h2>
-
-      </div>
-
-
-      <div>
-
-        ${
-          sugestoes
-            .map(
-              s => `
-                <span class="suggest-chip">
-                  ${esc(s)}
-                </span>
-              `
-            )
-            .join('')
-        }
-
-      </div>
-
+      <div class="section-head"><h2>Sugestões para você</h2></div>
+      <div>${sugestoes.map(s => `<span class="suggest-chip">${s}</span>`).join('')}</div>
     </div>
-
 
     <div class="panel">
-
-      <div class="section-head">
-
-        <h2>
-          Cursos inteligentes
-        </h2>
-
-        <span class="hint">
-          Recomendados a partir das suas lacunas
-        </span>
-
+      <div class="section-head"><h2>Cursos inteligentes</h2><span class="hint">Recomendados a partir das suas lacunas</span></div>
+      <div>${COURSES.slice().sort((a,b) => (b.fit.includes(state.persona)?1:0)-(a.fit.includes(state.persona)?1:0))
+        .map(c => `
+        <div class="course">
+          <div><div class="cname">${c.nome}</div><div class="cimpact">Impacto: +${c.impacto} pontos</div></div>
+          <button class="btn btn-sm ${doneCourses.has(c.nome)?'btn-ghost':''}" data-course="${esc(c.nome)}" data-impact="${c.impacto}" ${doneCourses.has(c.nome)?'disabled':''}>
+            ${doneCourses.has(c.nome) ? 'Concluído ✓' : 'Adicionar ao meu plano'}
+          </button>
+        </div>`).join('')}
       </div>
-
-
-      <div>
-
-        ${
-          COURSES
-            .slice()
-            .sort(
-              (a,b) =>
-                (b.fit.includes(state.persona) ? 1 : 0) -
-                (a.fit.includes(state.persona) ? 1 : 0)
-            )
-            .map(
-              c => `
-
-                <div class="course">
-
-                  <div>
-
-                    <div class="cname">
-                      ${esc(c.nome)}
-                    </div>
-
-                    <div class="cimpact">
-                      Impacto: +${c.impacto} pontos
-                    </div>
-
-                  </div>
-
-
-                  <button
-                    type="button"
-                    class="btn btn-sm ${
-                      doneCourses.has(c.nome)
-                        ? 'btn-ghost'
-                        : ''
-                    }"
-                    data-course="${esc(c.nome)}"
-                    data-impact="${c.impacto}"
-                    ${
-                      doneCourses.has(c.nome)
-                        ? 'disabled'
-                        : ''
-                    }
-                  >
-
-                    ${
-                      doneCourses.has(c.nome)
-                        ? 'Concluído ✓'
-                        : 'Adicionar ao meu plano'
-                    }
-
-                  </button>
-
-                </div>
-
-              `
-            )
-            .join('')
-        }
-
-      </div>
-
     </div>
-
 
     <div class="mission-card">
+      <div class="flag">próxima missão</div>
+      <h3>🎯 ${m.title}</h3>
+      <p style="margin:0">Impacto estimado: +${m.impact} pontos no Farol Score</p>
+    </div>`;
 
-      <div class="flag">
-        próxima missão
-      </div>
-
-      <h3>
-        🎯 ${esc(m.title)}
-      </h3>
-
-      <p style="margin:0">
-        Impacto estimado:
-        +${m.impact}
-        pontos no Farol Score
-      </p>
-
-    </div>
-
-  `;
-
-
-  box
-    .querySelectorAll('[data-course]')
-    .forEach(btn => {
-
-      btn.addEventListener(
-        'click',
-        () => {
-
-          state.cursosFeitos.push({
-
-            nome:
-              btn.dataset.course,
-
-            impacto:
-              Number(
-                btn.dataset.impact
-              )
-
-          });
-
-
-          saveState();
-
-          renderMentor();
-
-        }
-      );
-
-    });
-
+  box.querySelectorAll('[data-course]').forEach(btn => btn.addEventListener('click', () => {
+    state.cursosFeitos.push({ nome: btn.dataset.course, impacto: Number(btn.dataset.impact) });
+    saveState();
+    renderMentor();
+  }));
 }
-
 
 /* =======================================================================
-   UTIL
+   UTIL + INIT
 ======================================================================= */
-
-function val(id){
-
-  const el =
-    document.getElementById(id);
-
-  return el
-    ? el.value
-    : '';
-
-}
-
-
-function esc(s){
-
-  return String(
-    s ?? ''
-  ).replace(
-    /[&<>"']/g,
-    c => ({
-      '&':'&amp;',
-      '<':'&lt;',
-      '>':'&gt;',
-      '"':'&quot;',
-      "'":'&#39;'
-    }[c])
-  );
-
-}
-
-
-/* =======================================================================
-   RENDER ALL
-======================================================================= */
+function val(id){ return document.getElementById(id).value; }
+function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
 function renderAll(){
-
   renderHome();
-
   renderPerfil();
-
   renderVagas();
-
   renderProgresso();
-
   renderMentor();
-
 }
-
-
-/* =======================================================================
-   INIT
-======================================================================= */
-
 renderAll();
-
 </script>
-
 </body>
 </html>
