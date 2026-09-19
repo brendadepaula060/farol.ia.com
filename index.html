@@ -820,8 +820,7 @@ function renderMentor(){
         .map(c => `
         <div class="course">
           <div><div class="cname">${c.nome}</div><div class="cimpact">Impacto: +${c.impacto} pontos</div></div>
-          <button type="button" class="btn btn-sm ${doneCourses.has(c.nome)?'btn-ghost':''}" data-course="${esc(c.nome)}" data-impact="${c.impacto}" ${doneCourses.has(c.nome)?'disabled':''}>${doneCourses.has(c.nome) ? 'Concluído ✓' : 'Adicionar ao meu plano'}
-          </button>
+          <button type="button" class="btn btn-sm ${doneCourses.has(c.nome)?'btn-ghost':''}" data-course="${esc(c.nome)}" data-impact="${c.impacto}" ${doneCourses.has(c.nome)?'disabled':''}>${doneCourses.has(c.nome) ? 'Concluído ✓' : 'Adicionar ao meu plano'}</button>
         </div>`).join('')}
       </div>
     </div>
@@ -856,4 +855,3 @@ renderAll();
 </script>
 </body>
 </html>
-
