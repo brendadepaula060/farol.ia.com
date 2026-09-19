@@ -98,7 +98,7 @@
   .btn-sm{padding:8px 14px;font-size:13px;border-radius:9px}
   .btn:disabled{opacity:.5;cursor:default;box-shadow:none;transform:none}
 
-  /* ---------- Cards / panels (varied treatments) ---------- */
+  /* ---------- Cards / panels ---------- */
   .panel{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:28px}
   .panel + .panel{margin-top:18px}
   .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap}
@@ -228,11 +228,11 @@
       <span class="brand-sub">mentor digital de carreira</span>
     </div>
     <nav class="waypoints" id="waypoints">
-      <button data-tab="home" class="active">Início</button>
-      <button data-tab="perfil">Meu Perfil</button>
-      <button data-tab="vagas">Oportunidades</button>
-      <button data-tab="progresso">Meu Progresso</button>
-      <button data-tab="mentor">Mentor IA</button>
+      <button type="button" data-tab="home" class="active">Início</button>
+      <button type="button" data-tab="perfil">Meu Perfil</button>
+      <button type="button" data-tab="vagas">Oportunidades</button>
+      <button type="button" data-tab="progresso">Meu Progresso</button>
+      <button type="button" data-tab="mentor">Mentor IA</button>
     </nav>
   </div>
 </header>
@@ -247,7 +247,7 @@
         <span class="hero-tag">🧭 mentor de carreira com IA</span>
         <h1>Porque encontrar uma vaga é importante.<br>Encontrar seu caminho é essencial.</h1>
         <p class="lede">O Farol.IA descobre seu potencial, traduz suas experiências em competências e te mostra as oportunidades certas — sem substituir o LinkedIn, a Gupy ou o CIEE, mas iluminando o caminho entre eles.</p>
-        <button class="btn" id="btn-start">Iniciar minha jornada</button>
+        <button type="button" class="btn" id="btn-start">Iniciar minha jornada</button>
       </div>
     </div>
     <div id="home-snapshot"></div>
@@ -289,14 +289,14 @@
 ======================================================================= */
 const DEFAULT_STATE = {
   dados: { nome:'', email:'', telefone:'', formacao:'', instituicao:'', funcao:'', experiencias:[], cursosComp:[] },
-  quiz: [],            // array of dimension letters answered, e.g. ['c','a',...]
-  persona: null,       // 'c' | 'a' | 'm' | 'o'
+  quiz: [],
+  persona: null,
   potencialTexto:'',
   competencias: [],
-  cursosFeitos: [],    // {nome, impacto}
-  candidaturas: [],    // {titulo, data}
-  perfilStep: 0,       // 0 dados, 1 diagnostico, 2 potencial, 3 resultado
-  chatHistory: []      // {role:'mentor'|'user', text}
+  cursosFeitos: [],
+  candidaturas: [],
+  perfilStep: 0,
+  chatHistory: []
 };
 let state = loadState();
 
@@ -310,7 +310,7 @@ function loadState(){
 }
 function saveState(){
   try{ localStorage.setItem('faroliaState_v1', JSON.stringify(state)); }
-  catch(e){ /* storage unavailable — continue without persistence */ }
+  catch(e){ /* storage unavailable */ }
 }
 
 /* =======================================================================
@@ -488,7 +488,7 @@ function renderHome(){
             <div class="flag">próxima missão</div>
             <h3 style="font-size:16px">${m.title}</h3>
             <p style="margin:0 0 12px;font-size:13px">Impacto estimado: +${m.impact} pontos no Farol Score</p>
-            <button class="btn btn-sm" id="home-mission-btn">Ir agora</button>
+            <button type="button" class="btn btn-sm" id="home-mission-btn">Ir agora</button>
           </div>
         </div>
       </div>
@@ -514,7 +514,6 @@ function gaugeSVG(total){
 ======================================================================= */
 function renderPerfil(){
   const box = document.getElementById('perfil-content');
-  if(state.persona && state.perfilStep < 3) state.perfilStep = 3;
   const step = state.perfilStep;
 
   if(step === 3 && state.persona){ renderPerfilResultado(box); return; }
@@ -532,21 +531,25 @@ function renderDados(box, dots){
     <div class="panel">
       <div class="dots">${dots}</div>
       <div class="section-head"><h2>Meus dados</h2><span class="hint">Isso vira a base do seu currículo automático</span></div>
-      <div class="grid2">
-        <div class="field"><label>Nome</label><input id="f-nome" value="${esc(d.nome)}" placeholder="Seu nome completo"></div>
-        <div class="field"><label>E-mail</label><input id="f-email" value="${esc(d.email)}" placeholder="voce@email.com"></div>
-        <div class="field"><label>Telefone</label><input id="f-telefone" value="${esc(d.telefone)}" placeholder="(11) 90000-0000"></div>
-        <div class="field"><label>Função ou área desejada</label><input id="f-funcao" value="${esc(d.funcao)}" placeholder="Ex: Marketing, Dados, RH..."></div>
-        <div class="field"><label>Formação</label><input id="f-formacao" value="${esc(d.formacao)}" placeholder="Ex: Administração, 6º semestre"></div>
-        <div class="field"><label>Instituição</label><input id="f-instituicao" value="${esc(d.instituicao)}" placeholder="Nome da instituição"></div>
-      </div>
-      <div class="field"><label>Experiências (uma por linha — estágios, projetos, trabalhos voluntários)</label>
-        <textarea id="f-exp" placeholder="Ex: Organizei uma festa beneficente na faculdade">${esc(d.experiencias.join('\n'))}</textarea></div>
-      <div class="field"><label>Cursos complementares (separados por vírgula)</label>
-        <input id="f-cursos" value="${esc(d.cursosComp.join(', '))}" placeholder="Ex: Excel, Inglês intermediário"></div>
-      <button class="btn" id="dados-continue">Continuar para o diagnóstico</button>
+      <form id="dados-form">
+        <div class="grid2">
+          <div class="field"><label>Nome</label><input id="f-nome" value="${esc(d.nome)}" placeholder="Seu nome completo" required></div>
+          <div class="field"><label>E-mail</label><input type="email" id="f-email" value="${esc(d.email)}" placeholder="voce@email.com"></div>
+          <div class="field"><label>Telefone</label><input type="tel" id="f-telefone" value="${esc(d.telefone)}" placeholder="(11) 90000-0000"></div>
+          <div class="field"><label>Função ou área desejada</label><input id="f-funcao" value="${esc(d.funcao)}" placeholder="Ex: Marketing, Dados, RH..."></div>
+          <div class="field"><label>Formação</label><input id="f-formacao" value="${esc(d.formacao)}" placeholder="Ex: Administração, 6º semestre"></div>
+          <div class="field"><label>Instituição</label><input id="f-instituicao" value="${esc(d.instituicao)}" placeholder="Nome da instituição"></div>
+        </div>
+        <div class="field"><label>Experiências (uma por linha — estágios, projetos, trabalhos voluntários)</label>
+          <textarea id="f-exp" placeholder="Ex: Organizei uma festa beneficente na faculdade">${esc(d.experiencias.join('\n'))}</textarea></div>
+        <div class="field"><label>Cursos complementares (separados por vírgula)</label>
+          <input id="f-cursos" value="${esc(d.cursosComp.join(', '))}" placeholder="Ex: Excel, Inglês intermediário"></div>
+        <button type="submit" class="btn" id="dados-continue">Continuar para o diagnóstico</button>
+      </form>
     </div>`;
-  document.getElementById('dados-continue').addEventListener('click', () => {
+
+  document.getElementById('dados-form').addEventListener('submit', (e) => {
+    e.preventDefault();
     d.nome = val('f-nome'); d.email = val('f-email'); d.telefone = val('f-telefone');
     d.funcao = val('f-funcao'); d.formacao = val('f-formacao'); d.instituicao = val('f-instituicao');
     d.experiencias = val('f-exp').split('\n').map(s=>s.trim()).filter(Boolean);
@@ -565,9 +568,10 @@ function renderDiagnostico(box, dots){
       <div class="dots">${stepDots}</div>
       <div class="section-head"><h2>Diagnóstico IA</h2><span class="hint">Pergunta ${quizIndex+1} de ${QUESTIONS.length}</span></div>
       <div class="quiz-q">${q.q}</div>
-      <div class="quiz-opts">${q.opts.map((o,i) => `<button class="quiz-opt" data-d="${o.d}">${o.t}</button>`).join('')}</div>
+      <div class="quiz-opts">${q.opts.map((o,i) => `<button type="button" class="quiz-opt" data-d="${o.d}">${o.t}</button>`).join('')}</div>
     </div>`;
-  box.querySelectorAll('.quiz-opt').forEach(btn => btn.addEventListener('click', () => {
+  box.querySelectorAll('.quiz-opt').forEach(btn => btn.addEventListener('click', (e) => {
+    e.preventDefault();
     state.quiz[quizIndex] = btn.dataset.d;
     quizIndex++;
     if(quizIndex >= QUESTIONS.length){
@@ -588,10 +592,13 @@ function renderPotencial(box, dots){
     <div class="panel">
       <div class="dots">${dots}</div>
       <div class="section-head"><h2>Descoberta de potencial</h2><span class="hint">Conte algo que você já realizou</span></div>
-      <div class="field"><textarea id="f-potencial" placeholder="Ex: Ajudei a organizar uma festa beneficente na faculdade, cuidando do cronograma e da comunicação com os fornecedores.">${esc(state.potencialTexto)}</textarea></div>
-      <button class="btn" id="potencial-continue">Analisar e ver meu perfil</button>
+      <form id="potencial-form">
+        <div class="field"><textarea id="f-potencial" placeholder="Ex: Ajudei a organizar uma festa beneficente na faculdade, cuidando do cronograma e da comunicação com os fornecedores.">${esc(state.potencialTexto)}</textarea></div>
+        <button type="submit" class="btn" id="potencial-continue">Analisar e ver meu perfil</button>
+      </form>
     </div>`;
-  document.getElementById('potencial-continue').addEventListener('click', () => {
+  document.getElementById('potencial-form').addEventListener('submit', (e) => {
+    e.preventDefault();
     state.potencialTexto = val('f-potencial');
     const text = state.potencialTexto.toLowerCase();
     let found = [];
@@ -607,7 +614,6 @@ function renderPotencial(box, dots){
 function renderPerfilResultado(box){
   const p = personaData();
   const s = recalcScore();
-  const doneCourses = new Set(state.cursosFeitos.map(c=>c.nome));
   box.innerHTML = `
     <div class="panel">
       <div class="section-head"><h2>Seu perfil profissional</h2>
@@ -646,7 +652,7 @@ function renderPerfilResultado(box){
     </div>`;
 
   document.getElementById('edit-dados').addEventListener('click', e => { e.preventDefault(); goPerfilStep(0); });
-  document.getElementById('redo-quiz').addEventListener('click', e => { e.preventDefault(); state.quiz = []; quizIndex = 0; goPerfilStep(1); });
+  document.getElementById('redo-quiz').addEventListener('click', e => { e.preventDefault(); state.quiz = []; state.persona = null; quizIndex = 0; goPerfilStep(1); });
 }
 
 function scoreBar(label, val){
@@ -697,7 +703,7 @@ function renderVagas(){
         <ul class="steps-list" id="steps-${i}">
           ${APPLY_STEPS.map(s => `<li><span class="chk"></span>${s}</li>`).join('')}
         </ul>
-        <button class="btn btn-sm" data-apply="${i}">🚀 Preparar candidatura inteligente</button>
+        <button type="button" class="btn btn-sm" data-apply="${i}">🚀 Preparar candidatura inteligente</button>
         <div class="integrations">
           <p>Integrações diretas em desenvolvimento: CIEE, Gupy, Catho, InfoJobs, Nube</p>
         </div>
@@ -814,8 +820,7 @@ function renderMentor(){
         .map(c => `
         <div class="course">
           <div><div class="cname">${c.nome}</div><div class="cimpact">Impacto: +${c.impacto} pontos</div></div>
-          <button class="btn btn-sm ${doneCourses.has(c.nome)?'btn-ghost':''}" data-course="${esc(c.nome)}" data-impact="${c.impacto}" ${doneCourses.has(c.nome)?'disabled':''}>
-            ${doneCourses.has(c.nome) ? 'Concluído ✓' : 'Adicionar ao meu plano'}
+          <button type="button" class="btn btn-sm ${doneCourses.has(c.nome)?'btn-ghost':''}" data-course="${esc(c.nome)}" data-impact="${c.impacto}" ${doneCourses.has(c.nome)?'disabled':''}>${doneCourses.has(c.nome) ? 'Concluído ✓' : 'Adicionar ao meu plano'}
           </button>
         </div>`).join('')}
       </div>
@@ -851,3 +856,4 @@ renderAll();
 </script>
 </body>
 </html>
+
