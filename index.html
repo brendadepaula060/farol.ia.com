@@ -1,45 +1,1052 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Farol.IA — mentor de carreira</title>
-<style>
-:root{--bg:#091522;--panel:#10243b;--field:#182f4a;--line:#2b4663;--gold:#f5a623;--light:#ffd280;--muted:#a8b8ca;--green:#69c596;--danger:#ef8b8b}*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,var(--bg),#183955);color:#eef4fa;font:16px Arial;line-height:1.5}.top{position:sticky;top:0;z-index:3;background:#091522ee;border-bottom:1px solid var(--line)}.topin,.wrap{max-width:1100px;margin:auto}.topin{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{font:bold 22px Georgia;color:var(--light)}.brand small{display:block;color:var(--muted);font:11px Arial}.nav{display:flex;gap:5px;overflow:auto}.nav button,.btn{border:0;border-radius:10px;padding:11px 15px;font-weight:bold;cursor:pointer}.nav button{background:transparent;color:var(--muted);white-space:nowrap}.nav button.active,.btn{background:var(--gold);color:#211700}.btn.alt{background:transparent;border:1px solid var(--line);color:#fff}.btn.danger{color:var(--danger);border-color:#7b4242}.wrap{padding:30px 20px 60px}.screen{display:none}.screen.active{display:block}.hero,.panel{background:#10243bee;border:1px solid var(--line);border-radius:18px;padding:clamp(20px,5vw,48px);margin-bottom:18px}.hero h1{font:600 clamp(32px,6vw,58px)/1.1 Georgia;margin:15px 0}.hero p,.hint{color:var(--muted)}.tag{display:inline-block;border:1px solid #a87831;color:var(--light);border-radius:99px;padding:5px 10px;font-size:12px}.head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.field{margin-bottom:13px}.field label{display:block;color:var(--muted);font-size:13px;margin-bottom:5px}.field input,.field textarea,.field select,.chat input{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--field);color:#fff;font:inherit}.field textarea{min-height:105px;resize:vertical}.quiz{display:grid;gap:10px}.quiz button{width:100%;text-align:left;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:#fff;cursor:pointer}.jobs,.courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}.job,.course{background:var(--field);border:1px solid var(--line);border-radius:13px;padding:17px}.job h3,.course h3{margin:0 0 6px}.job p,.course p{color:var(--muted);margin:5px 0}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.stats,.feedback{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat,.feedback>div{background:var(--field);padding:18px;border-radius:12px;border:1px solid var(--line)}.stat b{display:block;font:600 30px Georgia;color:var(--light)}.feedback h3{margin-top:0;color:var(--light);font-size:16px}.messages{display:grid;gap:9px;max-height:390px;overflow:auto;margin-bottom:12px}.bubble{background:var(--field);border-radius:14px;padding:12px;max-width:90%}.bubble.user{justify-self:end;background:#78511e}.chat{display:flex;gap:8px}.chat input{flex:1}.course a{color:var(--light);font-weight:bold}.course button{margin-top:9px}.notice{padding:12px 14px;border:1px solid #4c6d80;border-radius:10px;background:#15334b;margin:12px 0}.progress{height:8px;background:var(--field);border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:var(--gold)}.empty{border:1px dashed var(--line);padding:18px;border-radius:12px;color:var(--muted)}ul{padding-left:20px}@media(max-width:650px){.topin{display:block}.nav{margin-top:12px}.wrap{padding:18px 14px}.grid,.stats,.feedback{grid-template-columns:1fr}.hero,.panel{padding:18px 16px}.chat{display:grid}.chat input,.chat button{width:100%}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Farol.IA — mentor de carreira</title>
+  <style>
+    :root {
+      --bg: #091522;
+      --bg-soft: #0f1d2c;
+      --panel: #10243b;
+      --panel-strong: #15314d;
+      --field: #182f4a;
+      --line: #2b4663;
+      --gold: #f5a623;
+      --light: #ffd280;
+      --muted: #a8b8ca;
+      --text: #ebf3ff;
+      --green: #69c596;
+      --danger: #ef8b8b;
+      --shadow: rgba(6, 12, 18, 0.35);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: linear-gradient(180deg, #07131d 0%, #0d1d2b 100%);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; }
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      background: rgba(9, 21, 34, 0.82);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .topin {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--light);
+      font-size: clamp(1.15rem, 2vw, 1.6rem);
+      letter-spacing: 0.03em;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand small {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      font-weight: 600;
+      text-transform: none;
+      margin-top: 4px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .nav button,
+    .primary,
+    .secondary,
+    .chip,
+    .cta {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: 180ms ease;
+    }
+
+    .nav button:hover,
+    .primary:hover,
+    .secondary:hover,
+    .chip:hover,
+    .cta:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .nav button.active,
+    .primary,
+    .cta {
+      background: linear-gradient(135deg, var(--gold), #de9420);
+      color: #172230;
+      font-weight: 700;
+      border-color: transparent;
+      box-shadow: 0 12px 24px rgba(245,166,35,0.28);
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 24px 0 32px;
+      flex: 1;
+    }
+
+    .screen {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(21,49,77,0.96), rgba(10,27,40,0.96));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: clamp(20px, 4vw, 42px);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(245,166,35,0.15), transparent 28%);
+      pointer-events: none;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--light);
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1, h2, h3, p {
+      margin: 0 0 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.05;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 700px;
+      font-size: 1.02rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .panel {
+      background: rgba(16,36,59,0.96);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      margin-top: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .field label {
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--field);
+      color: var(--text);
+      outline: none;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(245,166,35,0.65);
+      box-shadow: 0 0 0 3px rgba(245,166,35,0.16);
+    }
+
+    .field textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .stack {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .card {
+      background: rgba(18, 38, 58, 0.95);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card h3 {
+      margin: 0;
+      color: var(--light);
+      font-size: 1.1rem;
+    }
+
+    .card p,
+    .hint,
+    .tiny {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .notice {
+      background: rgba(105, 197, 150, 0.08);
+      border: 1px solid rgba(105, 197, 150, 0.2);
+      border-radius: 12px;
+      color: #d7f5e5;
+      padding: 12px 14px;
+      margin-top: 12px;
+    }
+
+    .danger {
+      background: rgba(239, 139, 139, 0.08);
+      border: 1px solid rgba(239, 139, 139, 0.2);
+      color: #f7d2d2;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .button-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .primary, .secondary, .chip, .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .secondary {
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .chip {
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+      color: var(--muted);
+      padding: 8px 12px;
+      min-height: auto;
+    }
+
+    .job-item {
+      background: rgba(18, 38, 58, 0.95);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: 12px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .job-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .job-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .course-list,
+    .job-list,
+    .chat-box {
+      display: grid;
+      gap: 12px;
+    }
+
+    .course-item {
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .quiz-option {
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      color: var(--text);
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .quiz-option:hover,
+    .quiz-option.selected {
+      border-color: rgba(245,166,35,0.5);
+      background: rgba(245,166,35,0.08);
+    }
+
+    .mentor-box {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .chat {
+      background: rgba(9, 21, 34, 0.85);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 14px;
+      min-height: 180px;
+      max-height: 260px;
+      overflow: auto;
+      display: grid;
+      gap: 10px;
+    }
+
+    .msg {
+      max-width: 85%;
+      border-radius: 12px;
+      padding: 10px 12px;
+      line-height: 1.45;
+    }
+
+    .msg.ai {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--text);
+      justify-self: start;
+    }
+
+    .msg.user {
+      background: rgba(245,166,35,0.14);
+      border: 1px solid rgba(245,166,35,0.25);
+      color: #ffe9bf;
+      justify-self: end;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .input-row input {
+      flex: 1 1 220px;
+      min-width: 0;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--field);
+      color: var(--text);
+    }
+
+    .floating-next {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      width: min(420px, calc(100% - 24px));
+      background: rgba(10, 24, 36, 0.95);
+      border: 1px solid rgba(245,166,35,0.4);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      border-radius: 16px;
+      padding: 10px;
+      display: none;
+      z-index: 20;
+    }
+
+    .floating-next.visible { display: block; }
+
+    .floating-next button {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      min-height: 46px;
+      background: linear-gradient(135deg, var(--gold), #de9420);
+      color: #172230;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      color: #7890a8;
+      font-size: 12px;
+      padding: 25px 16px 60px;
+    }
+
+    @media (max-width: 760px) {
+      .topin {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .job-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .job-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-<header class="top"><div class="topin"><div class="brand">farol.ia<small>mentor digital de carreira</small></div><nav class="nav"><button data-tab="home" class="active">Início</button><button data-tab="perfil">Meu perfil</button><button data-tab="vagas">Oportunidades</button><button data-tab="dashboard">Dashboard</button><button data-tab="mentor">Mentor IA</button></nav></div></header>
-<main class="wrap"><section id="screen-home" class="screen active"></section><section id="screen-perfil" class="screen"></section><section id="screen-vagas" class="screen"></section><section id="screen-dashboard" class="screen"></section><section id="screen-mentor" class="screen"></section></main>
-<footer style="text-align:center;color:#7890a8;font-size:12px;padding:25px">Farol.IA — dados salvos localmente neste dispositivo.</footer>
-<script>
-'use strict';
-const areas=['Administração e Finanças','Agricultura e Meio Ambiente','Artes e Design','Atendimento e Serviços','Beleza e Estética','Comunicação e Marketing','Construção Civil','Educação','Engenharia','Gastronomia e Turismo','Jurídico','Logística','Manutenção e Indústria','Recursos Humanos','Saúde','Segurança','Tecnologia e Dados','Vendas e Comercial'];
-const names=[['Assistente Administrativo','Auxiliar Financeiro'],['Assistente Agrícola','Técnico Ambiental'],['Designer Gráfico','Produtor Cultural'],['Recepcionista','Atendente de Serviços'],['Assistente de Estética','Consultor de Beleza'],['Analista de Marketing','Social Media Jr.'],['Auxiliar de Obras','Técnico de Edificações'],['Monitor de Sala','Assistente Educacional'],['Assistente de Engenharia','Técnico de Projetos'],['Cozinheiro','Assistente de Eventos'],['Assistente Jurídico','Auxiliar de Compliance'],['Assistente Logístico','Auxiliar de Estoque'],['Assistente de Produção','Controle de Qualidade'],['Assistente de RH','Assistente de Seleção'],['Atendente de Clínica','Assistente de Saúde'],['Monitor de Segurança','Assistente de Portaria'],['Analista de Dados Jr.','Analista de Suporte'],['Consultor de Vendas','Atendente Comercial']];
-const jobs=areas.flatMap((area,i)=>names[i].map(name=>({name,area})));
-const courses={"Administração e Finanças":[['Excel Básico','Fundação Bradesco','https://www.ev.org.br/cursos'],['Administração','Sebrae','https://www.sebrae.com.br/sites/PortalSebrae/cursosonline']],"Agricultura e Meio Ambiente":[['Agronegócio e sustentabilidade','Sebrae','https://www.sebrae.com.br/sites/PortalSebrae/cursosonline'],['Fundamentos do agronegócio','Coursera','https://www.coursera.org/search?query=agronegocio']],"Artes e Design":[['Introdução a UX','Coursera/Google','https://www.coursera.org/learn/fundamentos-do-design-da-experiencia-do-usuario-ux'],['Figma para iniciantes','Figma','https://www.figma.com/education/']],"Atendimento e Serviços":[['Atendimento ao cliente','Sebrae','https://www.sebrae.com.br/sites/PortalSebrae/cursosonline'],['Comunicação profissional','Fundação Bradesco','https://www.ev.org.br/cursos']],"Beleza e Estética":[['Atendimento e vendas','Sebrae','https://www.sebrae.com.br/sites/PortalSebrae/cursosonline'],['Marketing digital','Google','https://learndigital.withgoogle.com/ateliedigital']],"Comunicação e Marketing":[['Marketing Digital','Google','https://learndigital.withgoogle.com/ateliedigital'],['Storytelling','Rock Content','https://www.rockcontent.com/br/'],['Oratória','Fundação Bradesco','https://www.ev.org.br/cursos']],"Construção Civil":[['Segurança do trabalho','Escola Virtual Gov','https://www.escolavirtual.gov.br/catalogo'],['Gestão de projetos','Coursera','https://www.coursera.org/search?query=gestao%20de%20projetos']],"Educação":[['Educação e aprendizagem','Coursera','https://www.coursera.org/search?query=educacao'],['Comunicação profissional','Fundação Bradesco','https://www.ev.org.br/cursos']],"Engenharia":[['Excel para engenharia','Fundação Bradesco','https://www.ev.org.br/cursos'],['Gestão de projetos','Coursera','https://www.coursera.org/search?query=gestao%20de%20projetos']],"Gastronomia e Turismo":[['Empreendedorismo','Sebrae','https://www.sebrae.com.br/sites/PortalSebrae/cursosonline'],['Atendimento ao cliente','Sebrae','https://www.sebrae.com.br/sites/PortalSebrae/cursosonline']],"Jurídico":[['Introdução ao Direito','Coursera','https://www.coursera.org/search?query=direito'],['Redação profissional','Fundação Bradesco','https://www.ev.org.br/cursos']],"Logística":[['Logística básica','Sebrae','https://www.sebrae.com.br/sites/PortalSebrae/cursosonline'],['Excel operacional','Fundação Bradesco','https://www.ev.org.br/cursos']],"Manutenção e Indústria":[['Qualidade e processos','Sebrae','https://www.sebrae.com.br/sites/PortalSebrae/cursosonline'],['Lean Manufacturing','Coursera','https://www.coursera.org/search?query=lean%20manufacturing']],"Recursos Humanos":[['Gestão de pessoas','Sebrae','https://www.sebrae.com.br/sites/PortalSebrae/cursosonline'],['Recursos Humanos','Coursera','https://www.coursera.org/search?query=recursos%20humanos']],"Saúde":[['Primeiros socorros','Cruz Vermelha','https://www.cruzvermelha.org.br/'],['Atendimento em saúde','UNA-SUS','https://www.unasus.gov.br/cursos']],"Segurança":[['Segurança do trabalho','Escola Virtual Gov','https://www.escolavirtual.gov.br/catalogo'],['Prevenção de riscos','Coursera','https://www.coursera.org/search?query=seguranca']],"Tecnologia e Dados":[['Excel Básico','Fundação Bradesco','https://www.ev.org.br/cursos'],['Power BI','Fundação Bradesco','https://www.ev.org.br/cursos'],['SQL para iniciantes','W3Schools','https://www.w3schools.com/sql/']],"Vendas e Comercial":[['Vendas e atendimento','Sebrae','https://www.sebrae.com.br/sites/PortalSebrae/cursosonline'],['Negociação','Coursera','https://www.coursera.org/search?query=negociacao']]};
-const Q=[['O que mais combina com você?',['Organizar processos','Criar e comunicar ideias','Ajudar pessoas','Resolver problemas com lógica']],['Como você prefere aprender?',['Praticando','Criando','Conversando','Analisando']],['O que deseja desenvolver?',['Organização','Criatividade','Comunicação','Conhecimento técnico']]];
-const DEFAULT={dados:{nome:'',email:'',telefone:'',dataNascimento:'',formacao:'',instituicao:'',funcao:'',area:'',experiencias:'',idiomas:'',cursosComp:[]},quiz:[],persona:null,candidaturas:[],cursosFeitos:[],chat:[{role:'bot',text:'Olá! Sou seu mentor de carreira. Como posso ajudar?'}]};
-const $=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function load(){try{const raw=localStorage.getItem('farolIA_state')||localStorage.getItem('farolIAState_v3');const old=raw?JSON.parse(raw):{};return {...structuredClone(DEFAULT),...old,dados:{...structuredClone(DEFAULT.dados),...(old.dados||{})},candidaturas:Array.isArray(old.candidaturas)?old.candidaturas:[],cursosFeitos:Array.isArray(old.cursosFeitos)?old.cursosFeitos:[],chat:Array.isArray(old.chat)&&old.chat.length?old.chat:structuredClone(DEFAULT.chat)}}catch(e){return structuredClone(DEFAULT)}}
-let state=load(),openJob=null;
-function save(){localStorage.setItem('farolIA_state',JSON.stringify(state))}
-function clean(s){return String(s||'').trim().replace(/\s+/g,' ')}
-function tab(n){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$('screen-'+n).classList.add('active');document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===n));render();scrollTo(0,0)}
-document.querySelectorAll('[data-tab]').forEach(x=>x.onclick=()=>tab(x.dataset.tab));
-const fieldDefs=[['nome','Nome completo','text'],['email','E-mail','email'],['telefone','Telefone','tel'],['dataNascimento','Data de nascimento','date'],['formacao','Formação','text'],['instituicao','Instituição','text'],['funcao','Função ou objetivo','text'],['idiomas','Idiomas','text']];
-function cadastro(){return `<form id="register"><div class="grid">${fieldDefs.map(x=>`<div class="field"><label>${x[1]}</label><input id="d_${x[0]}" type="${x[2]}" value="${esc(state.dados[x[0]])}" ${x[0]==='nome'?'required':''}></div>`).join('')}</div><div class="field"><label>Área de interesse</label><select id="d_area"><option value="">Escolha uma área</option>${areas.map(a=>`<option value="${esc(a)}" ${state.dados.area===a?'selected':''}>${esc(a)}</option>`).join('')}</select></div><div class="field"><label>Experiências e projetos</label><textarea id="d_exp" placeholder="Uma experiência por linha">${esc(state.dados.experiencias)}</textarea></div><button class="btn" type="submit">Salvar cadastro</button></form>`}
-function bindCadastro(){const f=$('register');if(!f)return;f.onsubmit=e=>{e.preventDefault();fieldDefs.forEach(x=>state.dados[x[0]]=$('d_'+x[0]).value.trim());state.dados.area=$('d_area').value;state.dados.experiencias=$('d_exp').value.split('\n').map(clean).filter(Boolean).join('\n');save();render();alert('Cadastro salvo com sucesso!')}}
-function home(){$('screen-home').innerHTML=`<div class="hero"><span class="tag">🧭 mentor de carreira com IA</span><h1>Seu caminho profissional começa aqui.</h1><p>Cadastre-se, descubra seu potencial e receba orientação para qualquer área profissional.</p><button class="btn" id="start">${state.dados.nome?'Editar meu cadastro':'Começar agora'}</button></div><div class="panel"><div class="head"><h2>Seu progresso</h2><span class="hint">Os dados ficam neste navegador</span></div><div class="stats"><div class="stat"><b>${state.candidaturas.length}</b>candidaturas</div><div class="stat"><b>${state.cursosFeitos.length}</b>cursos no plano</div><div class="stat"><b>${state.dados.nome?'100':'0'}%</b>cadastro</div></div></div>`;$('start').onclick=()=>tab('perfil')}
-function profile(){const complete=!!state.dados.nome;let extra=complete&&state.persona?`<div class="notice"><b>Diagnóstico concluído:</b> ${esc(state.persona)}. Você pode editar o cadastro sem perder suas recomendações.</div>`:'';$('screen-perfil').innerHTML=`<div class="panel"><div class="head"><h2>Meu cadastro</h2><span class="tag">${complete?'Dados preenchidos':'Cadastro pendente'}</span></div><p class="hint">A parte cadastral permanece visível e editável mesmo depois de salvar no navegador.</p>${extra}${cadastro()}${complete?'<div class="actions"><button class="btn alt" id="diagnose">'+(state.persona?'Refazer diagnóstico':'Fazer diagnóstico')+'</button><button class="btn alt" id="cv">Baixar currículo visual</button></div>':''}</div>`;bindCadastro();if($('diagnose'))$('diagnose').onclick=()=>{state.quiz=[];save();quiz()};if($('cv'))$('cv').onclick=downloadCV}
-function quiz(){let i=state.quiz.length;if(i>=Q.length){state.persona=['Execução e organização','Criatividade e comunicação','Pessoas e impacto','Análise e tecnologia'][state.quiz[0]%4];save();profile();return}const q=Q[i];$('screen-perfil').innerHTML=`<div class="panel"><span class="hint">Diagnóstico — pergunta ${i+1} de ${Q.length}</span><div class="progress"><i style="width:${((i+1)/Q.length)*100}%"></i></div><h2>${q[0]}</h2><div class="quiz">${q[1].map((x,n)=>`<button data-answer="${n}">${x}</button>`).join('')}</div><button class="btn alt" id="cancelQuiz" style="margin-top:15px">Voltar ao cadastro</button></div>`;document.querySelectorAll('[data-answer]').forEach(x=>x.onclick=()=>{state.quiz.push(+x.dataset.answer);save();quiz()});$('cancelQuiz').onclick=()=>profile()}
-function jobsView(){let b=$('screen-vagas');if(!b)return;if(!state.persona){b.innerHTML='<div class="panel hint">Complete o cadastro e faça o diagnóstico para ver oportunidades.</div>';return}b.innerHTML=`<div class="head"><h2>Oportunidades para todas as áreas</h2><select id="filter"><option>Todas as áreas</option>${areas.map(a=>`<option>${a}</option>`).join('')}</select></div><div class="jobs" id="jobList"></div>`;function list(){let f=$('filter').value,arr=jobs.filter(j=>f==='Todas as áreas'||j.area===f);$('jobList').innerHTML=arr.map((j,i)=>`<article class="job"><h3>${esc(j.name)}</h3><p>${esc(j.area)} · compatibilidade ${Math.max(70,95-i)}%</p><div class="actions"><button class="btn" data-apply="${esc(j.name)}">Candidatura inteligente</button><button class="btn alt" data-plan="${esc(j.name)}">Ver plano</button></div>${openJob===j.name?'<div class="notice"><b>Plano:</b> adaptar currículo, estudar uma competência e preparar uma resposta para entrevista.</div>':''}</article>`).join('');document.querySelectorAll('[data-apply]').forEach(x=>x.onclick=()=>smart(arr.find(j=>j.name===x.dataset.apply)));document.querySelectorAll('[data-plan]').forEach(x=>x.onclick=()=>{openJob=openJob===x.dataset.plan?null:x.dataset.plan;list()})}$('filter').onchange=list;list()}
-function smart(job){if(!state.candidaturas.some(x=>x.name===job.name)){state.candidaturas.push({name:job.name,area:job.area,date:new Date().toISOString(),summary:`Candidatura para ${job.name} na área de ${job.area}.`,message:`Olá! Meu nome é ${state.dados.nome}. Tenho interesse em ${job.name}, com foco em aprendizado, organização e contribuição para a equipe.`,steps:['Revisar currículo','Destacar experiências','Preparar entrevista']});save()}alert(`Candidatura inteligente criada para ${job.name}. Veja o resumo no Dashboard.`);tab('dashboard')}
-function dashboard(){const d=$('screen-dashboard'),area=state.dados.area||areas[0],cs=courses[area]||courses[areas[0]];d.innerHTML=`<div class="head"><h2>Dashboard</h2><span class="hint">Feedback do mentor</span></div><div class="stats"><div class="stat"><b>${state.candidaturas.length}</b>candidaturas</div><div class="stat"><b>${state.cursosFeitos.length}</b>cursos</div><div class="stat"><b>${state.dados.nome?'100':'0'}%</b>cadastro</div></div><div class="feedback" style="margin-top:15px"><div><h3>Pontos fortes</h3><ul><li>Disposição para aprender</li><li>Perfil de ${esc(area)}</li><li>Potencial de evolução</li></ul></div><div><h3>O que melhorar</h3><ul><li>Descrever resultados das experiências</li><li>Praticar comunicação profissional</li><li>Manter rotina de estudos</li></ul></div><div><h3>Próximos passos</h3><ul><li>Escolher um curso</li><li>Atualizar o currículo</li><li>Preparar uma candidatura</li></ul></div></div><div class="panel"><h3>Cursos recomendados para ${esc(area)}</h3><div class="courses">${cs.map(c=>`<article class="course"><h3>${esc(c[0])}</h3><p>${esc(c[1])}</p><a href="${c[2]}" target="_blank" rel="noopener">Abrir link correto</a><br><button class="btn alt" data-course="${esc(c[0])}">${state.cursosFeitos.includes(c[0])?'✓ No plano':'Adicionar ao plano'}</button></article>`).join('')}</div></div><div class="panel"><h3>Minhas candidaturas</h3>${state.candidaturas.length?state.candidaturas.map(c=>`<p><b>${esc(c.name)}</b> — ${esc(c.area)}<br><span class="hint">${esc(c.message)}</span></p>`).join(''):'<p class="empty">Você ainda não criou candidaturas inteligentes.</p>'}</div>`;document.querySelectorAll('[data-course]').forEach(x=>x.onclick=()=>{if(!state.cursosFeitos.includes(x.dataset.course))state.cursosFeitos.push(x.dataset.course);save();dashboard()})}
-function reply(t){t=t.toLowerCase();if(/^(oi|olá|ola|bom dia|boa tarde|boa noite)/.test(t))return'Olá! Como posso ajudar na sua carreira hoje?';if(t.includes('curr'))return'Posso melhorar seu currículo, corrigir a ortografia, organizar experiências e destacar resultados.';if(t.includes('curso'))return`Para ${state.dados.area||'sua área'}, veja os cursos recomendados no Dashboard e escolha uma rotina semanal.`;if(t.includes('vaga')||t.includes('emprego'))return'Abra Oportunidades, escolha qualquer área e clique em Candidatura inteligente. O resumo aparecerá no Dashboard.';if(t.includes('perfil')||t.includes('cadastro'))return'Abra Meu perfil para consultar e editar todos os seus dados cadastrais. Eles ficam salvos neste navegador.';if(t.includes('melhor'))return'Comece descrevendo suas experiências com ação e resultado. Depois escolha um curso e pratique uma habilidade por semana.';return'Entendi. Posso ajudar com currículo, cursos, entrevistas, vagas e um plano de desenvolvimento para qualquer profissão.'}
-function mentor(){let b=$('screen-mentor');b.innerHTML=`<div class="panel"><h2>Mentor IA</h2><p class="hint">Converse sobre carreira, cursos, currículo, entrevistas ou oportunidades.</p><div class="messages">${state.chat.map(m=>`<div class="bubble ${m.role==='user'?'user':''}">${esc(m.text)}</div>`).join('')}</div><form id="chat" class="chat"><input id="msg" placeholder="Pergunte sobre carreira, cursos, currículo ou vagas"><button class="btn">Enviar</button></form></div>`;$('chat').onsubmit=e=>{e.preventDefault();let t=$('msg').value.trim();if(!t)return;state.chat.push({role:'user',text:t},{role:'bot',text:reply(t)});save();mentor()}}
-function downloadCV(){let d=state.dados,h=`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Currículo — ${esc(d.nome)}</title><style>body{font:15px Arial;background:#eef3f8;color:#183044;margin:0}.page{max-width:900px;margin:auto;background:white;min-height:100vh}.head{background:#14334d;color:white;padding:40px}.content{padding:32px;display:grid;grid-template-columns:1fr 280px;gap:28px}.card{background:#f5f9fc;padding:15px;border-radius:9px}@media(max-width:700px){.head,.content{padding:22px 18px}.content{display:block}}</style><article class="page"><header class="head"><h1>${esc(d.nome||'Seu nome')}</h1><p>${esc(d.funcao||'Profissional')} · ${esc(d.area||'Área profissional')}</p></header><main class="content"><div><h2>Resumo</h2><div class="card">Profissional em desenvolvimento, com interesse em aprender e gerar resultados.</div><h2>Experiências</h2><div class="card">${esc(d.experiencias||'Não informado')}</div></div><aside><h2>Contato</h2><div class="card">${esc(d.email||'—')}<br>${esc(d.telefone||'—')}<br>Idiomas: ${esc(d.idiomas||'—')}</div><h2>Formação</h2><div class="card">${esc(d.formacao||'—')}<br>${esc(d.instituicao||'—')}</div></aside></main></article>`;let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([h],{type:'text/html'}));a.download='curriculo-farol-ia.html';a.click()}
-function render(){home();profile();jobsView();dashboard();mentor()}render();
-</script>
+  <header class="top">
+    <div class="topin">
+      <div class="brand">farol.ia<small>mentor digital de carreira</small></div>
+      <nav class="nav">
+        <button data-tab="home" class="active">Início</button>
+        <button data-tab="perfil">Perfil</button>
+        <button data-tab="vagas">Vagas</button>
+        <button data-tab="dashboard">Dashboard</button>
+        <button data-tab="mentor">Mentor IA</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="screen-home" class="screen active"></section>
+    <section id="screen-perfil" class="screen"></section>
+    <section id="screen-vagas" class="screen"></section>
+    <section id="screen-dashboard" class="screen"></section>
+    <section id="screen-mentor" class="screen"></section>
+  </main>
+
+  <div id="floating-next" class="floating-next">
+    <button type="button" id="floating-next-btn">Continuar</button>
+  </div>
+
+  <footer>Farol.IA — dados salvos localmente neste dispositivo.</footer>
+
+  <script>
+    'use strict';
+
+    const areas = [
+      'Administração e Finanças','Agricultura e Meio Ambiente','Artes e Design','Atendimento e Serviços',
+      'Beleza e Estética','Comunicação e Marketing','Construção Civil','Educação e Formação',
+      'Gastronomia e Hotelaria','Informática e Tecnologia','Saúde e Bem-Estar','Vendas e Comercial'
+    ];
+
+    const names = [
+      ['Assistente Administrativo', 'Auxiliar Financeiro'],
+      ['Assistente Agrícola', 'Técnico Ambiental'],
+      ['Designer Gráfico', 'Produtor Cultural'],
+      ['Recepcionista', 'Atendente de Serviços'],
+      ['Esteticista', 'Cabeleireiro'],
+      ['Assistente de Marketing', 'Social Media'],
+      ['Pedreiro', 'Eletricista'],
+      ['Monitor de Educação', 'Agente de Apoio Escolar'],
+      ['Auxiliar de Cozinha', 'Atendimento em Hotelaria'],
+      ['Suporte Técnico', 'Analista de Sistemas'],
+      ['Técnico de Enfermagem', 'Recepcionista de Clínica'],
+      ['Consultor de Vendas', 'Operador Comercial']
+    ];
+
+    const jobs = areas.flatMap((area, i) => names[i].map(name => ({ name, area })));
+
+    const courses = {
+      'Administração e Finanças': [['Excel Básico', 'Fundação Bradesco', 'https://www.ev.org.br/cursos'], ['Administração', 'Sebrae', 'https://www.sebrae.com.br/sites/PortalSebrae/curso']],
+      'Agricultura e Meio Ambiente': [['Agricultura Familiar', 'Sebrae', 'https://www.sebrae.com.br/sites/PortalSebrae/curso'], ['Reciclagem e Sustentabilidade', 'Fundação Bradesco', 'https://www.ev.org.br/cursos']],
+      'Artes e Design': [['Design Gráfico', 'Sebrae', 'https://www.sebrae.com.br/sites/PortalSebrae/curso'], ['Adobe Photoshop', 'Fundação Bradesco', 'https://www.ev.org.br/cursos']],
+      'Atendimento e Serviços': [['Atendimento ao Cliente', 'Fundação Bradesco', 'https://www.ev.org.br/cursos'], ['Liderança de Equipe', 'Sebrae', 'https://www.sebrae.com.br/sites/PortalSebrae/curso']],
+      'Beleza e Estética': [['Estética Facial', 'Sebrae', 'https://www.sebrae.com.br/sites/PortalSebrae/curso'], ['Cuidados com o Cliente', 'Fundação Bradesco', 'https://www.ev.org.br/cursos']],
+      'Comunicação e Marketing': [['Marketing Digital', 'Sebrae', 'https://www.sebrae.com.br/sites/PortalSebrae/curso'], ['Redes Sociais', 'Fundação Bradesco', 'https://www.ev.org.br/cursos']],
+      'Construção Civil': [['Segurança no Trabalho', 'Sebrae', 'https://www.sebrae.com.br/sites/PortalSebrae/curso'], ['Leitura de Projetos', 'Fundação Bradesco', 'https://www.ev.org.br/cursos']],
+      'Educação e Formação': [['Educação Inclusiva', 'Fundação Bradesco', 'https://www.ev.org.br/cursos'], ['Metodologias de Ensino', 'Sebrae', 'https://www.sebrae.com.br/sites/PortalSebrae/curso']],
+      'Gastronomia e Hotelaria': [['Atendimento em Gastronomia', 'Fundação Bradesco', 'https://www.ev.org.br/cursos'], ['Hospitalidade', 'Sebrae', 'https://www.sebrae.com.br/sites/PortalSebrae/curso']],
+      'Informática e Tecnologia': [['Excel Básico', 'Fundação Bradesco', 'https://www.ev.org.br/cursos'], ['Fundamentos de TI', 'Sebrae', 'https://www.sebrae.com.br/sites/PortalSebrae/curso']],
+      'Saúde e Bem-Estar': [['Primeiros Socorros', 'Fundação Bradesco', 'https://www.ev.org.br/cursos'], ['Atendimento em Saúde', 'Sebrae', 'https://www.sebrae.com.br/sites/PortalSebrae/curso']],
+      'Vendas e Comercial': [['Vendas Consultivas', 'Fundação Bradesco', 'https://www.ev.org.br/cursos'], ['Negociação', 'Sebrae', 'https://www.sebrae.com.br/sites/PortalSebrae/curso']]
+    };
+
+    const Q = [
+      ['O que mais combina com você?', ['Organizar processos', 'Criar e comunicar ideias', 'Ajudar pessoas', 'Resolver problemas com lógica']],
+      ['Como você prefere aprender?', ['Praticando', 'Criando', 'Observando', 'Estudando teoria']],
+      ['Qual tipo de ambiente você prefere?', ['Estruturado e organizado', 'Criativo e dinâmico', 'Com interação e relacionamento', 'Com desafio técnico']],
+      ['Como você toma decisões?', ['Com lógica e dados', 'Com criatividade', 'Com empatia', 'Com atenção aos detalhes']]
+    ];
+
+    const DEFAULT = {
+      dados: {
+        nome: '', email: '', telefone: '', dataNascimento: '', formacao: '', instituicao: '', funcao: '', area: '', experiencias: '', idiomas: '', cursosComp: []
+      },
+      quiz: [],
+      persona: null,
+      candidaturas: [],
+      chat: []
+    };
+
+    const $ = (id) => document.getElementById(id);
+
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    function load() {
+      try {
+        const raw = localStorage.getItem('farolIA_state') || localStorage.getItem('farolIAState_v3');
+        const old = raw ? JSON.parse(raw) : {};
+        return { ...structuredClone(DEFAULT), ...old, dados: { ...structuredClone(DEFAULT.dados), ...(old.dados || {}) } };
+      } catch (error) {
+        return structuredClone(DEFAULT);
+      }
+    }
+
+    let state = load();
+    let openJob = null;
+
+    function save() {
+      localStorage.setItem('farolIA_state', JSON.stringify(state));
+    }
+
+    function clean(s) {
+      return String(s || '').trim().replace(/\s+/g, ' ');
+    }
+
+    function showNextStep(target, label) {
+      const floating = $('floating-next');
+      const btn = $('floating-next-btn');
+      if (!floating || !btn) return;
+      btn.textContent = label;
+      btn.onclick = () => tab(target);
+      floating.classList.add('visible');
+    }
+
+    function hideNextStep() {
+      const floating = $('floating-next');
+      if (!floating) return;
+      floating.classList.remove('visible');
+    }
+
+    function tab(name) {
+      document.querySelectorAll('.screen').forEach((x) => x.classList.remove('active'));
+      const screen = $('screen-' + name);
+      if (screen) {
+        screen.classList.add('active');
+      }
+      document.querySelectorAll('[data-tab]').forEach((x) => x.classList.toggle('active', x.dataset.tab === name));
+      if (name !== 'perfil' && name !== 'vagas' && name !== 'dashboard' && name !== 'mentor') {
+        hideNextStep();
+      }
+    }
+
+    document.querySelectorAll('[data-tab]').forEach((x) => {
+      x.onclick = () => tab(x.dataset.tab);
+    });
+
+    const fieldDefs = [
+      ['nome', 'Nome completo', 'text'],
+      ['email', 'E-mail', 'email'],
+      ['telefone', 'Telefone', 'tel'],
+      ['dataNascimento', 'Data de nascimento', 'date'],
+      ['formacao', 'Formação', 'text'],
+      ['instituicao', 'Instituição', 'text'],
+      ['funcao', 'Função desejada', 'text'],
+      ['area', 'Área de interesse', 'select'],
+      ['experiencias', 'Experiências', 'textarea'],
+      ['idiomas', 'Idiomas', 'text']
+    ];
+
+    function renderHome() {
+      const container = $('screen-home');
+      container.innerHTML = `
+        <div class="hero">
+          <span class="tag">🧭 mentor de carreira com IA</span>
+          <h1>Seu caminho profissional começa aqui.</h1>
+          <p>Cadastre-se, descubra seu potencial e receba oportunidades alinhadas ao seu perfil. O Farol.IA ajuda você a entender melhor seus talentos, objetivos e próximos passos.</p>
+          <div class="button-bar" style="margin-top:18px;">
+            <button class="primary" type="button" onclick="tab('perfil')">Começar agora</button>
+            <button class="secondary" type="button" onclick="tab('dashboard')">Ver dashboard</button>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <h3>Perfil profissional</h3>
+            <p>Organizamos seu histórico, competências e interesses em um diagnóstico simples e útil.</p>
+          </div>
+          <div class="card">
+            <h3>Vagas personalizadas</h3>
+            <p>Descubra funções que combinam mais com seu estilo, formação e objetivos.</p>
+          </div>
+          <div class="card">
+            <h3>Mentor IA</h3>
+            <p>Converse sobre currículo, entrevista, cursos e trajetória profissional.</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderProfile() {
+      const node = $('screen-perfil');
+      const complete = !!state.dados.nome;
+
+      const formHtml = `
+        <div class="panel">
+          <h2>Cadastro de perfil</h2>
+          <p class="hint">Preencha seus dados para montar um diagnóstico mais preciso e receber sugestões de carreira.</p>
+          <form id="register">
+            <div class="grid">
+              ${fieldDefs.map(([key, label, type]) => {
+                const value = key === 'area' ? state.dados.area || '' : state.dados[key] || '';
+                if (type === 'select') {
+                  return `
+                    <div class="field">
+                      <label for="d_${key}">${label}</label>
+                      <select id="d_${key}">
+                        <option value="">Selecione</option>
+                        ${areas.map((area) => `<option value="${esc(area)}" ${value === area ? 'selected' : ''}>${esc(area)}</option>`).join('')}
+                      </select>
+                    </div>
+                  `;
+                }
+                if (type === 'textarea') {
+                  return `
+                    <div class="field" style="grid-column: 1 / -1;">
+                      <label for="d_${key}">${label}</label>
+                      <textarea id="d_${key}">${esc(value)}</textarea>
+                    </div>
+                  `;
+                }
+                return `
+                  <div class="field">
+                    <label for="d_${key}">${label}</label>
+                    <input id="d_${key}" type="${type}" value="${esc(value)}" />
+                  </div>
+                `;
+              }).join('')}
+            </div>
+
+            <div class="toolbar">
+              <div class="tiny">Você pode editar seus dados depois.</div>
+              <div class="button-bar">
+                <button class="primary" type="submit">Salvar perfil</button>
+                <button class="secondary" type="button" onclick="tab('home')">Voltar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      `;
+
+      const diagnoseHtml = `
+        <div class="stack">
+          <div class="panel">
+            <h2>Diagnóstico profissional</h2>
+            <p class="hint">Responda algumas perguntas para descobrir melhor o seu perfil e as oportunidades que combinam com você.</p>
+            <div class="button-bar">
+              <button class="primary" type="button" onclick="startQuiz()">Iniciar diagnóstico</button>
+              <button class="secondary" type="button" onclick="tab('home')">Voltar ao início</button>
+            </div>
+            ${state.persona ? `<div class="notice"><strong>Diagnóstico concluído:</strong> ${esc(state.persona)}</div>` : ''}
+          </div>
+        </div>
+      `;
+
+      node.innerHTML = complete ? diagnoseHtml + formHtml : formHtml + diagnoseHtml;
+
+      const form = $('register');
+      if (form) {
+        form.onsubmit = (event) => {
+          event.preventDefault();
+          fieldDefs.forEach(([key, , type]) => {
+            const valueNode = $('d_' + key);
+            if (!valueNode) return;
+            if (type === 'select') {
+              state.dados[key] = valueNode.value.trim();
+            } else {
+              state.dados[key] = valueNode.value.trim();
+            }
+          });
+
+          state.dados.cursosComp = Array.isArray(state.dados.cursosComp) ? state.dados.cursosComp : [];
+          save();
+          render();
+          showNextStep('perfil', 'Continuar para o diagnóstico');
+        };
+      }
+    }
+
+    function startQuiz() {
+      state.quiz = [];
+      tab('perfil');
+      const node = $('screen-perfil');
+      node.innerHTML = `
+        <div class="panel">
+          <h2>Diagnóstico profissional</h2>
+          <div id="quiz-box"></div>
+        </div>
+      `;
+      renderQuiz();
+    }
+
+    function renderQuiz() {
+      const box = $('quiz-box');
+      if (!box) return;
+
+      const currentIndex = state.quiz.length;
+      if (currentIndex >= Q.length) {
+        const perfilMap = ['Execução e organização', 'Criatividade e comunicação', 'Pessoas e impacto', 'Análise e tecnologia'];
+        const answerSeed = (state.quiz[0] ?? 0) + (state.quiz[1] ?? 0) + (state.quiz[2] ?? 0) + (state.quiz[3] ?? 0);
+        state.persona = perfilMap[answerSeed % perfilMap.length];
+        save();
+        render();
+        showNextStep('vagas', 'Ver vagas recomendadas');
+        return;
+      }
+
+      const [question, answers] = Q[currentIndex];
+      box.innerHTML = `
+        <p class="tiny">Pergunta ${currentIndex + 1} de ${Q.length}</p>
+        <h3>${esc(question)}</h3>
+        ${answers.map((answer, index) => `
+          <button class="quiz-option ${state.quiz[currentIndex] === index ? 'selected' : ''}" type="button" data-answer="${index}">${esc(answer)}</button>
+        `).join('')}
+      `;
+
+      box.querySelectorAll('.quiz-option').forEach((button) => {
+        button.onclick = () => {
+          const answerIndex = Number(button.dataset.answer);
+          state.quiz[currentIndex] = answerIndex;
+          save();
+          renderQuiz();
+        };
+      });
+    }
+
+    function renderJobs() {
+      const node = $('screen-vagas');
+      if (!state.persona) {
+        node.innerHTML = `
+          <div class="panel">
+            <h2>Vagas recomendadas</h2>
+            <p class="hint">Complete o cadastro e faça o diagnóstico para receber vagas alinhadas ao seu perfil.</p>
+            <div class="button-bar">
+              <button class="primary" type="button" onclick="tab('perfil')">Ir para o perfil</button>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      const filtered = jobs.filter((job) => {
+        if (!state.dados.area) return true;
+        return job.area === state.dados.area || job.area.includes(state.dados.area) || state.dados.area.includes(job.area);
+      });
+
+      const jobsHtml = filtered.slice(0, 8).map((job) => `
+        <div class="job-item">
+          <div class="job-head">
+            <div>
+              <h3>${esc(job.name)}</h3>
+              <div class="job-meta">${esc(job.area)}</div>
+            </div>
+            <span class="chip">match ${Math.max(70, 90 - Math.abs((job.name.length % 10) - 3) * 2)}%</span>
+          </div>
+          <p class="hint">Perfil sugerido para pessoas com foco em ${esc(state.persona.toLowerCase())} e interesse em ${esc(job.area)}.</p>
+          <div class="job-actions">
+            <button class="primary" type="button" onclick="smart(${JSON.stringify(job).replace(/"/g, '&quot;')})">Salvar candidatura</button>
+            <button class="secondary" type="button" onclick="window.open('https://www.google.com/search?q=${encodeURIComponent(job.name + ' ' + job.area)}', '_blank')">Ver vagas</button>
+          </div>
+        </div>
+      `).join('');
+
+      node.innerHTML = `
+        <div class="panel">
+          <h2>Vagas recomendadas</h2>
+          <p class="hint">Sugestões com base no seu perfil e área de interesse.</p>
+          ${jobsHtml || '<p class="hint">Nenhuma vaga foi encontrada no momento. Tente alterar sua área ou atualizar o cadastro.</p>'}
+          <div class="button-bar" style="margin-top:20px;">
+            <button class="primary" type="button" onclick="tab('dashboard')">Ir para dashboard</button>
+            <button class="secondary" type="button" onclick="tab('perfil')">Editar perfil</button>
+          </div>
+        </div>
+      `;
+
+      showNextStep('dashboard', 'Continuar para o dashboard');
+    }
+
+    function smart(job) {
+      const exists = state.candidaturas.some((x) => x.name === job.name);
+      if (!exists) {
+        state.candidaturas.push({
+          name: job.name,
+          area: job.area,
+          date: new Date().toISOString(),
+          summary: `Candidatura para ${job.name} na área de ${job.area}.`
+        });
+        save();
+      }
+      openJob = job;
+      renderDashboard();
+      tab('dashboard');
+      showNextStep('dashboard', 'Continuar para o dashboard');
+    }
+
+    function renderDashboard() {
+      const node = $('screen-dashboard');
+      const area = state.dados.area || areas[0];
+      const list = courses[area] || courses[areas[0]];
+
+      node.innerHTML = `
+        <div class="panel">
+          <h2>Dashboard</h2>
+          <p class="hint">Recomendações de cursos, objetivos e candidaturas.</p>
+
+          <div class="cards">
+            <div class="card">
+              <h3>Perfil</h3>
+              <p><strong>Nome:</strong> ${esc(state.dados.nome || 'Ainda não informado')}</p>
+              <p><strong>Área:</strong> ${esc(state.dados.area || area)}</p>
+              <p><strong>Perfil:</strong> ${esc(state.persona || 'Aguardando diagnóstico')}</p>
+            </div>
+
+            <div class="card">
+              <h3>Candidaturas</h3>
+              <p>${state.candidaturas.length ? `${state.candidaturas.length} vagas salvas` : 'Nenhuma candidatura salva ainda.'}</p>
+              <p>${state.dados.cursosComp?.length ? `${state.dados.cursosComp.length} cursos marcados` : 'Sem cursos marcados.'}</p>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="panel">
+              <h3>Cursos recomendados</h3>
+              <div class="course-list">
+                ${list.map(([curso, provider, link]) => `
+                  <div class="course-item">
+                    <div>
+                      <strong>${esc(curso)}</strong><br>
+                      <span class="tiny">${esc(provider)}</span>
+                    </div>
+                    <a class="secondary" href="${esc(link)}" target="_blank" rel="noreferrer">Abrir</a>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="panel">
+              <h3>Candidaturas salvas</h3>
+              <div class="job-list">
+                ${state.candidaturas.length ? state.candidaturas.map((job) => `
+                  <div class="job-item">
+                    <div class="job-head">
+                      <div>
+                        <h3>${esc(job.name)}</h3>
+                        <div class="job-meta">${esc(job.area)}</div>
+                      </div>
+                    </div>
+                    <p class="hint">${esc(job.summary || 'Candidatura salva para revisão posterior.')}</p>
+                  </div>
+                `).join('') : '<p class="hint">Ainda não há candidaturas salvas.</p>'}
+              </div>
+            </div>
+          </div>
+
+          <div class="button-bar" style="margin-top:20px;">
+            <button class="primary" type="button" onclick="tab('mentor')">Falar com o mentor IA</button>
+            <button class="secondary" type="button" onclick="tab('vagas')">Ver vagas</button>
+          </div>
+        </div>
+      `;
+
+      showNextStep('mentor', 'Continuar para o mentor IA');
+    }
+
+    function reply(text) {
+      const t = text.toLowerCase();
+      if (/^(oi|olá|ola|bom dia|boa tarde|boa noite)/.test(t)) return 'Olá! Como posso ajudar na sua carreira hoje?';
+      if (t.includes('curr')) return 'Posso ajudar a melhorar seu currículo, deixando sua experiência mais clara e atraente para recrutadores.';
+      if (t.includes('vaga') || t.includes('trabalho')) return 'Para escolher uma vaga, vale olhar a sua área, perfil e objetivos. O ideal é priorizar oportunidades que combinem com suas forças e potencial.';
+      if (t.includes('curso') || t.includes('estudar')) return 'Você pode começar por cursos rápidos e práticos na sua área de interesse para ganhar confiança e aumentar suas chances.';
+      if (t.includes('entrevista')) return 'Na entrevista, foque em exemplos práticos, clareza de comunicação e atitudes proativas. Mostre como você resolve problemas.';
+      return 'Legal! O ideal é pensar em três passos: conhecer melhor seu perfil, alinhar suas forças com a área certa e construir uma rotina de estudo/trabalho focada.';
+    }
+
+    function renderMentor() {
+      const node = $('screen-mentor');
+      if (!state.chat.length) {
+        state.chat = [
+          { role: 'ai', text: 'Olá! Sou seu mentor de carreira. Posso ajudar com currículo, vagas, cursos e próximos passos.' }
+        ];
+      }
+
+      node.innerHTML = `
+        <div class="panel mentor-box">
+          <h2>Mentor IA</h2>
+          <p class="hint">Converse sobre carreira, cursos, currículo, entrevistas ou oportunidades.</p>
+          <div class="chat" id="chat-box">
+            ${state.chat.map((m) => `
+              <div class="msg ${m.role === 'user' ? 'user' : 'ai'}">${esc(m.text)}</div>
+            `).join('')}
+          </div>
+          <div class="input-row">
+            <input id="mentor-input" type="text" placeholder="Digite sua dúvida sobre carreira..." />
+            <button class="primary" type="button" id="send-mentor">Enviar</button>
+          </div>
+        </div>
+      `;
+
+      const input = $('mentor-input');
+      const send = $('send-mentor');
+      if (input && send) {
+        send.onclick = () => {
+          const value = clean(input.value);
+          if (!value) return;
+          state.chat.push({ role: 'user', text: value });
+          state.chat.push({ role: 'ai', text: reply(value) });
+          save();
+          renderMentor();
+        };
+
+        input.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            send.click();
+          }
+        });
+      }
+    }
+
+    function render() {
+      renderHome();
+      renderProfile();
+      renderJobs();
+      renderDashboard();
+      renderMentor();
+      if (!state.persona) {
+        hideNextStep();
+      }
+    }
+
+    tab('home');
+    render();
+  </script>
 </body>
 </html>
