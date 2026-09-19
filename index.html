@@ -1,41 +1,1308 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Farol.IA — carreira com direção</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farol.IA — mentor de carreira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f8fb;--surface:#fff;--surface2:#eef4f8;--ink:#10283f;--ink2:#163b59;--text:#17324a;--muted:#71889c;--line:#dce7f0;--gold:#f5a623;--gold2:#ffd98a;--ok:#157347;--danger:#b42318;--shadow:rgba(16,40,63,.12)}
-body.dark{--bg:#02070d;--surface:#0b121a;--surface2:#101b27;--ink:#edf7ff;--ink2:#dfeaf7;--text:#edf7ff;--muted:#9db1c5;--line:#1f2d3d;--shadow:rgba(0,0,0,.72)}
-*{box-sizing:border-box}html,body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);transition:.2s}button,input,select,textarea{font:inherit}header{position:sticky;top:0;z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}.top{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-size:1.45rem;font-weight:900;color:var(--gold2)}.brand small{display:block;color:var(--muted);font-size:.66rem}.nav{display:flex;flex-wrap:wrap;gap:8px}.nav button,.btn{border:0;border-radius:12px;padding:10px 14px;cursor:pointer;font-weight:700}.nav button{background:transparent;color:var(--ink)}.nav button.active{background:var(--gold);color:#172b3c}.theme-btn,.btn.secondary{background:var(--surface2);color:var(--text)}main{max-width:1180px;margin:auto;padding:28px 20px 68px}.screen{display:none}.screen.active{display:block}.hero{padding:28px;border-radius:24px;background:linear-gradient(120deg,#10283f,#205273);color:#fff}.hero h1{font-size:clamp(2.4rem,6vw,5rem);line-height:.98;margin:16px 0}.hero p{max-width:680px;line-height:1.7;color:#d3e3ef}.tag,.eyebrow{color:var(--gold2);font-weight:800;text-transform:uppercase;font-size:.74rem;letter-spacing:.1em}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn.primary{background:var(--gold);color:#172b3c}.cards,.grid{display:grid;gap:16px}.cards{grid-template-columns:repeat(3,1fr);margin-top:26px}.grid{grid-template-columns:repeat(2,1fr)}.card,.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:21px;box-shadow:0 10px 28px var(--shadow)}.panel{margin-top:18px}.card h3,.panel h2{margin:0 0 10px;color:var(--ink2)}.card p,.panel p,.meta{color:var(--muted);line-height:1.6}.field{display:flex;flex-direction:column;gap:7px;margin:12px 0}.field label{font-weight:700}.required{color:var(--danger);margin-left:4px}.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--surface);color:var(--text)}.field textarea{min-height:115px;resize:vertical}.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:var(--danger);outline:2px solid #b4231833}.checkgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}.check{padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface2);cursor:pointer}.check input{margin-right:8px}.job,.history{padding:18px;border:1px solid var(--line);border-radius:15px;background:var(--surface2);margin-top:12px}.status{background:#e8f7ef;color:var(--ok);padding:5px 9px;border-radius:20px;font-size:.76rem;font-weight:800}.course{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.course:last-child{border-bottom:0}.tip{border-left:4px solid var(--gold);padding:12px 15px;background:var(--surface2);border-radius:8px;margin-top:10px}.toast{position:fixed;right:18px;bottom:18px;z-index:30;background:#143e2b;color:#fff;padding:14px 17px;border-radius:12px;display:none}.toast.show{display:block}@media(max-width:760px){.top{flex-direction:column;align-items:flex-start}.cards,.grid{grid-template-columns:1fr}.course{align-items:flex-start;flex-direction:column}}@media print{header,.nav,.screen:not(#curriculo),.actions,.toast{display:none!important}body,main,#curriculo{background:#fff!important;color:#111!important;margin:0;padding:0;max-width:none}.panel,.card{box-shadow:none!important;border:0!important;background:#fff!important}.eyebrow,.meta,.card p,.panel p{color:#333!important}}
+  :root{
+    color-scheme: dark;
+    --ink:#0a1420;
+    --ink-2:#0f2035;
+    --ink-3:#16283e;
+    --line:rgba(255,255,255,.09);
+    --beacon:#f5a623;
+    --beacon-light:#ffd280;
+    --beacon-dim:rgba(245,166,35,.16);
+    --fog:#93a5bc;
+    --fog-dim:#5f7590;
+    --paper:#f8f4ea;
+    --paper-2:#efe7d4;
+    --ink-on-paper:#1a2432;
+    --good:#5aab84;
+    --good-dim:rgba(90,171,132,.16);
+    --warn:#e08a63;
+    --text:#ffffff;
+    --text-soft:#dce6f2;
+    --text-on-beacon:#ffe9c2;
+    --glow:#12253c;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  html[data-theme="claro"]{
+    color-scheme: light;
+    --ink:#f6f2e7;
+    --ink-2:#ffffff;
+    --ink-3:#f1ece0;
+    --line:rgba(20,30,45,.12);
+    --beacon:#d9820f;
+    --beacon-light:#b8690a;
+    --beacon-dim:rgba(217,130,15,.13);
+    --fog:#57677a;
+    --fog-dim:#7c8a9a;
+    --good:#2f8f63;
+    --good-dim:rgba(47,143,99,.14);
+    --text:#182230;
+    --text-soft:#2c3a4c;
+    --text-on-beacon:#6b4008;
+    --glow:#fff7e8;
+  }
+  html[data-theme="claro"] body{ background: radial-gradient(120% 100% at 15% -10%, var(--glow) 0%, var(--ink) 45%) fixed; }
+  html[data-theme="claro"] header.top{ background:rgba(246,242,231,.9); }
+  html[data-theme="claro"] .hero{ background:linear-gradient(180deg, var(--ink-2) 0%, var(--ink) 100%); }
+  html[data-theme="claro"] .quiz-opt:hover{ background:#fdf1de; }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background: radial-gradient(120% 100% at 15% -10%, var(--glow) 0%, var(--ink) 45%) fixed;
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  button{font-family:inherit}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:600;margin:0 0 .4em;letter-spacing:-.01em}
+  p{margin:0 0 1em;color:var(--fog)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+ 
+  /* ---------- Header & waypoint nav ---------- */
+  header.top{
+    position:sticky;top:0;z-index:40;
+    background:rgba(10,20,32,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .top-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1040px;margin:0 auto;gap:20px}
+  .brand{display:flex;align-items:baseline;gap:10px}
+  .brand-mark{font-family:var(--serif);font-style:italic;font-weight:600;font-size:22px;color:var(--beacon-light)}
+  .brand-sub{font-size:12px;color:var(--fog-dim);display:none}
+  @media(min-width:640px){.brand-sub{display:inline}}
+ 
+  nav.waypoints{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+  nav.waypoints::-webkit-scrollbar{display:none}
+  nav.waypoints button{
+    background:none;border:none;color:var(--fog);
+    padding:9px 14px;border-radius:999px;font-size:13.5px;font-weight:500;
+    cursor:pointer;white-space:nowrap;transition:color .18s, background .18s;
+  }
+  nav.waypoints button:hover{color:var(--text);background:rgba(255,255,255,.05)}
+  nav.waypoints button.active{color:var(--ink);background:var(--beacon);font-weight:600}
+ 
+  .settings-wrap{position:relative;flex-shrink:0}
+  .icon-btn{background:none;border:1px solid var(--line);color:var(--fog);width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:15px;flex-shrink:0}
+  .icon-btn:hover{border-color:var(--beacon);color:var(--beacon-light)}
+  .settings-panel{position:absolute;top:44px;right:0;background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:210px;box-shadow:0 12px 30px -8px rgba(0,0,0,.45);z-index:50}
+  .settings-panel.hidden{display:none}
+  .settings-title{font-family:var(--serif);font-size:15px;color:var(--text);margin-bottom:12px}
+  .settings-row{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13.5px;color:var(--fog);cursor:default}
+  .settings-row select{background:var(--ink-3);border:1px solid var(--line);color:var(--text);padding:6px 10px;border-radius:8px;font-size:13px;font-family:inherit}
+ 
+  /* ---------- Screens ---------- */
+  .screen{display:none;padding:44px 0 90px}
+  .screen.active{display:block}
+ 
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;border-radius:20px;padding:64px 36px;margin-bottom:36px;
+    background:linear-gradient(180deg,var(--ink-2) 0%,var(--ink) 100%);
+    border:1px solid var(--line);
+  }
+  .hero-beam{position:absolute;inset:-40% -20%;pointer-events:none;
+    background:conic-gradient(from 210deg at 22% 35%, transparent 0deg, var(--beacon-dim) 26deg, transparent 70deg, transparent 360deg);
+    animation:sweep 16s linear infinite;
+  }
+  @keyframes sweep{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion: reduce){.hero-beam{animation:none}}
+  .hero-content{position:relative;max-width:640px}
+  .hero h1{font-size:clamp(30px,4.4vw,44px);line-height:1.12;color:var(--text)}
+  .hero p.lede{font-size:17px;color:var(--fog);max-width:480px}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--beacon-light);
+    background:var(--beacon-dim);border:1px solid rgba(245,166,35,.3);padding:5px 12px;border-radius:999px;margin-bottom:18px}
+ 
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--beacon);color:#1a1200;
+    border:none;padding:13px 22px;border-radius:11px;font-weight:600;font-size:14.5px;cursor:pointer;
+    transition:transform .12s, box-shadow .12s;}
+  .btn:hover{box-shadow:0 8px 24px -6px rgba(245,166,35,.5);transform:translateY(-1px)}
+  .btn:active{transform:translateY(0)}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line);padding:12px 20px;border-radius:11px;font-weight:500;font-size:14px;cursor:pointer}
+  .btn-ghost:hover{border-color:var(--beacon);color:var(--beacon-light)}
+  .btn-sm{padding:8px 14px;font-size:13px;border-radius:9px}
+  .btn:disabled{opacity:.5;cursor:default;box-shadow:none;transform:none}
+ 
+  /* ---------- Cards / panels (varied treatments) ---------- */
+  .panel{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .panel + .panel{margin-top:18px}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+  .section-head h2{font-size:23px;color:var(--text)}
+  .section-head .hint{font-size:13px;color:var(--fog-dim)}
+ 
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--fog);margin-bottom:6px}
+  .field input, .field textarea{
+    width:100%;background:var(--ink-3);border:1px solid var(--line);color:var(--text);
+    padding:11px 13px;border-radius:9px;font-size:14.5px;font-family:inherit;
+  }
+  .field input:focus, .field textarea:focus{outline:2px solid var(--beacon);outline-offset:1px;border-color:transparent}
+  .field textarea{resize:vertical;min-height:88px}
+  .form-error{background:rgba(224,138,99,.14);border:1px solid rgba(224,138,99,.4);color:var(--warn);padding:11px 14px;border-radius:9px;font-size:13.5px;margin-bottom:16px}
+  .form-error.hidden{display:none}
+  .checkbox-row{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:var(--fog);margin:6px 0 18px;cursor:pointer}
+  .checkbox-row input{width:auto;margin-top:3px;flex-shrink:0}
+  .muted-inline{color:var(--fog-dim);font-size:12px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:600px){.grid2{grid-template-columns:1fr}}
+ 
+  .tag{display:inline-flex;align-items:center;background:var(--ink-3);border:1px solid var(--line);
+    color:var(--text-soft);padding:6px 12px;border-radius:999px;font-size:12.5px;margin:0 8px 8px 0}
+  .tag.gold{background:var(--beacon-dim);border-color:rgba(245,166,35,.35);color:var(--beacon-light)}
+  .tag.good{background:var(--good-dim);border-color:rgba(90,171,132,.4);color:#a8e0c4}
+ 
+  /* ---------- Stepper dots (diagnostic) ---------- */
+  .dots{display:flex;gap:7px;margin-bottom:26px}
+  .dot{width:26px;height:5px;border-radius:3px;background:var(--ink-3)}
+  .dot.done{background:var(--beacon)}
+  .dot.now{background:var(--beacon-light)}
+ 
+  .quiz-q{font-size:20px;color:var(--text);margin-bottom:22px;font-family:var(--serif);font-weight:500}
+  .quiz-opts{display:grid;gap:10px}
+  .quiz-opt{text-align:left;background:var(--ink-3);border:1px solid var(--line);color:var(--text);
+    padding:15px 16px;border-radius:11px;font-size:14.5px;cursor:pointer;transition:border-color .15s, background .15s}
+  .quiz-opt:hover{border-color:var(--beacon);background:#1b3350}
+ 
+  /* ---------- Persona result ---------- */
+  .persona-name{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(28px,4vw,38px);
+    color:var(--beacon-light);margin-bottom:6px}
+  .persona-block{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+  .persona-copy{flex:1;min-width:260px}
+  .persona-traits{min-width:220px}
+  .persona-traits h4{font-size:12.5px;text-transform:none;color:var(--fog-dim);margin-bottom:10px;font-family:var(--sans);font-weight:600}
+ 
+  /* ---------- Farol score gauge ---------- */
+  .score-row{display:flex;gap:32px;flex-wrap:wrap;align-items:center}
+  .gauge-wrap{position:relative;width:168px;height:168px;flex-shrink:0}
+  .gauge-num{position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
+  .gauge-num .n{font-family:var(--serif);font-size:44px;font-weight:600;color:var(--text);line-height:1}
+  .gauge-num .d{font-size:11px;color:var(--fog-dim);letter-spacing:.02em}
+  .score-breakdown{flex:1;min-width:240px;display:grid;gap:12px}
+  .score-item{display:grid;grid-template-columns:120px 1fr 40px;align-items:center;gap:10px;font-size:13px;color:var(--fog)}
+  .bar-track{height:7px;border-radius:4px;background:var(--ink-3);overflow:hidden}
+  .bar-fill{height:100%;background:linear-gradient(90deg,var(--beacon),var(--beacon-light));border-radius:4px}
+ 
+  /* ---------- Career map ---------- */
+  .map-row{display:flex;align-items:center;overflow-x:auto;padding:8px 2px 18px;gap:0}
+  .map-node{flex:0 0 auto;width:168px;text-align:center;padding:16px 12px;position:relative}
+  .map-node .dotm{width:13px;height:13px;border-radius:50%;background:var(--ink-3);border:2px solid var(--fog-dim);margin:0 auto 12px}
+  .map-node.you .dotm{background:var(--beacon);border-color:var(--beacon-light);box-shadow:0 0 0 5px var(--beacon-dim)}
+  .map-node .lbl{font-size:13px;color:var(--text-soft);font-weight:500}
+  .map-node .sub{font-size:11px;color:var(--fog-dim);margin-top:2px}
+  .map-line{flex:0 0 auto;width:44px;height:2px;background:linear-gradient(90deg,var(--fog-dim),var(--beacon-dim));margin-top:-38px}
+ 
+  /* ---------- Jobs ---------- */
+  .job{border:1px solid var(--line);border-left:3px solid var(--beacon-dim);border-radius:10px;padding:18px 20px;margin-bottom:12px;background:var(--ink-2);cursor:pointer}
+  .job.open{border-left-color:var(--beacon)}
+  .job-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+  .job-title{font-size:16px;color:var(--text);font-weight:600;margin-bottom:2px}
+  .job-area{font-size:12.5px;color:var(--fog-dim)}
+  .compat{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--beacon-light);white-space:nowrap}
+  .compat-lbl{font-size:10.5px;color:var(--fog-dim);text-align:right;margin-top:-4px}
+  .job-body{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);display:none}
+  .job.open .job-body{display:block}
+  .steps-list{list-style:none;margin:14px 0;padding:0;display:grid;gap:8px}
+  .steps-list li{font-size:13.5px;color:var(--fog-dim);display:flex;align-items:center;gap:9px}
+  .steps-list li .chk{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--fog-dim);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px}
+  .steps-list li.on{color:var(--text-soft)}
+  .steps-list li.on .chk{background:var(--good);border-color:var(--good);color:#08130e}
+  .integrations{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+  .integrations p{font-size:11.5px;color:var(--fog-dim);margin-bottom:8px}
+  .cv-preview{background:var(--paper);color:var(--ink-on-paper);border-radius:10px;padding:14px 16px;font-size:13.5px;margin-top:4px}
+  .real-links{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 8px}
+  .hint-note{font-size:11.5px;color:var(--fog-dim);margin:0 0 4px}
+ 
+  /* ---------- Progress ---------- */
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+  @media(max-width:560px){.stat-row{grid-template-columns:1fr}}
+  .stat{background:var(--ink-3);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .stat .n{font-family:var(--serif);font-size:32px;color:var(--text)}
+  .stat .l{font-size:12.5px;color:var(--fog-dim)}
+  .timeline{border-left:2px solid var(--ink-3);margin-left:6px;padding-left:22px;display:grid;gap:20px}
+  .tl-item{position:relative}
+  .tl-item::before{content:'';position:absolute;left:-28px;top:3px;width:11px;height:11px;border-radius:50%;background:var(--ink-3);border:2px solid var(--fog-dim)}
+  .tl-item.done::before{background:var(--good);border-color:var(--good)}
+  .tl-item.next::before{background:var(--beacon);border-color:var(--beacon-light)}
+  .tl-item .tt{font-size:14.5px;color:var(--text);font-weight:500}
+  .tl-item .ts{font-size:12px;color:var(--fog-dim)}
+  .advice{background:linear-gradient(135deg,var(--ink-3),var(--ink-2));border:1px solid rgba(245,166,35,.22);border-radius:14px;padding:22px;margin-top:22px}
+  .advice p{color:var(--text-soft);margin:0}
+ 
+  /* ---------- Mentor chat bubble ---------- */
+  .mentor-msg{background:var(--ink-3);border-radius:4px 16px 16px 16px;padding:20px 22px;max-width:560px;margin-bottom:22px;border:1px solid var(--line)}
+  .mentor-msg p{color:var(--text-soft);margin:0}
+  .mentor-hi{font-family:var(--serif);font-style:italic;color:var(--beacon-light);font-size:19px;margin-bottom:6px}
+  .suggest-chip{display:inline-flex;align-items:center;gap:6px;background:var(--ink-3);border:1px solid var(--line);color:var(--text-soft);
+    padding:9px 14px;border-radius:10px;font-size:13.5px;margin:0 10px 10px 0}
+ 
+  .course{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .course:last-child{border-bottom:none}
+  .course .cname{font-size:14.5px;color:var(--text);font-weight:500}
+  .course .cimpact{font-size:12px;color:var(--beacon-light)}
+  .course-actions{display:flex;gap:8px;flex-wrap:wrap}
+ 
+  /* ---------- Mentor chat ---------- */
+  .chat-box{display:flex;flex-direction:column;gap:10px;max-height:360px;overflow-y:auto;padding:6px 4px 14px;margin-bottom:14px}
+  .chat-msg{max-width:82%;padding:11px 15px;border-radius:14px;font-size:14px;line-height:1.5}
+  .chat-msg.mentor{align-self:flex-start;background:var(--ink-3);border:1px solid var(--line);border-bottom-left-radius:4px;color:var(--text-soft)}
+  .chat-msg.user{align-self:flex-end;background:var(--beacon-dim);border:1px solid rgba(245,166,35,.32);border-bottom-right-radius:4px;color:var(--text-on-beacon)}
+  .chat-input-row{display:flex;gap:8px}
+  .chat-input-row input{flex:1;background:var(--ink-3);border:1px solid var(--line);color:var(--text);padding:11px 13px;border-radius:9px;font-size:14px;font-family:inherit}
+  .chat-input-row input:focus{outline:2px solid var(--beacon);outline-offset:1px;border-color:transparent}
+ 
+  .mission-card{background:linear-gradient(135deg,var(--ink-3),var(--ink-2));border:1px solid rgba(245,166,35,.25);border-radius:14px;padding:24px;margin-top:20px}
+  .mission-card .flag{font-size:12px;color:var(--beacon-light);letter-spacing:.02em;margin-bottom:8px;font-weight:600}
+  .mission-card h3{color:var(--text);font-size:19px;margin-bottom:6px}
+ 
+  .empty-note{font-size:13.5px;color:var(--fog-dim);font-style:italic}
+  footer.foot{text-align:center;padding:30px 24px 50px;color:var(--fog-dim);font-size:12.5px}
+ 
+  ::selection{background:var(--beacon-dim);color:var(--text)}
 </style>
 </head>
 <body>
-<header><div class="top"><div class="brand">farol.ia<small>carreira com direção</small></div><nav class="nav"><button data-tab="home">Início</button><button data-tab="perfil">Meu perfil</button><button data-tab="vagas">Vagas</button><button data-tab="curriculo">Currículo</button><button data-tab="historico">Histórico</button><button data-tab="configuracoes">Configurações</button></nav></div></header>
-<main><section id="home" class="screen"></section><section id="perfil" class="screen"></section><section id="vagas" class="screen"></section><section id="curriculo" class="screen"></section><section id="historico" class="screen"></section><section id="configuracoes" class="screen"></section></main><div id="toast" class="toast"></div>
+ 
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <span class="brand-mark">farol.ia</span>
+      <span class="brand-sub">mentor digital de carreira</span>
+    </div>
+    <nav class="waypoints" id="waypoints">
+      <button data-tab="home" class="active">Início</button>
+      <button data-tab="perfil">Meu Perfil</button>
+      <button data-tab="vagas">Oportunidades</button>
+      <button data-tab="progresso">Meu Progresso</button>
+      <button data-tab="mentor">Mentor IA</button>
+    </nav>
+    <div class="settings-wrap" id="settings-wrap">
+      <button id="btn-settings" class="icon-btn" title="Configurações" aria-label="Configurações">⚙️</button>
+      <div id="settings-panel" class="settings-panel hidden">
+        <div class="settings-title">Configurações</div>
+        <label class="settings-row">
+          <span>Tema</span>
+          <select id="theme-select">
+            <option value="escuro">Escuro</option>
+            <option value="claro">Claro</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </div>
+</header>
+ 
+<div class="wrap">
+ 
+  <!-- ================= HOME ================= -->
+  <section class="screen active" id="screen-home">
+    <div class="hero">
+      <div class="hero-beam"></div>
+      <div class="hero-content">
+        <span class="hero-tag">🧭 mentor de carreira com IA</span>
+        <h1>Porque encontrar uma vaga é importante.<br>Encontrar seu caminho é essencial.</h1>
+        <p class="lede">O Farol.IA descobre seu potencial, traduz suas experiências em competências e te mostra as oportunidades certas — sem substituir o LinkedIn, a Gupy ou o CIEE, mas iluminando o caminho entre eles.</p>
+        <button class="btn" id="btn-start">Iniciar minha jornada</button>
+      </div>
+    </div>
+    <div id="home-snapshot"></div>
+  </section>
+ 
+  <!-- ================= MEU PERFIL ================= -->
+  <section class="screen" id="screen-perfil">
+    <div id="perfil-content"></div>
+  </section>
+ 
+  <!-- ================= OPORTUNIDADES ================= -->
+  <section class="screen" id="screen-vagas">
+    <div class="section-head">
+      <h2>Oportunidades compatíveis</h2>
+      <span class="hint">Ordenadas pela sua aderência de perfil</span>
+    </div>
+    <div id="vagas-list"></div>
+  </section>
+ 
+  <!-- ================= PROGRESSO ================= -->
+  <section class="screen" id="screen-progresso">
+    <div class="section-head"><h2>Meu progresso</h2></div>
+    <div id="progresso-content"></div>
+  </section>
+ 
+  <!-- ================= MENTOR ================= -->
+  <section class="screen" id="screen-mentor">
+    <div class="section-head"><h2>Mentor IA</h2></div>
+    <div id="mentor-content"></div>
+  </section>
+ 
+</div>
+ 
+<footer class="foot">Farol.IA — protótipo de produto, dados simulados localmente no seu navegador.</footer>
+ 
 <script>
-'use strict';
-const API='/api';
-const areas=['Administração e Finanças','Agricultura e Meio Ambiente','Artes e Design','Atendimento e Serviços','Beleza e Estética','Comunicação e Marketing','Construção Civil','Educação e Formação','Gastronomia e Hotelaria','Informática e Tecnologia','Saúde e Bem-Estar','Vendas e Comercial'];
-const courses={'Administração e Finanças':['Excel Básico','Administração'],'Comunicação e Marketing':['Marketing Digital','Redes Sociais'],'Informática e Tecnologia':['Excel Básico','Fundamentos de TI'],'Atendimento e Serviços':['Atendimento ao Cliente','Liderança de Equipe'],'Vendas e Comercial':['Vendas Consultivas','Negociação'],'Saúde e Bem-Estar':['Primeiros Socorros','Atendimento em Saúde']};
-const links={'Excel Básico':'https://www.ev.org.br/cursos','Administração':'https://www.sebrae.com.br/sites/PortalSebrae/cursos','Marketing Digital':'https://www.sebrae.com.br/sites/PortalSebrae/cursos','Redes Sociais':'https://www.ev.org.br/cursos','Fundamentos de TI':'https://www.ev.org.br/cursos','Atendimento ao Cliente':'https://www.ev.org.br/cursos','Liderança de Equipe':'https://www.sebrae.com.br/sites/PortalSebrae/cursos','Vendas Consultivas':'https://www.sebrae.com.br/sites/PortalSebrae/cursos','Negociação':'https://www.ev.org.br/cursos','Primeiros Socorros':'https://www.ev.org.br/cursos','Atendimento em Saúde':'https://www.ev.org.br/cursos'};
-const jobs=[['Assistente Administrativo','Administração e Finanças',['Excel Básico','Administração']],['Assistente de Marketing','Comunicação e Marketing',['Marketing Digital','Redes Sociais']],['Suporte Técnico','Informática e Tecnologia',['Excel Básico','Fundamentos de TI']],['Atendente de Serviços','Atendimento e Serviços',['Atendimento ao Cliente','Liderança de Equipe']],['Consultor de Vendas','Vendas e Comercial',['Vendas Consultivas','Negociação']],['Técnico de Enfermagem','Saúde e Bem-Estar',['Primeiros Socorros','Atendimento em Saúde']]];
-const blank={nome:'',email:'',telefone:'',dataNascimento:'',formacao:'',instituicao:'',funcao:'',area:'',experiencias:'',idiomas:'',cursos:'',cursosSalvos:[],candidaturas:[]};let state={...blank},selectedJob=null;const $=id=>document.getElementById(id);const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function toast(text,bad=false){const n=$('toast');n.textContent=text;n.style.background=bad?'#8e2c25':'#143e2b';n.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>n.classList.remove('show'),2800)}
-async function request(path,options={}){const r=await fetch(API+path,{headers:{'Content-Type':'application/json'},...options});if(!r.ok)throw new Error(await r.text()||'Falha no servidor');return r.status===204?null:r.json()}
-function setTheme(theme){document.body.classList.toggle('dark',theme==='dark');localStorage.setItem('farol-theme',theme);renderSettings()}
-function renderSettings(){const panel=$('configuracoes');if(!panel)return;panel.innerHTML=`<div class="panel"><span class="eyebrow">Preferências</span><h2>Configurações</h2><p class="meta">Escolha como deseja visualizar o Farol.IA.</p><div class="card"><h3>Aparência</h3><p>Tema atual: <b>${document.body.classList.contains('dark')?'escuro':'claro'}</b></p><div class="actions"><button class="btn secondary" onclick="setTheme('light')">☀️ Tema claro</button><button class="btn primary" onclick="setTheme('dark')">🌙 Tema escuro</button></div></div></div>`}
-async function loadData(){if(!state.email)return;try{const d=await request('/profile?email='+encodeURIComponent(state.email));if(!d||!d.profile){return;}state={...blank,...d.profile,candidaturas:d.applications||[]};renderProfile();renderHome();}catch(e){toast('Não foi possível carregar o perfil.',true)}}
-async function saveProfile(){try{const d=await request('/profile',{method:'PUT',body:JSON.stringify({...state,email:String(state.email||'').trim().toLowerCase()})});if(d&&d.profile)state={...state,...d.profile,candidaturas:d.applications||state.candidaturas};toast('Perfil salvo no servidor!');return true}catch(e){toast('Erro na API: '+(e.message||'não foi possível salvar.'),true);return false}}
-function missing(job){const text=`${state.experiencias} ${state.cursos} ${state.funcao} ${(state.cursosSalvos||[]).join(' ')}`.toLowerCase();return job[2].filter(x=>!text.includes(x.toLowerCase()))}
-function score(job){return Math.max(0,Math.round(((job[2].length-missing(job).length)/job[2].length)*100))}
-function tips(){const t=[];if(!state.nome)t.push('Complete seu nome para personalizar seu currículo.');if(!state.experiencias)t.push('Descreva suas experiências e competências com exemplos práticos.');if(!state.cursosSalvos?.length)t.push('Selecione cursos realizados para melhorar suas recomendações.');if(state.area&&missing(jobs.find(j=>j[1]===state.area)||jobs[0]).length)t.push('Faça um dos cursos recomendados para aumentar sua compatibilidade com as vagas.');return t.length?t:['Seu perfil está bem encaminhado. Continue atualizando cursos e experiências.']}
-function tab(name){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$(name).classList.add('active');document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===name));({home:renderHome,perfil:renderProfile,vagas:renderJobs,curriculo:renderResume,historico:renderHistory,configuracoes:renderSettings}[name]||(()=>{}))()}
-function renderHome(){const recommended=state.area?jobs.filter(j=>j[1]===state.area)[0]:null;const list=state.area?(courses[state.area]||[]):[];$('home').innerHTML=`<div class="hero"><span class="tag">🧭 mentor digital de carreira</span><h1>Seu próximo passo profissional começa aqui.</h1><p>O Mentor IA analisa seu perfil, sugere melhorias, recomenda cursos e encontra vagas com currículo adaptado.</p><div class="actions"><button class="btn primary" onclick="tab('perfil')">${state.nome?'Atualizar meu perfil':'Montar meu perfil'}</button><button class="btn secondary" onclick="tab('vagas')">Ver vagas compatíveis</button></div></div><div class="cards"><div class="card"><h3>🧠 Mentor IA</h3><p>Veja dicas personalizadas para fortalecer seu perfil profissional.</p>${tips().map(t=>`<div class="tip">${esc(t)}</div>`).join('')}</div><div class="card"><h3>📚 Cursos de melhoria</h3><p>${state.area?'Cursos indicados para '+esc(state.area):'Escolha uma área para receber cursos indicados.'}</p>${list.length?list.map(c=>`<div class="course"><span>${esc(c)}</span><a href="${links[c]||'#'}" target="_blank">Estudar</a></div>`).join(''):'<button class="btn secondary" onclick="tab(\'perfil\')">Escolher área</button>'}</div><div class="card"><h3>🎯 Vaga recomendada</h3>${recommended?`<p><b>${esc(recommended[0])}</b><br>Compatibilidade: <span class="status">${score(recommended)}%</span></p><button class="btn primary" onclick='adapt(${JSON.stringify(recommended)})'>Ver CV adaptado</button>`:'<p>Preencha seu perfil para ver oportunidades compatíveis.</p>'}</div></div>`}
-function renderProfile(){const defs=[['nome','Nome completo','text',true],['email','E-mail','email',true],['telefone','Telefone','tel',false],['dataNascimento','Data de nascimento','date',false],['formacao','Formação','text',false],['instituicao','Instituição','text',false],['funcao','Função desejada','text',true],['area','Área de interesse','select',true],['experiencias','Experiências e competências','textarea',false],['idiomas','Idiomas','text',false],['cursos','Cursos realizados','text',false]];const fields=defs.map(([key,label,type,req])=>{const mark=req?'<span class="required">*</span>':'';if(type==='select')return `<div class="field"><label>${label}${mark}</label><select id="f_${key}"${req?' required':''}><option value="">Selecione...</option>${areas.map(a=>`<option value="${esc(a)}"${a===state[key]?' selected':''}>${esc(a)}</option>`).join('')}</select></div>`;if(type==='textarea')return `<div class="field" style="grid-column:1/-1"><label>${label}${mark}</label><textarea id="f_${key}"${req?' required':''}>${esc(state[key])}</textarea></div>`;return `<div class="field"><label>${label}${mark}</label><input id="f_${key}" type="${type}" value="${esc(state[key])}"${req?' required':''}></div>`}).join('');const rec=courses[state.area]||[];const courseChecks=rec.length?rec.map(c=>`<label class="check"><input type="checkbox" value="${esc(c)}"${(state.cursosSalvos||[]).includes(c)?' checked':''}>${esc(c)}</label>`).join(''):'<span class="meta">Escolha uma área para ver os cursos recomendados.</span>';$('perfil').innerHTML=`<div class="panel"><span class="eyebrow">Meu espaço</span><h2>Seu perfil profissional</h2><p class="meta">Campos com <span class="required">*</span> são obrigatórios.</p><form id="perfilForm" novalidate><div class="grid">${fields}</div><h3>Cursos realizados</h3><div class="checkgrid" id="courseChecks">${courseChecks}</div><div class="actions"><button class="btn primary" type="submit">Salvar no servidor</button></div></form></div>`;const areaField=$('f_area');if(areaField){areaField.onchange=()=>{state.area=areaField.value;renderProfile();}};$('perfilForm').onsubmit=async e=>{e.preventDefault();let valid=true;defs.forEach(([key,,,,req])=>{const el=$('f_'+key);if(el){state[key]=el.value.trim();const bad=req&&!state[key];el.closest('.field').classList.toggle('invalid',bad);if(bad)valid=false}});state.cursosSalvos=[...document.querySelectorAll('#courseChecks input:checked')].map(x=>x.value);if(!valid)return toast('Preencha todos os campos obrigatórios.',true);if(await saveProfile())renderProfile()}}
-function renderJobs(){if(!state.area){$('vagas').innerHTML='<div class="panel"><h2>Vagas recomendadas</h2><p class="meta">Complete e salve seu perfil para receber oportunidades.</p><button class="btn primary" onclick="tab(\'perfil\')">Ir para o perfil</button></div>';return}const list=jobs.filter(j=>j[1]===state.area);$('vagas').innerHTML=`<div class="panel"><span class="eyebrow">Mentor IA</span><h2>Vagas para ${esc(state.area)}</h2><p class="meta">Seu currículo será adaptado para destacar as informações mais relevantes para cada vaga.</p>${list.map(j=>{const m=missing(j);return `<div class="job"><h3>${esc(j[0])}</h3><p class="meta">Compatibilidade: <span class="status">${score(j)}%</span> • Requisitos: ${esc(j[2].join(', '))}</p>${m.length?`<p class="meta"><b>Para melhorar:</b> ${m.map(x=>`<a href="${links[x]||'#'}" target="_blank">Curso de ${esc(x)}</a>`).join(' • ')}</p>`:'<p class="meta">Seu perfil contempla os principais requisitos.</p>'}<div class="actions"><button class="btn primary" onclick='adapt(${JSON.stringify(j)})'>Abrir CV adaptado</button><button class="btn secondary" onclick='saveApplication(${JSON.stringify(j)},"Salva")'>Salvar vaga</button></div></div>`}).join('')}</div>`}
-function adapt(job){selectedJob=job;tab('curriculo')}
-function exportCV(){const w=window.open('','_blank');if(!w)return toast('Permita pop-ups para gerar o PDF.',true);const job=selectedJob;w.document.write(`<html><head><title>CV - ${esc(state.nome||'Currículo')}</title><style>body{font-family:Arial;margin:0;color:#172b3c}main{max-width:800px;margin:auto;display:grid;grid-template-columns:220px 1fr;min-height:1050px}aside{background:#10283f;color:#fff;padding:32px 22px}article{padding:38px}h1{font-size:30px;margin:0 0 8px}h2{font-size:16px;text-transform:uppercase;color:#163b59;border-bottom:2px solid #f5a623;padding-bottom:7px;margin-top:28px}h3{margin:0 0 7px}p{line-height:1.6;margin:7px 0}.side-title{color:#ffd98a;text-transform:uppercase;font-size:12px;margin-top:28px}.side-text{color:#d9e5ef;font-size:13px}@media print{body{margin:0}}</style></head><body><main><aside><h1>${esc(state.nome||'Seu nome')}</h1><p class="side-text">${esc(state.funcao||'Profissional')}</p><div class="side-title">Contato</div><p class="side-text">${esc(state.email||'')}<br>${esc(state.telefone||'')}</p><div class="side-title">Área</div><p class="side-text">${esc(state.area||'')}</p><div class="side-title">Cursos</div><p class="side-text">${esc(state.cursos||'')}<br>${(state.cursosSalvos||[]).map(esc).join('<br>')}</p></aside><article><h2>Objetivo profissional</h2><p>Atuar como <b>${esc(job?.[0]||state.funcao||'profissional')}</b> na área de ${esc(job?.[1]||state.area||'interesse')}.</p><h2>Resumo profissional</h2><p>${esc(state.experiencias||'Adicione suas experiências e competências.')}</p><h2>Formação</h2><h3>${esc(state.formacao||'Não informada')}</h3><p>${esc(state.instituicao||'')}</p><h2>Competências e desenvolvimento</h2><p>${(state.cursosSalvos||[]).map(esc).join(' • ')||'Não informado'}</p></article></main><script>window.onload=()=>window.print()<\/script></body></html>`);w.document.close()}
-function renderResume(){const job=selectedJob,m=job?missing(job):[];$('curriculo').innerHTML=`<div class="panel"><span class="eyebrow">Currículo adaptado</span><h2>${job?'CV para '+esc(job[0]):'Seu CV profissional'}</h2><p class="meta">A IA reorganiza seu objetivo e destaca competências relacionadas à vaga.</p>${m.length?`<div class="tip"><b>Melhorias recomendadas:</b> ${m.map(x=>`<a href="${links[x]||'#'}" target="_blank">${esc(x)}</a>`).join(' • ')}</div>`:''}<div class="card" style="margin-top:16px"><h3>${esc(state.nome||'Seu nome')}</h3><p>${esc(job?.[0]||state.funcao||'Profissão')} • ${esc(job?.[1]||state.area||'Área')}</p><p>${esc(state.email||'')}<br>${esc(state.telefone||'')}</p><h3>Resumo profissional</h3><p>${esc(state.experiencias||'Preencha suas experiências no perfil.')}</p><h3>Formação</h3><p>${esc(state.formacao||'Não informada')} ${state.instituicao?'— '+esc(state.instituicao):''}</p><h3>Cursos</h3><p>${esc(state.cursos||'')} ${(state.cursosSalvos||[]).map(esc).join(' • ')}</p></div><div class="actions"><button class="btn primary" onclick="exportCV()">Baixar currículo em PDF</button><button class="btn secondary" onclick="tab('perfil')">Editar dados</button></div></div>`}
-async function saveApplication(job,status='Candidatura iniciada'){try{const d=await request('/applications',{method:'POST',body:JSON.stringify({email:state.email,job,missing:missing(job),status})});state.candidaturas=d?.applications||state.candidaturas;toast('Vaga salva no histórico!');return true}catch(e){toast('Não foi possível salvar a vaga.',true);return false}}
-async function renderHistory(){if(!state.email){$('historico').innerHTML='<div class="panel"><h2>Histórico de candidaturas</h2><p class="meta">Salve seu perfil para consultar seu histórico.</p></div>';return}try{const d=await request('/applications?email='+encodeURIComponent(state.email));state.candidaturas=d?.applications||[];$('historico').innerHTML=`<div class="panel"><span class="eyebrow">Acompanhamento</span><h2>Histórico de candidaturas</h2>${state.candidaturas.length?state.candidaturas.map(a=>`<div class="history"><b>${esc(a.job?.[0]||a.job?.nome||'Vaga')}</b><span class="status">${esc(a.status||'Salva')}</span></div>`).join(''):'<p class="meta">Nenhuma candidatura registrada ainda.</p>'}</div>`}catch(e){toast('Não foi possível buscar o histórico.',true)}}
-document.addEventListener('DOMContentLoaded',()=>{setTheme(localStorage.getItem('farol-theme')||'light');document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>tab(b.dataset.tab));const email=localStorage.getItem('farol-email');if(email)state.email=email;renderHome();renderProfile();tab('home');if(state.email)loadData()});window.addEventListener('beforeunload',()=>{if(state.email)localStorage.setItem('farol-email',state.email)});
-</script></body></html>
+/* =======================================================================
+   STATE
+======================================================================= */
+const DEFAULT_STATE = {
+  dados: { nome:'', email:'', telefone:'', dataNascimento:'', formacao:'', instituicao:'', funcao:'', experiencias:[], cursosComp:[] },
+  quiz: [],            // array of dimension letters answered, e.g. ['c','a',...]
+  persona: null,       // 'c' | 'a' | 'm' | 'o'
+  potencialTexto:'',
+  competencias: [],
+  cursosFeitos: [],    // {nome, impacto}
+  candidaturas: [],    // {titulo, data, resumoUrl}
+  perfilStep: 0,       // 0 dados, 1 diagnostico, 2 potencial, 3 resultado
+  chatHistory: [],     // {role:'mentor'|'user', text}
+  areaSelecionada: null, // area id chosen explicitly in Oportunidades/Cursos, overrides auto-detection
+  emailConfirmado: false,
+  tema: 'escuro'       // 'escuro' | 'claro'
+};
+let state = loadState();
+ 
+function loadState(){
+  try{
+    const raw = localStorage.getItem('faroliaState_v1');
+    if(!raw) return structuredClone(DEFAULT_STATE);
+    const parsed = JSON.parse(raw);
+    return Object.assign(structuredClone(DEFAULT_STATE), parsed);
+  }catch(e){ return structuredClone(DEFAULT_STATE); }
+}
+function saveState(){
+  try{ localStorage.setItem('faroliaState_v1', JSON.stringify(state)); }
+  catch(e){ /* storage unavailable — continue without persistence */ }
+}
+ 
+/* =======================================================================
+   REFERENCE DATA
+======================================================================= */
+const QUESTIONS = [
+  { q:'Quando você precisa resolver algo novo, o que costuma fazer?', opts:[
+    {t:'Procurar informações e entender o contexto', d:'a'},
+    {t:'Pensar em ideias diferentes das óbvias', d:'c'},
+    {t:'Conversar com pessoas que já passaram por isso', d:'m'},
+    {t:'Criar um plano com etapas claras', d:'o'} ]},
+  { q:'Qual papel você costuma assumir em trabalhos em grupo?', opts:[
+    {t:'Organizar tarefas e prazos', d:'o'},
+    {t:'Motivar e alinhar as pessoas', d:'m'},
+    {t:'Propor soluções criativas', d:'c'},
+    {t:'Analisar informações antes de decidir', d:'a'} ]},
+  { q:'O que mais te dá energia no dia a dia?', opts:[
+    {t:'Resolver um problema lógico ou um quebra-cabeça', d:'a'},
+    {t:'Imaginar algo novo do zero', d:'c'},
+    {t:'Ajudar alguém que precisa de apoio', d:'m'},
+    {t:'Ver um plano sair exatamente como o previsto', d:'o'} ]},
+  { q:'Como você reage quando um projeto muda de direção de repente?', opts:[
+    {t:'Busco entender os dados antes de agir', d:'a'},
+    {t:'Vejo como uma chance de tentar algo diferente', d:'c'},
+    {t:'Converso com o time para realinhar todo mundo', d:'m'},
+    {t:'Reorganizo o cronograma e as prioridades', d:'o'} ]},
+  { q:'Em uma apresentação, o que você prefere fazer?', opts:[
+    {t:'Mostrar números e evidências', d:'a'},
+    {t:'Contar uma história envolvente', d:'c'},
+    {t:'Conduzir a conversa com a plateia', d:'m'},
+    {t:'Estruturar a lógica da apresentação', d:'o'} ]},
+  { q:'O que te deixa mais frustrado no trabalho?', opts:[
+    {t:'Decisões tomadas sem dados', d:'a'},
+    {t:'Falta de espaço para inovar', d:'c'},
+    {t:'Falta de conexão entre as pessoas', d:'m'},
+    {t:'Falta de organização e prazos', d:'o'} ]}
+];
+ 
+const PERSONAS = {
+  c:{ name:'Criativa Estratégica', desc:'Você enxerga possibilidades onde outros veem obstáculos e sabe transformar ideias soltas em direção.', traits:['Criatividade','Comunicação','Autonomia','Iniciativa'], areas:['Marketing','Design','Conteúdo','Produto'] },
+  a:{ name:'Analítica Orientada a Dados', desc:'Você decide com base em evidências e enxerga padrões que passam despercebidos para os outros.', traits:['Lógica','Atenção a detalhes','Curiosidade','Organização'], areas:['Dados','BI','Finanças','Growth'] },
+  m:{ name:'Conectora Comunicativa', desc:'Você constrói pontes entre pessoas e faz as coisas acontecerem por meio de relações genuínas.', traits:['Empatia','Comunicação','Persuasão','Trabalho em equipe'], areas:['RH','Atendimento','Comercial','Vendas'] },
+  o:{ name:'Estrategista Organizada', desc:'Você transforma caos em processo e garante que tudo saia do papel dentro do prazo.', traits:['Planejamento','Organização','Liderança','Foco em resultados'], areas:['Operações','Projetos','Administração','Processos'] }
+};
+ 
+const KEYWORD_MAP = [
+  { k:['organiz','arrum','estrutur'], comp:'Organização' },
+  { k:['equipe','grupo','time ','colega'], comp:'Trabalho em Equipe' },
+  { k:['comuniqu','apresent','falei','convers','explique'], comp:'Comunicação' },
+  { k:['planej','plano','cronograma','agenda'], comp:'Planejamento' },
+  { k:['criei','ideia','invent','criativ','desenh'], comp:'Criatividade' },
+  { k:['lider','coorden','conduzi','chefi','gerenci'], comp:'Liderança' },
+  { k:['resolvi','solucion','problema','conflito'], comp:'Resolução de Problemas' },
+  { k:['dado','analis','número','numero','planilha','estatístic','estatistic'], comp:'Análise de Dados' },
+  { k:['ajud','apoi','voluntari','acolh','escut'], comp:'Empatia' },
+  { k:['vend','negocia','client'], comp:'Negociação' },
+  { k:['atend','recepç','recepc','público','publico'], comp:'Atendimento' },
+  { k:['paciente','saúde','saude','enferm','cuidado','hospital','clínic','clinic'], comp:'Cuidado' },
+  { k:['ensin','aula','professor','mentor','tutori','explicar'], comp:'Ensino' },
+  { k:['pesquis','investig','estud'], comp:'Pesquisa' },
+  { k:['escrev','redaç','redac','texto','artigo'], comp:'Redação' },
+  { k:['program','código','codigo','software','sistema','tecnolog'], comp:'Tecnologia' },
+  { k:['financ','orçament','orcament','contábil','contabil','custo'], comp:'Finanças' },
+  { k:['logístic','logistic','process','fluxo','estoque'], comp:'Processos' },
+  { k:['iniciativ','proativ','sozinh','conta própria','conta propria'], comp:'Proatividade' },
+  { k:['prazo','respons','compromet','pontual'], comp:'Responsabilidade' }
+];
+ 
+const PERSONA_DEFAULT_AREA = { c:'marketing', a:'dados', m:'comercial', o:'operacoes' };
+ 
+const AREA_CATALOG = [
+  { id:'marketing', label:'Marketing e Conteúdo', keywords:['marketing','martech','conteúdo','conteudo','publicidade','redes sociais','social media','copywriting','growth','crm','inbound','seo','mídia paga','midia paga','e-mail marketing','email marketing'],
+    jobs:[ {title:'Analista de Conteúdo', tags:['Comunicação','Criatividade']}, {title:'Assistente de Marketing Digital', tags:['Criatividade','Comunicação']}, {title:'Social Media Jr.', tags:['Criatividade','Redação']} ],
+    courses:[ {nome:'Marketing Digital', impacto:8, provedor:'Sebrae', url:'https://sebrae.com.br/cursosonline'}, {nome:'Storytelling com Dados', impacto:6, provedor:'Escola Virtual.gov', url:'https://www.escolavirtual.gov.br/curso/815'} ] },
+  { id:'design', label:'Design e UX', keywords:['design','ux','ui ','experiência do usuário','experiencia do usuario'],
+    jobs:[ {title:'UX Design Jr.', tags:['Criatividade','Organização']}, {title:'Assistente de Design Gráfico', tags:['Criatividade']} ],
+    courses:[ {nome:'Fundamentos de UX Design', impacto:9, provedor:'Coursera — Google', url:'https://www.coursera.org/learn/foundations-user-experience-design'}, {nome:'Canva para o dia a dia', impacto:5, provedor:'Canva Design School', url:'https://www.canva.com/pt_br/design-school/'} ] },
+  { id:'dados', label:'Dados e Tecnologia', keywords:['dados','tecnologia','programação','programacao','desenvolvedor','sistemas','power bi','ti '],
+    jobs:[ {title:'Analista de Dados Jr.', tags:['Análise de Dados','Organização']}, {title:'Business Intelligence Trainee', tags:['Análise de Dados','Planejamento']}, {title:'Suporte Técnico Jr.', tags:['Tecnologia','Resolução de Problemas']} ],
+    courses:[ {nome:'Power BI', impacto:12, provedor:'Microsoft Learn', url:'https://learn.microsoft.com/pt-br/training/browse/?terms=power%20bi'}, {nome:'SQL para Iniciantes', impacto:12, provedor:'W3Schools', url:'https://www.w3schools.com/sql/'}, {nome:'Excel Básico', impacto:8, provedor:'Microsoft Learn', url:'https://learn.microsoft.com/pt-br/training/browse/?terms=excel'} ] },
+  { id:'financas', label:'Finanças e Administração', keywords:['finanças','financas','administra','contáb','contab','financeiro'],
+    jobs:[ {title:'Assistente Financeiro', tags:['Finanças','Organização']}, {title:'Assistente Administrativo', tags:['Organização','Planejamento']} ],
+    courses:[ {nome:'Excel Básico', impacto:8, provedor:'Microsoft Learn', url:'https://learn.microsoft.com/pt-br/training/browse/?terms=excel'}, {nome:'Gestão Financeira para Pequenos Negócios', impacto:8, provedor:'Sebrae', url:'https://sebrae.com.br/cursosonline'} ] },
+  { id:'rh', label:'RH e Pessoas', keywords:['rh','recursos humanos','recrutamento'],
+    jobs:[ {title:'Analista de RH Jr.', tags:['Empatia','Comunicação']} ],
+    courses:[ {nome:'Oratória', impacto:7, provedor:'SEST SENAT', url:'https://ead.sestsenat.org.br/cursos/oratoria/'}, {nome:'Gestão de Pessoas', impacto:8, provedor:'Sebrae', url:'https://sebrae.com.br/cursosonline'} ] },
+  { id:'comercial', label:'Comercial e Vendas', keywords:['vendas','comercial','sdr','pré-vendas','pre-vendas'],
+    jobs:[ {title:'SDR / Pré-vendas', tags:['Negociação','Comunicação']}, {title:'Assistente Comercial', tags:['Negociação','Organização']} ],
+    courses:[ {nome:'Oratória', impacto:7, provedor:'SEST SENAT', url:'https://ead.sestsenat.org.br/cursos/oratoria/'}, {nome:'Como Vender Mais e Melhor', impacto:8, provedor:'Sebrae', url:'https://sebrae.com.br/cursosonline'} ] },
+  { id:'atendimento', label:'Atendimento ao Cliente', keywords:['atendimento','call center','suporte ao cliente'],
+    jobs:[ {title:'Atendimento ao Cliente', tags:['Empatia','Comunicação']} ],
+    courses:[ {nome:'Introdução ao Atendimento ao Cliente', impacto:8, provedor:'Alison', url:'https://alison.com/pt-BR/claro/introducao-ao-atendimento-ao-cliente-excellence'}, {nome:'Excelência no Atendimento', impacto:6, provedor:'Sebrae', url:'https://sebrae.com.br/cursosonline'} ] },
+  { id:'operacoes', label:'Operações e Projetos', keywords:['operações','operacoes','logística','logistica','processos'],
+    jobs:[ {title:'Assistente de Operações', tags:['Organização','Processos']}, {title:'Analista de Projetos Jr.', tags:['Planejamento','Liderança']} ],
+    courses:[ {nome:'Introdução à Gestão de Projetos', impacto:10, provedor:'Escola Virtual — Fundação Bradesco', url:'https://www.ev.org.br/cursos/introducao-a-gestao-de-projetos'}, {nome:'Excel Básico', impacto:8, provedor:'Microsoft Learn', url:'https://learn.microsoft.com/pt-br/training/browse/?terms=excel'} ] },
+  { id:'saude', label:'Saúde e Bem-estar', keywords:['saúde','saude','enferm','hospital','clínic','clinic','farmác','farmac','médic','medic','paciente','fisioterap','odont'],
+    jobs:[ {title:'Auxiliar/Técnico de Enfermagem', tags:['Cuidado','Responsabilidade']}, {title:'Assistente Administrativo em Clínica/Hospital', tags:['Organização','Cuidado']}, {title:'Recepcionista de Saúde', tags:['Empatia','Atendimento']} ],
+    courses:[ {nome:'Cursos gratuitos na área da saúde', impacto:10, provedor:'Fiocruz — Campus Virtual', url:'https://www.campusvirtual.fiocruz.br'}, {nome:'Introdução ao Atendimento ao Cliente', impacto:6, provedor:'Alison', url:'https://alison.com/pt-BR/claro/introducao-ao-atendimento-ao-cliente-excellence'} ] },
+  { id:'educacao', label:'Educação', keywords:['educação','educacao','pedagog','professor','ensino','escola'],
+    jobs:[ {title:'Auxiliar Pedagógico', tags:['Organização','Ensino']}, {title:'Estagiário(a) em Educação', tags:['Ensino','Empatia']} ],
+    courses:[ {nome:'Cursos gratuitos de gestão pública e educação', impacto:8, provedor:'Escola Virtual.gov (ENAP)', url:'https://www.escolavirtual.gov.br/'}, {nome:'Cursos gratuitos diversos', impacto:6, provedor:'Escola Virtual — Fundação Bradesco', url:'https://www.ev.org.br/cursos'} ] },
+  { id:'engenharia', label:'Engenharia e Construção', keywords:['engenharia','construção','construcao','obra','civil'],
+    jobs:[ {title:'Estagiário(a) de Engenharia', tags:['Análise de Dados','Processos']}, {title:'Assistente Técnico de Obras', tags:['Organização','Processos']} ],
+    courses:[ {nome:'Excel Básico', impacto:8, provedor:'Microsoft Learn', url:'https://learn.microsoft.com/pt-br/training/browse/?terms=excel'}, {nome:'Introdução à Gestão de Projetos', impacto:10, provedor:'Escola Virtual — Fundação Bradesco', url:'https://www.ev.org.br/cursos/introducao-a-gestao-de-projetos'} ] },
+  { id:'direito', label:'Direito', keywords:['direito','jurídic','juridic','advocacia'],
+    jobs:[ {title:'Estagiário(a) Jurídico(a)', tags:['Redação','Organização']} ],
+    courses:[ {nome:'Cursos gratuitos de gestão pública e direito', impacto:8, provedor:'Escola Virtual.gov (ENAP)', url:'https://www.escolavirtual.gov.br/'}, {nome:'Cursos gratuitos diversos', impacto:6, provedor:'Escola Virtual — Fundação Bradesco', url:'https://www.ev.org.br/cursos'} ] },
+  { id:'turismo', label:'Turismo e Serviços', keywords:['turismo','hotelaria','hotel','eventos'],
+    jobs:[ {title:'Assistente de Turismo e Eventos', tags:['Comunicação','Organização']} ],
+    courses:[ {nome:'Oratória', impacto:7, provedor:'SEST SENAT', url:'https://ead.sestsenat.org.br/cursos/oratoria/'}, {nome:'Excelência no Atendimento', impacto:6, provedor:'Sebrae', url:'https://sebrae.com.br/cursosonline'} ] }
+];
+ 
+function activeAreaId(){
+  if(state.areaSelecionada) return state.areaSelecionada;
+  const text = (state.dados.funcao || '').toLowerCase();
+  const found = AREA_CATALOG.find(a => a.keywords.some(k => text.includes(k)));
+  if(found) return found.id;
+  return PERSONA_DEFAULT_AREA[state.persona] || AREA_CATALOG[0].id;
+}
+function activeArea(){ return AREA_CATALOG.find(a => a.id === activeAreaId()) || AREA_CATALOG[0]; }
+ 
+function courseSearchFallback(area){
+  return { nome: 'Explorar mais cursos gratuitos de ' + area.label, impacto: 5, provedor: 'Coursera (busca)', url: 'https://www.coursera.org/search?query=' + encodeURIComponent(area.label) };
+}
+ 
+function allCoursesForMentor(){
+  const area = activeArea();
+  const areaCourses = [...area.courses.map(c => ({ ...c })), courseSearchFallback(area)];
+  const rest = COURSES.filter(c => !areaCourses.some(ac => ac.nome === c.nome))
+    .sort((a,b) => (b.fit.includes(state.persona)?1:0) - (a.fit.includes(state.persona)?1:0));
+  return [...areaCourses, ...rest];
+}
+ 
+const COURSES = [
+  { nome:'Excel Básico', impacto:8, fit:['a','o'], provedor:'Escola Virtual — Fundação Bradesco', url:'https://www.ev.org.br/cursos' },
+  { nome:'Power BI', impacto:12, fit:['a'], provedor:'Microsoft Learn', url:'https://learn.microsoft.com/pt-br/training/browse/?terms=power%20bi' },
+  { nome:'SQL para Iniciantes', impacto:12, fit:['a'], provedor:'W3Schools', url:'https://www.w3schools.com/sql/' },
+  { nome:'Canva para o dia a dia', impacto:5, fit:['c'], provedor:'Canva Design School', url:'https://www.canva.com/pt_br/design-school/' },
+  { nome:'Storytelling com Dados', impacto:6, fit:['c','m'], provedor:'Escola Virtual.gov', url:'https://www.escolavirtual.gov.br/curso/815' },
+  { nome:'Oratória', impacto:7, fit:['m'], provedor:'SEST SENAT', url:'https://ead.sestsenat.org.br/cursos/oratoria/' },
+  { nome:'Introdução à Gestão de Projetos', impacto:10, fit:['o'], provedor:'Escola Virtual — Fundação Bradesco', url:'https://www.ev.org.br/cursos/introducao-a-gestao-de-projetos' },
+  { nome:'Fundamentos de UX Design', impacto:9, fit:['c'], provedor:'Coursera — Google', url:'https://www.coursera.org/learn/foundations-user-experience-design' }
+];
+ 
+ 
+ 
+const APPLY_STEPS = ['Ajustando currículo', 'Destacando competências', 'Gerando apresentação personalizada', 'Enviando candidatura', 'Registrando processo'];
+ 
+/* =======================================================================
+   DERIVED / SCORE
+======================================================================= */
+function recalcScore(){
+  const comportamental = Math.round((state.quiz.length / QUESTIONS.length) * 25);
+  const d = state.dados;
+  const fields = [d.nome, d.email, d.telefone, d.formacao, d.instituicao, d.funcao];
+  const filled = fields.filter(v => v && v.trim()).length;
+  const hasExp = d.experiencias.length > 0 ? 1 : 0;
+  const curriculo = Math.round(((filled + hasExp) / (fields.length + 1)) * 25);
+  const textBonus = Math.min(3, Math.floor((state.potencialTexto||'').trim().length / 80));
+  const experiencia = Math.min(25, state.competencias.length*4 + d.experiencias.length*3 + textBonus);
+  const capacitacao = Math.min(25, state.cursosFeitos.reduce((s,c) => s + c.impacto, 0) + (d.cursosComp ? d.cursosComp.length : 0)*4);
+  const total = comportamental + curriculo + experiencia + capacitacao;
+  return { comportamental, curriculo, experiencia, capacitacao, total };
+}
+ 
+function personaData(){ return state.persona ? PERSONAS[state.persona] : null; }
+ 
+function jobsSorted(){
+  const area = activeArea();
+  const p = personaData();
+  const comp = new Set([...state.competencias, ...(p ? p.traits : [])]);
+  const score = recalcScore().total;
+  return area.jobs.map(j => {
+    const overlap = j.tags.filter(t => comp.has(t)).length;
+    let pct = 64 + overlap*9 + Math.round(score/100*10);
+    pct = Math.max(60, Math.min(98, pct));
+    const motivos = j.tags.filter(t => comp.has(t));
+    return { ...j, area: area.label, pct, motivos: motivos.length ? motivos : j.tags.slice(0,2) };
+  }).sort((a,b) => b.pct - a.pct);
+}
+ 
+function generateAdvice(){
+  const n = state.candidaturas.length;
+  const entrevistas = Math.floor(n/3);
+  const propostas = Math.floor(n/6);
+  if(n === 0) return 'Você ainda não enviou nenhuma candidatura. Vá até Oportunidades e dê o primeiro passo — é mais rápido do que parece.';
+  if(entrevistas === 0) return 'Seu currículo já está pronto e ativo. Continue se candidatando: no seu ritmo atual, as primeiras entrevistas estão perto de aparecer.';
+  if(propostas === 0) return 'Seu currículo está funcionando — você está sendo chamada(o) para entrevistas. Seu principal ponto de melhoria agora é a preparação para a etapa de entrevista.';
+  return 'Você já recebeu propostas. Este é o momento de negociar com confiança e escolher o caminho que faz mais sentido para você.';
+}
+ 
+function nextMission(){
+  if(!state.persona) return { title:'Complete o Diagnóstico IA', impact:25, action:() => goPerfilStep(1) };
+  if(state.competencias.length === 0) return { title:'Conte uma conquista sua em Descoberta de Potencial', impact:6, action:() => goPerfilStep(2) };
+  const doneCourses = new Set(state.cursosFeitos.map(c => c.nome));
+  const pending = COURSES.filter(c => !doneCourses.has(c.nome)).sort((a,b) => (b.fit.includes(state.persona)?1:0) - (a.fit.includes(state.persona)?1:0));
+  if(pending.length && state.cursosFeitos.length === 0) return { title:'Fazer o curso "'+pending[0].nome+'"', impact:pending[0].impacto, action:() => setTab('mentor') };
+  if(state.candidaturas.length === 0) return { title:'Enviar sua primeira candidatura inteligente', impact:8, action:() => setTab('vagas') };
+  return { title:'Criar um portfólio simples com seus projetos', impact:6, action:() => setTab('mentor') };
+}
+ 
+function normalizeText(s){
+  return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
+ 
+function generateMentorReply(raw){
+  const text = normalizeText(raw);
+  const tokens = text.split(/[^a-z0-9]+/i).filter(Boolean);
+  const has = key => { const nk = normalizeText(key); return nk.length <= 3 ? tokens.includes(nk) : text.includes(nk); };
+  const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+  const p = personaData();
+ 
+  const topics = [
+    { keys:['nervos','ansios','gelar','trava'], replies:[
+      'É normal travar antes de uma entrevista. Prepare 3 histórias curtas (situação, o que você fez, resultado) e treine em voz alta pelo menos uma vez — isso reduz muito o nervosismo na hora.',
+      'Chegar ansiosa(o) numa entrevista é comum. Releia sua lista de competências antes de entrar e lembre que a entrevista também serve para você avaliar a empresa — isso equilibra a relação.' ]},
+    { keys:['entrevista'], replies:[
+      'Para a entrevista, pesquise a empresa antes, prepare exemplos concretos das suas experiências e leve 2 perguntas para fazer no final — isso mostra interesse genuíno.',
+      'Estruture suas respostas com Situação, Tarefa, Ação e Resultado (método STAR). Fica mais fácil contar uma experiência de forma clara e objetiva.' ]},
+    { keys:['currículo','curriculo','cv'], replies:[
+      'Seu currículo deve caber em 1 página e mostrar resultados, não só tarefas. Troque "ajudei na organização de um evento" por "organizei um evento com mais de 100 participantes".',
+      'Use verbos de ação no início de cada linha (organizei, liderei, criei, analisei) e, quando possível, coloque um número — isso chama muito mais atenção do recrutador.' ]},
+    { keys:['carta de apresentação','cover letter'], replies:[
+      'Uma boa carta de apresentação tem 3 parágrafos curtos: por que você quer essa vaga, o que você traz de diferente, e um fechamento com disponibilidade para conversar.' ]},
+    { keys:['linkedin'], replies:[
+      'No LinkedIn, comece pelo título: em vez de só "Estudante de Marketing", tente "Estudante de Marketing | Criação de conteúdo e campanhas digitais". Isso aparece mais nas buscas dos recrutadores.',
+      'Peça recomendações a professores ou colegas de projeto, e publique algo sobre o que você está aprendendo — isso aumenta bastante sua visibilidade no LinkedIn.' ]},
+    { keys:['network','contato','indicaç','indicac'], replies:[
+      'Networking não precisa ser formal: comece reconectando com colegas de faculdade e ex-colegas de estágio, contando que você está em busca de oportunidades. Muita vaga boa vem de indicação.' ]},
+    { keys:['salári','salario','negociar','proposta','quanto ganh','faixa salarial'], replies:[
+      'Antes de negociar, pesquise a faixa salarial do cargo na região — sites como o próprio LinkedIn ajudam. Numa proposta inicial, é normal e esperado perguntar se há flexibilidade.',
+      'Ao negociar, fale em termos do valor que você entrega, não só da sua necessidade pessoal. E lembre: dá para negociar benefícios além do salário fixo, como horário ou home office.' ]},
+    { keys:['qual profissão','qual profissao','que profissão','que profissao','qual carreira','que carreira','profiss','qual área seguir','qual area seguir','que área seguir','que area seguir','não sei o que fazer','nao sei o que fazer','não sei o que quero','nao sei o que quero','que curso fazer','qual curso fazer','que faculdade','qual faculdade','em que eu sou bom','em que eu sou boa','o que eu sirvo'], replies:[
+      p ? `Baseado no seu diagnóstico, seu perfil é ${p.name} e sua área de interesse hoje é ${activeArea().label}. Isso não é uma resposta definitiva, mas é um ótimo ponto de partida — dá uma olhada nas vagas de ${activeArea().label} em Oportunidades e no seu Mapa de Carreira em Meu Perfil para ver se faz sentido no seu dia a dia.`
+        : 'Ainda não tenho seu diagnóstico completo. Termine o Diagnóstico IA em Meu Perfil — isso já aponta áreas que combinam com o seu jeito de pensar e trabalhar.' ]},
+    { keys:['primeiro emprego','estágio','estagio','sem experien','sem experiên'], replies:[
+      'Sem experiência formal, projetos da faculdade, trabalhos voluntários e até organizar um evento contam — é exatamente isso que a Descoberta de Potencial te ajuda a traduzir em competências.',
+      'Empresas que contratam estagiários sabem que você está aprendendo. O que elas mais buscam é atitude e vontade de crescer — deixe isso claro nas suas respostas.' ]},
+    { keys:['mudar de área','trocar de carreira','mudança de carreira','outra área'], replies:[
+      'Ao mudar de área, foque em habilidades transferíveis — comunicação, organização e resolução de problemas valem em quase qualquer área. Conecte exemplos da sua vivência atual com a área desejada.' ]},
+    { keys:['rejeit','recus','não fui aprovad','nao fui aprovad','não passei','nao passei'], replies:[
+      'Levar um "não" faz parte do processo — a maioria das pessoas se candidata muitas vezes antes da vaga certa. Se puder, peça um feedback objetivo ao recrutador para ajustar a próxima tentativa.',
+      'Cada processo seletivo também é um treino. Anote o que sentiu mais dificuldade e volte para praticar isso — muita gente boa já foi recusada antes de achar a vaga certa.' ]},
+    { keys:['desanim','desmotiv','cansad','procrastin'], replies:[
+      'Buscar emprego cansa mesmo. Em vez de pensar em tudo de uma vez, foque só na próxima missão da sua jornada — pequenos passos consistentes valem mais que esforços isolados.' ]},
+    { keys:['portfóli','portfolio'], replies:[
+      p && state.persona==='c' ? 'Para o seu perfil criativo, um portfólio simples no Canva ou Notion com 2 ou 3 projetos bem explicados (o problema, sua ideia, o resultado) já é suficiente para começar.'
+        : 'Um portfólio não precisa ser chique: uma página simples reunindo 2 ou 3 exemplos do que você já fez, com uma frase de contexto para cada um, já ajuda muito.' ]},
+    { keys:['curso','aprender','estudar','capacitaç','capacitac'], replies:[
+      'Dá uma olhada na seção "Cursos inteligentes" logo abaixo — selecionei opções gratuitas que combinam com seu perfil e mostram quanto cada uma pode somar no seu Farol Score.' ]},
+    { keys:['inglês','ingles'], replies:[
+      'Pratique inglês com conteúdo que você já gosta (séries com legenda em inglês, podcasts curtos) e separe 15 minutos por dia — constância importa mais que intensidade.' ]},
+    { keys:['plano de carreira','onde eu quero chegar','futuro profissional'], replies:[
+      'Dá uma olhada no seu Mapa de Carreira em "Meu Perfil" — ele mostra um caminho possível a partir de onde você está hoje até um cargo de especialista na sua área.' ]},
+    { keys:['não retornaram','nao retornaram','sumiu','ghosting','não me responderam','nao me responderam'], replies:[
+      'É comum empresas demorarem ou não retornarem — não é sobre você. Se já faz mais de 2 semanas do combinado, um e-mail curto e educado perguntando sobre o andamento é bem-visto.' ]},
+    { keys:['soft skill','habilidade comportamental','habilidades comportamentais'], replies:[
+      p ? `Olhando seu perfil ${p.name}, suas soft skills mais fortes tendem a ser ${p.traits.slice(0,2).join(' e ')} — vale destacar isso com exemplos concretos em entrevistas.`
+        : 'Soft skills como comunicação, organização e trabalho em equipe fazem muita diferença — vale sempre dar exemplos concretos, não só citar a palavra.' ]},
+    { keys:['farol score','pra que serve o farol score','o que é o farol score','o que e o farol score'], replies:[
+      'O Farol Score é uma nota de 0 a 100 que resume sua preparação: 25 pontos vêm do diagnóstico comportamental, 25 do quanto seu currículo está completo, 25 da sua experiência/competências e 25 dos cursos que você concluir. Quanto mais completo cada parte, maior o score.' ]},
+    { keys:['como funciona','o que é isso','o que e isso','o que é o farol.ia','o que e o farol.ia','o que é esse app'], replies:[
+      'O Farol.IA te ajuda em etapas: primeiro descobre seu perfil comportamental e traduz suas experiências em competências, depois mostra vagas e cursos gratuitos combinando com sua área e te acompanha com missões e conselhos ao longo da busca.' ]},
+    { keys:['obrigad','valeu','vlw'], replies:['Fico feliz em ajudar! Qualquer dúvida sobre currículo, entrevista, LinkedIn ou próximos passos, é só chamar.'] },
+    { keys:['oi','ola','olá','bom dia','boa tarde','boa noite'], replies:['Oi! Em que posso te ajudar hoje — currículo, entrevista, LinkedIn, negociação salarial?'] }
+  ];
+ 
+  for(const t of topics){ if(t.keys.some(has)) return pick(t.replies); }
+ 
+  const m = nextMission();
+  return pick([
+    'Não tenho uma resposta pronta pra isso ainda, mas posso te ajudar com currículo, entrevista, LinkedIn, networking, negociação salarial ou como se posicionar sem muita experiência. Sobre qual desses você quer conversar?',
+    `Boa pergunta — ainda estou aprendendo a responder isso com precisão. Enquanto isso: sua próxima missão sugerida é "${m.title}". Quer que eu te ajude com isso?`
+  ]);
+}
+ 
+/* =======================================================================
+   NAV
+======================================================================= */
+function setTab(tab){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-'+tab).classList.add('active');
+  document.querySelectorAll('#waypoints button').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  renderAll();
+  window.scrollTo({top:0, behavior:'instant'});
+}
+document.getElementById('waypoints').addEventListener('click', e => {
+  const b = e.target.closest('button[data-tab]');
+  if(b) setTab(b.dataset.tab);
+});
+document.getElementById('btn-start').addEventListener('click', () => setTab('perfil'));
+ 
+function goPerfilStep(step){ state.perfilStep = step; saveState(); setTab('perfil'); }
+ 
+/* =======================================================================
+   RENDER: HOME
+======================================================================= */
+function renderHome(){
+  const box = document.getElementById('home-snapshot');
+  if(!state.persona){ box.innerHTML=''; return; }
+  const p = personaData();
+  const s = recalcScore();
+  const m = nextMission();
+  box.innerHTML = `
+    <div class="panel" style="margin-top:8px">
+      <div class="section-head"><h2>Sua jornada até aqui</h2><span class="hint">Continue de onde parou</span></div>
+      <div class="score-row">
+        <div class="gauge-wrap">${gaugeSVG(s.total)}</div>
+        <div style="flex:1;min-width:220px">
+          <div class="persona-name" style="font-size:22px">${p.name}</div>
+          <p style="margin-bottom:14px">${p.desc}</p>
+          <div class="mission-card" style="padding:16px 18px;margin-top:0">
+            <div class="flag">próxima missão</div>
+            <h3 style="font-size:16px">${m.title}</h3>
+            <p style="margin:0 0 12px;font-size:13px">Impacto estimado: +${m.impact} pontos no Farol Score</p>
+            <button class="btn btn-sm" id="home-mission-btn">Ir agora</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById('home-mission-btn').addEventListener('click', m.action);
+}
+ 
+function gaugeSVG(total){
+  const r = 70, c = 2*Math.PI*r, pct = Math.max(0,Math.min(100,total))/100;
+  return `<svg width="168" height="168" viewBox="0 0 168 168" style="display:block">
+    <circle cx="84" cy="84" r="${r}" fill="none" stroke="#16283e" stroke-width="12"/>
+    <circle cx="84" cy="84" r="${r}" fill="none" stroke="url(#gg)" stroke-width="12" stroke-linecap="round"
+      stroke-dasharray="${c}" stroke-dashoffset="${c*(1-pct)}" transform="rotate(-90 84 84)"/>
+    <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5a623"/><stop offset="100%" stop-color="#ffd280"/>
+    </linearGradient></defs>
+  </svg>
+  <div class="gauge-num"><span class="n">${total}</span><span class="d">de 100</span></div>`;
+}
+ 
+/* =======================================================================
+   RENDER: MEU PERFIL (multi-step)
+======================================================================= */
+function renderPerfil(){
+  const box = document.getElementById('perfil-content');
+  if(state.persona && state.perfilStep < 3) state.perfilStep = 3;
+  const step = state.perfilStep;
+ 
+  if(step === 3 && state.persona){ renderPerfilResultado(box); return; }
+ 
+  const dots = [0,1,2].map(i => `<div class="dot ${i<step?'done':i===step?'now':''}"></div>`).join('');
+ 
+  if(step === 0) renderDados(box, dots);
+  else if(step === 1) renderDiagnostico(box, dots);
+  else renderPotencial(box, dots);
+}
+ 
+function renderDados(box, dots){
+  const d = state.dados;
+  box.innerHTML = `
+    <div class="panel">
+      <div class="dots">${dots}</div>
+      <div class="section-head"><h2>Meus dados</h2><span class="hint">Isso vira a base do seu currículo automático · * obrigatório</span></div>
+      <div id="dados-erro" class="form-error hidden"></div>
+      <div class="grid2">
+        <div class="field"><label>Nome *</label><input id="f-nome" value="${esc(d.nome)}" placeholder="Seu nome completo"></div>
+        <div class="field"><label>E-mail *</label><input id="f-email" type="email" value="${esc(d.email)}" placeholder="voce@email.com"></div>
+        <div class="field"><label>Telefone</label><input id="f-telefone" value="${esc(d.telefone)}" placeholder="(11) 90000-0000"></div>
+        <div class="field"><label>Data de nascimento</label><input id="f-nascimento" type="date" value="${esc(d.dataNascimento)}"></div>
+        <div class="field"><label>Função ou área desejada *</label><input id="f-funcao" value="${esc(d.funcao)}" placeholder="Ex: Marketing, Saúde, Educação, Dados, Engenharia..."></div>
+        <div class="field"><label>Formação</label><input id="f-formacao" value="${esc(d.formacao)}" placeholder="Ex: Administração, 6º semestre"></div>
+        <div class="field"><label>Instituição</label><input id="f-instituicao" value="${esc(d.instituicao)}" placeholder="Nome da instituição"></div>
+      </div>
+      <div class="field"><label>Experiências (uma por linha — estágios, projetos, trabalhos voluntários)</label>
+        <textarea id="f-exp" placeholder="Ex: Organizei uma festa beneficente na faculdade">${esc(d.experiencias.join('\n'))}</textarea></div>
+      <div class="field"><label>Cursos complementares já feitos (separados por vírgula)</label>
+        <input id="f-cursos" value="${esc(d.cursosComp.join(', '))}" placeholder="Ex: Excel, Inglês intermediário"></div>
+      <label class="checkbox-row">
+        <input type="checkbox" id="f-confirmar-email">
+        <span>Quero receber uma confirmação de cadastro por e-mail <span class="muted-inline">(abre seu aplicativo de e-mail para você enviar)</span></span>
+      </label>
+      <button class="btn" id="dados-continue">Continuar para o diagnóstico</button>
+    </div>`;
+  document.getElementById('dados-continue').addEventListener('click', () => {
+    const nome = val('f-nome').trim(), email = val('f-email').trim(), funcao = val('f-funcao').trim();
+    const errBox = document.getElementById('dados-erro');
+    const faltando = [];
+    if(!nome) faltando.push('Nome');
+    if(!email || !/^\S+@\S+\.\S+$/.test(email)) faltando.push('E-mail válido');
+    if(!funcao) faltando.push('Função ou área desejada');
+    if(faltando.length){
+      errBox.textContent = 'Antes de continuar, preencha: ' + faltando.join(', ') + '.';
+      errBox.classList.remove('hidden');
+      errBox.scrollIntoView({ behavior:'smooth', block:'center' });
+      return;
+    }
+    d.nome = nome; d.email = email; d.telefone = val('f-telefone').trim();
+    d.dataNascimento = val('f-nascimento'); d.funcao = funcao;
+    d.formacao = val('f-formacao').trim(); d.instituicao = val('f-instituicao').trim();
+    d.experiencias = val('f-exp').split('\n').map(s=>s.trim()).filter(Boolean);
+    d.cursosComp = val('f-cursos').split(',').map(s=>s.trim()).filter(Boolean);
+    if(document.getElementById('f-confirmar-email').checked){
+      const assunto = encodeURIComponent('Confirmação de cadastro — Farol.IA');
+      const corpo = encodeURIComponent('Olá ' + nome + ',\n\nEste é um e-mail de confirmação do seu cadastro no Farol.IA, gerado a partir dos dados que você preencheu (' + email + ').\n\nSe você reconhece este cadastro, é só enviar este e-mail para si mesmo(a) como registro.\n\n— Farol.IA');
+      window.location.href = 'mailto:' + encodeURIComponent(email) + '?subject=' + assunto + '&body=' + corpo;
+      state.emailConfirmado = true;
+    }
+    goPerfilStep(1);
+  });
+}
+ 
+let quizIndex = 0;
+function renderDiagnostico(box, dots){
+  if(quizIndex >= QUESTIONS.length) quizIndex = state.quiz.length;
+  const q = QUESTIONS[quizIndex];
+  const stepDots = QUESTIONS.map((_,i) => `<div class="dot ${i<quizIndex?'done':i===quizIndex?'now':''}"></div>`).join('');
+  box.innerHTML = `
+    <div class="panel">
+      <div class="dots">${stepDots}</div>
+      <div class="section-head"><h2>Diagnóstico IA</h2><span class="hint">Pergunta ${quizIndex+1} de ${QUESTIONS.length}</span></div>
+      <div class="quiz-q">${q.q}</div>
+      <div class="quiz-opts">${q.opts.map((o,i) => `<button class="quiz-opt" data-d="${o.d}">${o.t}</button>`).join('')}</div>
+    </div>`;
+  box.querySelectorAll('.quiz-opt').forEach(btn => btn.addEventListener('click', () => {
+    state.quiz[quizIndex] = btn.dataset.d;
+    quizIndex++;
+    if(quizIndex >= QUESTIONS.length){
+      const counts = {c:0,a:0,m:0,o:0};
+      state.quiz.forEach(d => counts[d]++);
+      state.persona = Object.keys(counts).sort((x,y) => counts[y]-counts[x])[0];
+      quizIndex = 0;
+      goPerfilStep(2);
+    } else {
+      saveState();
+      renderPerfil();
+    }
+  }));
+}
+ 
+function renderPotencial(box, dots){
+  box.innerHTML = `
+    <div class="panel">
+      <div class="dots">${dots}</div>
+      <div class="section-head"><h2>Descoberta de potencial</h2><span class="hint">Conte algo que você já realizou</span></div>
+      <div class="field"><textarea id="f-potencial" placeholder="Ex: Ajudei a organizar uma festa beneficente na faculdade, cuidando do cronograma e da comunicação com os fornecedores.">${esc(state.potencialTexto)}</textarea></div>
+      <button class="btn" id="potencial-continue">Analisar e ver meu perfil</button>
+    </div>`;
+  document.getElementById('potencial-continue').addEventListener('click', () => {
+    state.potencialTexto = val('f-potencial');
+    const text = (state.potencialTexto + ' ' + state.dados.experiencias.join(' ')).toLowerCase();
+    let found = [];
+    KEYWORD_MAP.forEach(entry => {
+      if(entry.k.some(k => text.includes(k)) && !found.includes(entry.comp)) found.push(entry.comp);
+    });
+    if(found.length === 0 && state.persona) found = PERSONAS[state.persona].traits.slice();
+    state.competencias = found;
+    goPerfilStep(3);
+  });
+}
+ 
+function renderPerfilResultado(box){
+  const p = personaData();
+  const s = recalcScore();
+  const doneCourses = new Set(state.cursosFeitos.map(c=>c.nome));
+  box.innerHTML = `
+    <div class="panel">
+      <div class="section-head"><h2>Seu perfil profissional</h2>
+        <span class="hint"><a href="#" id="edit-dados" style="text-decoration:underline">editar dados</a> · <a href="#" id="redo-quiz" style="text-decoration:underline">refazer diagnóstico</a></span></div>
+      <div class="persona-block">
+        <div class="persona-copy">
+          <div class="persona-name">${p.name}</div>
+          <p>${p.desc}</p>
+          <div>${state.competencias.map(c => `<span class="tag good">✓ ${c}</span>`).join('')}</div>
+          <button class="btn btn-sm" id="btn-baixar-cv" style="margin-top:6px">⬇️ Baixar meu currículo</button>
+        </div>
+        <div class="persona-traits">
+          <h4>Características</h4>
+          <div>${p.traits.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+          <h4 style="margin-top:16px">Áreas recomendadas</h4>
+          <div>${p.areas.map(a => `<span class="tag gold">${a}</span>`).join('')}</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="panel">
+      <div class="section-head"><h2>Farol Score</h2><span class="hint">Sua preparação profissional, de 0 a 100</span></div>
+      <div class="score-row">
+        <div class="gauge-wrap">${gaugeSVG(s.total)}</div>
+        <div class="score-breakdown">
+          ${scoreBar('Perfil comportamental', s.comportamental)}
+          ${scoreBar('Currículo', s.curriculo)}
+          ${scoreBar('Experiência', s.experiencia)}
+          ${scoreBar('Capacitação', s.capacitacao)}
+        </div>
+      </div>
+    </div>
+ 
+    <div class="panel">
+      <div class="section-head"><h2>Mapa de carreira</h2><span class="hint">Um caminho possível a partir de onde você está</span></div>
+      <div class="map-row">${careerMap(p)}</div>
+    </div>`;
+ 
+  document.getElementById('edit-dados').addEventListener('click', e => { e.preventDefault(); goPerfilStep(0); });
+  document.getElementById('redo-quiz').addEventListener('click', e => { e.preventDefault(); state.quiz = []; quizIndex = 0; goPerfilStep(1); });
+  document.getElementById('btn-baixar-cv').addEventListener('click', baixarCurriculo);
+}
+ 
+function slugify(s){
+  return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9]+/g,'-').replace(/(^-+|-+$)/g,'') || 'farolia';
+}
+ 
+function buildResumeHtml(job){
+  const d = state.dados;
+  const p = personaData();
+  const nome = d.nome || 'Seu nome';
+  const contatoItems = [];
+  if(d.email) contatoItems.push('✉️ ' + esc(d.email));
+  if(d.telefone) contatoItems.push('📱 ' + esc(d.telefone));
+  if(d.dataNascimento){
+    const [ano,mes,dia] = d.dataNascimento.split('-');
+    if(ano && mes && dia) contatoItems.push('🎂 ' + dia + '/' + mes + '/' + ano);
+  }
+  const contatoHtml = contatoItems.length ? contatoItems.join(' &nbsp;·&nbsp; ') : 'Complete seus dados de contato no Farol.IA';
+  const expHtml = d.experiencias.length ? d.experiencias.map(e => `<li>${esc(e)}</li>`).join('') : '<li class="muted">Adicione suas experiências no Farol.IA para completar esta seção.</li>';
+  const compList = job && job.motivos && job.motivos.length
+    ? [...job.motivos, ...state.competencias.filter(c => !job.motivos.includes(c))]
+    : state.competencias;
+  const compHtml = compList.length ? compList.map(c => `<span class="chip">${esc(c)}</span>`).join('') : '<span class="muted">Complete a Descoberta de Potencial no Farol.IA para identificar suas competências.</span>';
+  const cursos = [...d.cursosComp, ...state.cursosFeitos.map(c => c.nome)];
+  const cursosHtml = cursos.length ? cursos.map(c => `<li>${esc(c)}</li>`).join('') : '<li class="muted">Nenhum curso complementar informado ainda.</li>';
+  const personaHtml = p ? `<p class="persona-line"><strong>${esc(p.name)}</strong> — ${esc(p.desc)}</p>` : '';
+  const jobLine = job ? `<div class="job-banner">Candidatura preparada para: <strong>${esc(job.title)}</strong></div>` : '';
+ 
+  return `<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><title>Currículo — ${esc(nome)}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{font-family:'Inter',Arial,sans-serif;max-width:760px;margin:0 auto;padding:0 0 40px;color:#1e2a38;line-height:1.6;background:#fff}
+  .header{background:#0f2035;color:#fff;padding:38px 44px 30px;border-bottom:5px solid #f5a623}
+  .header h1{font-family:'Fraunces',Georgia,serif;font-size:30px;margin:0 0 4px;font-weight:600}
+  .header .funcao{color:#ffd280;font-size:15px;font-weight:600;margin-bottom:14px}
+  .header .contato{color:#c7d2e0;font-size:13.5px}
+  .job-banner{background:#fff7ea;color:#8a5a06;font-size:13px;padding:10px 44px;border-bottom:1px solid #f1e2c4}
+  .body{padding:8px 44px 0}
+  .persona-line{font-size:13.5px;color:#4a5a6c;background:#f7f3e8;border-left:3px solid #f5a623;padding:10px 14px;border-radius:0 8px 8px 0;margin-top:22px}
+  h2{font-family:'Inter',sans-serif;font-size:12.5px;text-transform:uppercase;letter-spacing:.07em;color:#8a5a06;border-bottom:2px solid #f5a623;padding-bottom:5px;margin-top:28px;font-weight:700}
+  ul{padding-left:20px;margin:8px 0}
+  li{margin-bottom:4px;font-size:14px}
+  li.muted, .muted{color:#93a0ae;font-style:italic}
+  .chip{display:inline-block;background:#fff1da;color:#8a5a06;border-radius:12px;padding:5px 13px;margin:0 6px 6px 0;font-size:12.5px;font-weight:600}
+  footer{margin-top:36px;padding:14px 44px 0;font-size:11px;color:#a3adb8;border-top:1px solid #eee}
+  @media print{ body{margin:0} .header{-webkit-print-color-adjust:exact;print-color-adjust:exact} }
+</style></head>
+<body>
+  <div class="header">
+    <h1>${esc(nome)}</h1>
+    <div class="funcao">${esc(d.funcao || '')}</div>
+    <div class="contato">${contatoHtml}</div>
+  </div>
+  ${jobLine}
+  <div class="body">
+    ${personaHtml}
+    <h2>Formação</h2>
+    <p>${esc(d.formacao || 'Não informado')}${d.instituicao ? ' — ' + esc(d.instituicao) : ''}</p>
+    <h2>Competências</h2>
+    <div>${compHtml}</div>
+    <h2>Experiências</h2>
+    <ul>${expHtml}</ul>
+    <h2>Cursos e capacitações</h2>
+    <ul>${cursosHtml}</ul>
+  </div>
+  <footer>Gerado com Farol.IA em ${new Date().toLocaleDateString('pt-BR')}</footer>
+</body></html>`;
+}
+ 
+async function baixarCurriculo(){
+  const btn = document.getElementById('btn-baixar-cv');
+  const originalText = btn ? btn.textContent : '';
+  if(btn){ btn.disabled = true; btn.textContent = 'Preparando...'; }
+  try{
+    const downloads = (window.claude && window.claude.use) ? await claude.use('downloads') : null;
+    if(!downloads){
+      alert('O download não está disponível nesta visualização. Abra o Farol.IA pelo link publicado (fora do modo de pré-visualização do chat) para baixar o currículo.');
+      return;
+    }
+    const filename = 'curriculo-' + slugify(state.dados.nome) + '.html';
+    await downloads.save({ filename, data: buildResumeHtml() });
+  }catch(e){
+    if(!e || e.code !== 'declined'){
+      alert('Não foi possível baixar agora. Tente novamente em instantes.');
+    }
+  }finally{
+    if(btn){ btn.disabled = false; btn.textContent = originalText || '⬇️ Baixar meu currículo'; }
+  }
+}
+ 
+function scoreBar(label, val){
+  return `<div class="score-item"><span>${label}</span><div class="bar-track"><div class="bar-fill" style="width:${(val/25)*100}%"></div></div><span>${val}/25</span></div>`;
+}
+ 
+function careerMap(p){
+  const area = p.areas[0];
+  const steps = [
+    {lbl:'Você', sub:p.name, you:true},
+    {lbl:'Assistente de '+area, sub:'ponto de partida'},
+    {lbl:'Analista de '+area, sub:'1–2 anos'},
+    {lbl:'Especialista em '+area, sub:'3–5 anos'},
+    {lbl:'Coordenador(a) de '+area, sub:'liderança'}
+  ];
+  return steps.map((s,i) => `
+    <div class="map-node ${s.you?'you':''}"><div class="dotm"></div><div class="lbl">${s.lbl}</div><div class="sub">${s.sub}</div></div>
+    ${i<steps.length-1 ? '<div class="map-line"></div>' : ''}`).join('');
+}
+ 
+/* =======================================================================
+   RENDER: VAGAS (Oportunidades + Candidatura Inteligente)
+======================================================================= */
+let openJobIdx = -1;
+function renderVagas(){
+  const box = document.getElementById('vagas-list');
+  if(!state.persona){
+    box.innerHTML = `<p class="empty-note">Complete seu perfil em "Meu Perfil" para ver oportunidades compatíveis com você.</p>`;
+    return;
+  }
+  const jobs = jobsSorted();
+  box.innerHTML = `
+    <div class="field" style="max-width:360px;margin-bottom:20px">
+      <label>Área de interesse</label>
+      <select id="area-select">${AREA_CATALOG.map(a => `<option value="${a.id}" ${a.id===activeAreaId()?'selected':''}>${a.label}</option>`).join('')}</select>
+    </div>
+  ` + jobs.map((j,i) => {
+    const applied = state.candidaturas.some(c => c.titulo === j.title);
+    return `
+    <div class="job ${openJobIdx===i?'open':''}" data-idx="${i}">
+      <div class="job-top">
+        <div><div class="job-title">${j.title}</div><div class="job-area">${j.area}</div>
+          <div style="margin-top:8px">${j.motivos.map(m => `<span class="tag">✓ ${m}</span>`).join('')}</div>
+        </div>
+        <div><div class="compat">${j.pct}%</div><div class="compat-lbl">compatibilidade</div></div>
+      </div>
+      <div class="job-body">
+        <p style="margin:0 0 4px">Esta vaga tem alta aderência ao seu perfil devido à sua capacidade em <strong>${j.motivos.join(' e ')}</strong>, característica valorizada em ${j.area}.</p>
+        <div class="real-links">
+          <a class="btn btn-sm btn-ghost" href="${jobSearchLinks(j).linkedin}" target="_blank" rel="noopener">Ver vagas reais no LinkedIn ↗</a>
+          <a class="btn btn-sm btn-ghost" href="${jobSearchLinks(j).indeed}" target="_blank" rel="noopener">Ver vagas reais no Indeed ↗</a>
+          <a class="btn btn-sm btn-ghost" href="${jobSearchLinks(j).vagascombr}" target="_blank" rel="noopener">Ver vagas reais no Vagas.com.br ↗</a>
+        </div>
+        <p class="hint-note">A inscrição acontece na plataforma de origem — sites de vagas não expõem suas vagas por API pública e gratuita, então levamos você direto para a busca já filtrada por esse cargo.</p>
+        <h4 style="margin:18px 0 8px;font-size:12.5px;color:var(--fog);font-family:var(--sans);font-weight:600">Antes de se candidatar</h4>
+        <ul class="steps-list" id="steps-${i}">
+          ${APPLY_STEPS.map(s => `<li class="${applied?'on':''}"><span class="chk">${applied?'✓':''}</span>${s}</li>`).join('')}
+        </ul>
+        <button class="btn btn-sm" data-apply="${i}" ${applied?'disabled':''}>${applied ? 'Candidatura preparada ✓' : '🚀 Preparar candidatura inteligente'}</button>
+        <div class="app-package" id="pkg-${i}" ${applied ? '' : 'style="display:none"'}>
+          <h4 style="margin:18px 0 8px;font-size:12.5px;color:var(--fog);font-family:var(--sans);font-weight:600">Apresentação personalizada</h4>
+          <p style="font-size:13.5px">${esc(buildApresentacao(j))}</p>
+          <h4 style="margin:14px 0 8px;font-size:12.5px;color:var(--fog);font-family:var(--sans);font-weight:600">Currículo ajustado para esta vaga</h4>
+          <div class="cv-preview">
+            <strong>${esc(state.dados.nome || 'Seu nome')}</strong> — candidatando-se a ${esc(j.title)}<br>
+            <span style="color:#6b7280;font-size:12px">${esc([state.dados.email, state.dados.telefone].filter(Boolean).join(' · ') || 'Complete seu contato em Meus Dados')}</span>
+            <div style="margin-top:8px">${j.motivos.map(m => `<span class="tag good">✓ ${esc(m)}</span>`).join('')}</div>
+          </div>
+          <button class="btn btn-sm btn-ghost" data-baixar-candidatura="${i}" style="margin-top:12px">⬇️ Baixar currículo desta candidatura</button>
+        </div>
+        <div class="integrations">
+          <p>Buscando um estágio? <a href="https://portal.ciee.org.br/quero-uma-vaga/" target="_blank" rel="noopener">Vitrine de vagas do CIEE ↗</a> · <a href="https://portal.gupy.io/job-search/" target="_blank" rel="noopener">Portal de vagas da Gupy ↗</a></p>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+ 
+  document.getElementById('area-select').addEventListener('change', e => {
+    state.areaSelecionada = e.target.value;
+    openJobIdx = -1;
+    saveState();
+    renderVagas();
+    renderMentor();
+  });
+ 
+  box.querySelectorAll('.job').forEach(el => el.addEventListener('click', e => {
+    if(e.target.closest('[data-apply]') || e.target.closest('[data-baixar-candidatura]')) return;
+    const idx = Number(el.dataset.idx);
+    openJobIdx = openJobIdx === idx ? -1 : idx;
+    renderVagas();
+  }));
+  box.querySelectorAll('[data-baixar-candidatura]').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    baixarCurriculoCandidatura(jobs[Number(btn.dataset.baixarCandidatura)], btn);
+  }));
+  box.querySelectorAll('[data-apply]').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    runApplyFlow(Number(btn.dataset.apply), jobs[Number(btn.dataset.apply)], btn);
+  }));
+}
+ 
+function jobSearchLinks(job){
+  const q = encodeURIComponent(job.title);
+  const slug = job.title.replace(/\//g, ' ').trim().replace(/\s+/g, '-');
+  return {
+    linkedin: 'https://www.linkedin.com/jobs/search/?keywords=' + q + '&location=Brasil',
+    indeed: 'https://br.indeed.com/jobs?q=' + q,
+    vagascombr: 'https://www.vagas.com.br/vagas-de-' + encodeURIComponent(slug)
+  };
+}
+ 
+function runApplyFlow(idx, job, btn){
+  btn.disabled = true;
+  const items = document.querySelectorAll('#steps-'+idx+' li');
+  let i = 0;
+  const tick = () => {
+    if(i < items.length){
+      items[i].classList.add('on');
+      items[i].querySelector('.chk').textContent = '✓';
+      i++;
+      setTimeout(tick, 480);
+    } else {
+      state.candidaturas.push({ titulo: job.title, data: new Date().toISOString() });
+      saveState();
+      renderVagas();
+      renderProgresso();
+      renderMentor();
+    }
+  };
+  tick();
+}
+ 
+function buildApresentacao(job){
+  const nome = state.dados.nome || 'Candidato(a)';
+  const motivos = job.motivos && job.motivos.length ? job.motivos.join(' e ').toLowerCase() : 'organização e comunicação';
+  return `Olá! Meu nome é ${nome} e tenho interesse na vaga de ${job.title}. Ao longo da minha trajetória, desenvolvi ${motivos}, competências que considero alinhadas com o que essa posição pede. Fico à disposição para conversar sobre como posso contribuir com a equipe.`;
+}
+ 
+async function baixarCurriculoCandidatura(job, btn){
+  const originalText = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Preparando...';
+  try{
+    const downloads = (window.claude && window.claude.use) ? await claude.use('downloads') : null;
+    if(!downloads){
+      alert('O download não está disponível nesta visualização. Abra o Farol.IA pelo link publicado (fora do modo de pré-visualização do chat) para baixar.');
+      return;
+    }
+    const filename = 'curriculo-' + slugify(state.dados.nome) + '-' + slugify(job.title) + '.html';
+    await downloads.save({ filename, data: buildResumeHtml(job) });
+  }catch(e){
+    if(!e || e.code !== 'declined') alert('Não foi possível baixar agora. Tente novamente em instantes.');
+  }finally{
+    btn.disabled = false; btn.textContent = originalText;
+  }
+}
+ 
+/* =======================================================================
+   RENDER: PROGRESSO
+======================================================================= */
+function renderProgresso(){
+  const box = document.getElementById('progresso-content');
+  const n = state.candidaturas.length;
+  const entrevistas = Math.floor(n/3);
+  const propostas = Math.floor(n/6);
+  const milestones = [
+    { label:'Perfil criado', done: !!state.persona },
+    { label:'Currículo gerado', done: !!(state.dados.nome && state.dados.email) },
+    { label:'Diagnóstico concluído', done: state.quiz.length >= QUESTIONS.length },
+    { label:'Primeira candidatura', done: n >= 1 },
+    { label:'Primeira entrevista', done: entrevistas >= 1 },
+    { label:'Próxima meta: ' + nextMission().title, done:false, next:true }
+  ];
+  box.innerHTML = `
+    <div class="stat-row">
+      <div class="stat"><div class="n">${n}</div><div class="l">candidaturas</div></div>
+      <div class="stat"><div class="n">${entrevistas}</div><div class="l">entrevistas</div></div>
+      <div class="stat"><div class="n">${propostas}</div><div class="l">propostas</div></div>
+    </div>
+    <div class="panel">
+      <div class="section-head"><h2>Linha do tempo</h2></div>
+      <div class="timeline">
+        ${milestones.map(m => `<div class="tl-item ${m.done?'done':m.next?'next':''}"><div class="tt">${m.done?'✅':m.next?'🟡':'—'} ${m.label}</div></div>`).join('')}
+      </div>
+    </div>
+    <div class="advice"><p><strong>Conselho do Farol —</strong> ${generateAdvice()}</p></div>`;
+}
+ 
+/* =======================================================================
+   RENDER: MENTOR
+======================================================================= */
+function renderMentor(){
+  const box = document.getElementById('mentor-content');
+  if(!state.persona){
+    box.innerHTML = `<p class="empty-note">Complete seu perfil para desbloquear o Mentor IA.</p>`;
+    return;
+  }
+  const p = personaData();
+  const nome = state.dados.nome ? state.dados.nome.split(' ')[0] : 'você';
+  const suggestionsPool = {
+    a:['Aprender Power BI','Praticar SQL','Montar um dashboard pessoal','Atualizar o LinkedIn'],
+    c:['Criar um portfólio visual','Atualizar o LinkedIn','Testar uma ferramenta de design','Escrever sobre um projeto seu'],
+    m:['Atualizar o LinkedIn','Praticar entrevistas','Fazer networking em um evento','Pedir uma recomendação'],
+    o:['Organizar um cronograma pessoal','Aprender gestão ágil','Atualizar o LinkedIn','Revisar suas metas do mês']
+  };
+  const sugestoes = suggestionsPool[state.persona];
+  const doneCourses = new Set(state.cursosFeitos.map(c=>c.nome));
+  const m = nextMission();
+ 
+  if(state.chatHistory.length === 0){
+    state.chatHistory.push({ role:'mentor', text:`Oi, ${nome}! Pode me perguntar sobre currículo, entrevista, LinkedIn, negociação salarial ou qualquer dúvida sobre sua carreira.` });
+    saveState();
+  }
+ 
+  box.innerHTML = `
+    <div class="mentor-msg">
+      <div class="mentor-hi">Olá, ${esc(nome)}.</div>
+      <p>${generateAdvice()} Seu perfil ${p.name.toLowerCase()} tem se mostrado consistente nas suas respostas — continue nessa direção.</p>
+    </div>
+ 
+    <div class="panel">
+      <div class="section-head"><h2>Converse com o Mentor</h2><span class="hint">Conselhos sobre currículo, entrevista, LinkedIn e mais</span></div>
+      <div class="chat-box" id="chat-box">${state.chatHistory.map(c => `<div class="chat-msg ${c.role}">${esc(c.text)}</div>`).join('')}</div>
+      <form id="chat-form" class="chat-input-row">
+        <input id="chat-input" type="text" placeholder="Ex: como me preparar para uma entrevista?" autocomplete="off">
+        <button class="btn btn-sm" type="submit">Enviar</button>
+      </form>
+    </div>
+ 
+    <div class="panel">
+      <div class="section-head"><h2>Sugestões para você</h2></div>
+      <div>${sugestoes.map(s => `<span class="suggest-chip">${s}</span>`).join('')}</div>
+    </div>
+ 
+    <div class="panel">
+      <div class="section-head"><h2>Cursos gratuitos recomendados</h2><span class="hint">A partir da sua área e das suas lacunas, com destino direto para a inscrição</span></div>
+      <div class="field" style="max-width:360px;margin-bottom:16px">
+        <label>Área de interesse</label>
+        <select id="area-select-mentor">${AREA_CATALOG.map(a => `<option value="${a.id}" ${a.id===activeAreaId()?'selected':''}>${a.label}</option>`).join('')}</select>
+      </div>
+      <div>${allCoursesForMentor().map(c => `
+        <div class="course">
+          <div><div class="cname">${c.nome}</div><div class="cimpact">${esc(c.provedor)} · Impacto: +${c.impacto} pontos</div></div>
+          <div class="course-actions">
+            <a class="btn btn-sm btn-ghost" href="${c.url}" target="_blank" rel="noopener">Fazer curso gratuito ↗</a>
+            <button class="btn btn-sm ${doneCourses.has(c.nome)?'btn-ghost':''}" data-course="${esc(c.nome)}" data-impact="${c.impacto}" ${doneCourses.has(c.nome)?'disabled':''}>
+              ${doneCourses.has(c.nome) ? 'Concluído ✓' : 'Marcar como concluído'}
+            </button>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>
+ 
+    <div class="mission-card">
+      <div class="flag">próxima missão</div>
+      <h3>🎯 ${m.title}</h3>
+      <p style="margin:0">Impacto estimado: +${m.impact} pontos no Farol Score</p>
+    </div>`;
+ 
+  box.querySelectorAll('[data-course]').forEach(btn => btn.addEventListener('click', () => {
+    state.cursosFeitos.push({ nome: btn.dataset.course, impacto: Number(btn.dataset.impact) });
+    saveState();
+    renderMentor();
+  }));
+ 
+  const chatForm = document.getElementById('chat-form');
+  chatForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const inp = document.getElementById('chat-input');
+    sendMentorMessage(inp.value);
+    inp.value = '';
+  });
+  const cb = document.getElementById('chat-box');
+  cb.scrollTop = cb.scrollHeight;
+ 
+  document.getElementById('area-select-mentor').addEventListener('change', e => {
+    state.areaSelecionada = e.target.value;
+    saveState();
+    renderMentor();
+    renderVagas();
+  });
+}
+ 
+function sendMentorMessage(raw){
+  const text = raw.trim();
+  if(!text) return;
+  state.chatHistory.push({ role:'user', text });
+  state.chatHistory.push({ role:'mentor', text: generateMentorReply(text) });
+  if(state.chatHistory.length > 40) state.chatHistory = state.chatHistory.slice(-40);
+  saveState();
+  renderMentor();
+  const inp = document.getElementById('chat-input');
+  if(inp) inp.focus();
+}
+ 
+/* =======================================================================
+   UTIL + INIT
+======================================================================= */
+function val(id){ return document.getElementById(id).value; }
+function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+ 
+function renderAll(){
+  renderHome();
+  renderPerfil();
+  renderVagas();
+  renderProgresso();
+  renderMentor();
+}
+ 
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme', state.tema === 'claro' ? 'claro' : 'escuro');
+}
+ 
+function initSettings(){
+  applyTheme();
+  const themeSelect = document.getElementById('theme-select');
+  themeSelect.value = state.tema;
+  themeSelect.addEventListener('change', e => {
+    state.tema = e.target.value === 'claro' ? 'claro' : 'escuro';
+    saveState();
+    applyTheme();
+  });
+  const btn = document.getElementById('btn-settings');
+  const panel = document.getElementById('settings-panel');
+  btn.addEventListener('click', e => { e.stopPropagation(); panel.classList.toggle('hidden'); });
+  document.addEventListener('click', e => {
+    if(!panel.classList.contains('hidden') && !e.target.closest('#settings-wrap')) panel.classList.add('hidden');
+  });
+}
+ 
+initSettings();
+renderAll();
+</script>
+</body>
+</html>
+ 
