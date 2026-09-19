@@ -1,33 +1,546 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Farol.IA — carreira com direção</title>
-<style>
-:root{--bg:#f5f8fb;--surface:#fff;--surface2:#eef4f8;--ink:#10283f;--ink2:#163b59;--text:#17324a;--muted:#71889c;--line:#dce7f0;--gold:#f5a623;--gold2:#ffd98a;--ok:#157347;--danger:#b42318;--shadow:#10283f18}body.dark{--bg:#071522;--surface:#102840;--surface2:#173a56;--ink:#edf5ff;--ink2:#ffd98a;--text:#edf5ff;--muted:#a9bdd1;--line:#2d4b68;--shadow:#0005}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px system-ui,-apple-system,"Segoe UI",sans-serif;transition:.2s}header{position:sticky;top:0;z-index:10;background:var(--ink);box-shadow:0 8px 25px #0002}.top{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{font-size:1.45rem;font-weight:900;color:var(--gold2);letter-spacing:-.04em}.brand small{display:block;color:#b8ccdc;font-size:.66rem;letter-spacing:.08em}.nav{display:flex;flex-wrap:wrap;gap:7px}.nav button,.btn,.theme{border:0;border-radius:11px;padding:10px 14px;cursor:pointer;font:inherit;font-weight:750;transition:.2s}.nav button{background:#fff2;color:#fff}.nav button.active,.btn.primary{background:var(--gold);color:#172b3b}.btn.secondary,.theme{background:var(--surface2);color:var(--text)}.btn.dark{background:var(--ink);color:#fff}.nav button:hover,.btn:hover,.theme:hover{transform:translateY(-1px);filter:brightness(1.06)}main{max-width:1180px;margin:auto;padding:28px 18px 65px}.screen{display:none}.screen.active{display:block;animation:up .22s ease}@keyframes up{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}.hero{padding:clamp(28px,6vw,70px);border-radius:24px;background:linear-gradient(120deg,#10283f,#205273);color:#fff;box-shadow:0 20px 45px var(--shadow)}.tag,.eyebrow{color:var(--gold);font-weight:800;text-transform:uppercase;font-size:.74rem;letter-spacing:.1em}.hero h1{font-size:clamp(2.4rem,6vw,5rem);line-height:.98;max-width:760px;margin:16px 0}.hero p{max-width:680px;color:#d3e3ef;line-height:1.7}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.cards,.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card,.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:21px;box-shadow:0 10px 28px var(--shadow)}.panel{margin-top:18px}.card h3,.panel h2{margin-top:0;color:var(--ink2)}.muted,.meta{color:var(--muted);line-height:1.6}.field{display:flex;flex-direction:column;gap:7px;margin:12px 0}.field label{font-weight:750}.field input,.field textarea,.field select{border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--surface);color:var(--text);font:inherit}.field textarea{min-height:115px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid #f5a62344;border-color:var(--gold)}.req{color:var(--danger)}.notice{padding:13px 15px;border-radius:11px;margin:14px 0;background:#e8f7ef;color:var(--ok);border:1px solid #a9dfc0}.notice.bad{background:#fff0ef;color:var(--danger);border-color:#f0b6b1}.dark .notice{background:#173e30;color:#d9f8e7;border-color:#347c5c}.job{padding:18px;border:1px solid var(--line);border-radius:15px;margin-top:12px;background:var(--surface2)}.job h3{margin:0 0 5px;color:var(--ink2)}.checkgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}.check{padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--surface2)}.resume{display:grid;grid-template-columns:235px 1fr;background:#fff;color:#17324a;border-radius:4px;overflow:hidden;margin-top:20px;box-shadow:0 18px 40px var(--shadow)}.resume aside{background:#10283f;color:#fff;padding:30px 23px}.resume aside h1{font-size:1.85rem;line-height:1.08;margin:0 0 8px}.resume aside p{color:#c9dae8;font-size:.86rem;line-height:1.55;word-break:break-word}.resume aside h4{color:var(--gold2);margin:25px 0 7px}.resume article{padding:34px}.resume article h2{color:#163b59;border-bottom:2px solid var(--gold);padding-bottom:8px;margin-top:0}.resume article h3{color:#163b59;margin:25px 0 7px}.resume article p{color:#38546b;line-height:1.65}.pill{display:inline-block;background:#fff0c8;color:#76500b;padding:5px 9px;border-radius:30px;margin:3px;font-size:.8rem;font-weight:700}.history{padding:16px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:15px}.status{background:#e8f7ef;color:var(--ok);padding:5px 9px;border-radius:20px;font-size:.76rem;font-weight:800;white-space:nowrap}.toast{position:fixed;right:18px;bottom:18px;z-index:30;background:#143e2b;color:#fff;padding:14px 17px;border-radius:12px;display:none;box-shadow:0 15px 30px #0003}.toast.show{display:block}code{color:var(--gold)}@media(max-width:760px){.top{flex-direction:column;align-items:flex-start}.nav{width:100%}.nav button{flex:1}.cards,.grid{grid-template-columns:1fr}.resume{grid-template-columns:1fr}.resume article{padding:24px 20px}.history{flex-direction:column}.hero h1{font-size:clamp(2.4rem,13vw,4rem)}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Farol.IA — carreira com direção</title>
+  <style>
+    :root {
+      --bg: #f3f6fb;
+      --surface: #ffffff;
+      --surface-2: #edf3f9;
+      --ink: #10283f;
+      --ink-2: #163b59;
+      --text: #17324a;
+      --muted: #71889c;
+      --line: #dce7f0;
+      --gold: #f5a623;
+      --gold-2: #ffd98a;
+      --ok: #157347;
+      --danger: #b42318;
+      --shadow: rgba(16,40,63,.12);
+    }
+
+    body.dark {
+      --bg: #02070d;
+      --surface: #0b121a;
+      --surface-2: #101b27;
+      --ink: #edf7ff;
+      --ink-2: #dfeaf7;
+      --text: #edf7ff;
+      --muted: #9db1c5;
+      --line: #1f2d3d;
+      --gold: #f5a623;
+      --gold-2: #ffd98a;
+      --ok: #4ad79a;
+      --danger: #ff7d73;
+      --shadow: rgba(0, 0, 0, .72);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, sans-serif; background: var(--bg); color: var(--text); transition: .2s ease; }
+    body { min-height: 100vh; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+
+    header { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    body.dark header { background: rgba(7,10,14,.8); }
+    .top {
+      max-width: 1180px; margin: auto; padding: 14px 20px 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .brand { font-size: 1.45rem; font-weight: 900; letter-spacing: -.04em; color: var(--gold-2); }
+    .brand small { display: block; color: var(--muted); font-size: .66rem; letter-spacing: .08em; }
+    .nav { display: flex; flex-wrap: wrap; gap: 8px; }
+    .nav button, .btn, .theme-btn {
+      border: 0; border-radius: 12px; padding: 10px 14px; cursor: pointer; transition: .2s; font-weight: 700;
+    }
+    .nav button {
+      background: transparent; color: var(--ink);
+    }
+    .nav button.active, .nav button:hover, .theme-btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .nav button.active { background: var(--gold); color: #172b3c; }
+    .theme-btn { background: var(--surface-2); color: var(--text); }
+
+    main { max-width: 1180px; margin: auto; padding: 28px 20px 68px; }
+    .screen { display: none; }
+    .screen.active { display: block; animation: up .22s ease; }
+    @keyframes up { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+    .hero { padding: 28px 28px 32px; border-radius: 24px; background: linear-gradient(120deg, #10283f, #205273); color: white; box-shadow: 0 20px 45px var(--shadow); }
+    .tag, .eyebrow { color: var(--gold-2); font-weight: 800; text-transform: uppercase; font-size: .74rem; letter-spacing: .1em; }
+    .hero h1 { font-size: clamp(2.4rem, 6vw, 5rem); line-height: .98; margin: 16px 0; max-width: 760px; }
+    .hero p { max-width: 680px; color: rgba(255,255,255,.9); line-height: 1.7; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+    .btn.primary { background: var(--gold); color: #172b3c; }
+    .btn.secondary { background: var(--surface-2); color: var(--ink); }
+
+    .cards, .grid { display: grid; gap: 16px; }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 26px; }
+    .card, .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 21px; box-shadow: 0 10px 28px var(--shadow); }
+    .card h3, .panel h2 { margin: 0 0 10px; color: var(--ink-2); }
+    .card p, .panel p { color: var(--muted); line-height: 1.6; }
+
+    .panel { margin-top: 18px; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .field { display: flex; flex-direction: column; gap: 7px; margin: 12px 0; }
+    .field label { font-weight: 700; }
+    .field input, .field select, .field textarea {
+      border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: var(--surface); color: var(--text); font: inherit;
+    }
+    .field textarea { min-height: 115px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: 3px solid rgba(245,166,35,.35); border-color: var(--gold); }
+
+    .meta { color: var(--muted); line-height: 1.6; }
+    .status { background: #e8f7ef; color: var(--ok); padding: 5px 9px; border-radius: 20px; font-size: .76rem; font-weight: 800; white-space: nowrap; }
+    .history { padding: 16px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; }
+    .job, .history-item { padding: 18px; border: 1px solid var(--line); border-radius: 15px; background: var(--surface-2); margin-top: 12px; }
+    .job h3 { margin: 0; }
+
+    .toast {
+      position: fixed; right: 18px; bottom: 18px; z-index: 30; background: #143e2b; color: white; padding: 14px 17px; border-radius: 12px; display: none; box-shadow: 0 15px 30px rgba(0,0,0,.3);
+    }
+    .toast.show { display: block; }
+
+    @media (max-width: 760px) {
+      .top { flex-direction: column; align-items: flex-start; }
+      .nav { width: 100%; }
+      .cards, .grid { grid-template-columns: 1fr; }
+      .hero { padding: 22px 20px 26px; }
+    }
+  </style>
 </head>
 <body>
-<header><div class="top"><div class="brand">farol.ia<small>carreira com direção</small></div><nav class="nav"><button data-tab="home">Início</button><button data-tab="perfil">Meu perfil</button><button data-tab="vagas">Vagas</button><button data-tab="curriculo">Currículo</button><button data-tab="historico">Histórico</button><button id="themeToggle" class="theme" type="button" aria-label="Alternar tema">☀️ Claro</button></nav></div></header>
-<main><section id="home" class="screen"></section><section id="perfil" class="screen"></section><section id="vagas" class="screen"></section><section id="curriculo" class="screen"></section><section id="historico" class="screen"></section></main><div id="toast" class="toast"></div>
-<script>
-'use strict';
-const API='/api';const areas=['Administração e Finanças','Agricultura e Meio Ambiente','Artes e Design','Atendimento e Serviços','Beleza e Estética','Comunicação e Marketing','Construção Civil','Educação e Formação','Gastronomia e Hotelaria','Informática e Tecnologia','Saúde e Bem-Estar','Vendas e Comercial'];
-const jobs=[['Assistente Administrativo','Administração e Finanças',['Excel Básico','Administração']],['Assistente de Marketing','Comunicação e Marketing',['Marketing Digital','Redes Sociais']],['Suporte Técnico','Informática e Tecnologia',['Excel Básico','Fundamentos de TI']],['Atendente de Serviços','Atendimento e Serviços',['Atendimento ao Cliente','Liderança de Equipe']],['Consultor de Vendas','Vendas e Comercial',['Vendas Consultivas','Negociação']],['Técnico de Enfermagem','Saúde e Bem-Estar',['Primeiros Socorros','Atendimento em Saúde']]].map(([name,area,req])=>({name,area,req}));
-const courses={'Administração e Finanças':['Excel Básico','Administração'],'Comunicação e Marketing':['Marketing Digital','Redes Sociais'],'Informática e Tecnologia':['Excel Básico','Fundamentos de TI'],'Atendimento e Serviços':['Atendimento ao Cliente','Liderança de Equipe'],'Vendas e Comercial':['Vendas Consultivas','Negociação'],'Saúde e Bem-Estar':['Primeiros Socorros','Atendimento em Saúde']};const links={'Excel Básico':'https://www.ev.org.br/cursos','Administração':'https://www.sebrae.com.br/sites/PortalSebrae/curso','Marketing Digital':'https://www.sebrae.com.br/sites/PortalSebrae/curso','Redes Sociais':'https://www.ev.org.br/cursos','Fundamentos de TI':'https://www.ev.org.br/cursos','Atendimento ao Cliente':'https://www.ev.org.br/cursos','Liderança de Equipe':'https://www.sebrae.com.br/sites/PortalSebrae/curso','Vendas Consultivas':'https://www.sebrae.com.br/sites/PortalSebrae/curso','Negociação':'https://www.ev.org.br/cursos','Primeiros Socorros':'https://www.ev.org.br/cursos','Atendimento em Saúde':'https://www.sebrae.com.br/sites/PortalSebrae/curso'};
-const blank={nome:'',email:'',telefone:'',dataNascimento:'',formacao:'',instituicao:'',funcao:'',area:'',experiencias:'',idiomas:'',cursos:'',cursosSalvos:[],candidaturas:[]};let state={...blank};let selectedJob=null;const $=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function toast(text,bad=false){const n=$('toast');n.textContent=text;n.style.background=bad?'#8e2c25':'#143e2b';n.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>n.classList.remove('show'),4000)}
-async function request(path,options={}){const r=await fetch(API+path,{headers:{'Content-Type':'application/json'},...options});if(!r.ok)throw new Error(await r.text()||'Falha no servidor');return r.status===204?null:r.json()}
-async function loadData(){if(!state.email)return;try{const d=await request('/profile?email='+encodeURIComponent(state.email));if(d.profile)state={...blank,...d.profile,candidaturas:d.applications||[]};renderProfile()}catch(e){toast('Não foi possível carregar os dados do servidor.',true)}}
-async function saveProfile(){try{const d=await request('/profile',{method:'PUT',body:JSON.stringify(state)});state={...state,...d.profile,candidaturas:d.applications||state.candidaturas};toast('Perfil salvo no servidor!');renderProfile()}catch(e){toast('Backend indisponível. Configure /api e o Supabase.',true)}}
-function tab(name){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$(name).classList.add('active');document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===name));({home:renderHome,perfil:renderProfile,vagas:renderJobs,curriculo:renderResume,historico:renderHistory}[name])()}document.querySelectorAll('[data-tab]').forEach(x=>x.onclick=()=>tab(x.dataset.tab));
-function renderHome(){$('home').innerHTML='<div class="hero"><span class="tag">🧭 mentor digital de carreira</span><h1>Um currículo forte abre portas.</h1><p>Crie uma apresentação profissional, adapte seu currículo às vagas e acompanhe cada candidatura em um só lugar.</p><div class="actions"><button class="btn primary" onclick="tab(\'perfil\')">Montar meu perfil</button><button class="btn secondary" onclick="tab(\'vagas\')">Explorar vagas</button></div></div><div class="cards"><div class="card"><h3>CV profissional</h3><p class="muted">Layout completo, legível e pronto para PDF.</p></div><div class="card"><h3>Candidatura inteligente</h3><p class="muted">Veja sua aderência e os cursos gratuitos recomendados.</p></div><div class="card"><h3>Seu estilo</h3><p class="muted">Escolha entre o tema claro e o tema escuro quando quiser.</p></div></div>'}
-function renderProfile(){const defs=[['nome','Nome completo','text'],['email','E-mail','email'],['telefone','Telefone','tel'],['dataNascimento','Data de nascimento','date'],['formacao','Formação','text'],['instituicao','Instituição','text'],['funcao','Função desejada','text'],['area','Área de interesse','select'],['experiencias','Experiências e competências','textarea'],['idiomas','Idiomas','text'],['cursos','Cursos realizados (separe por vírgulas)','text']];const fields=defs.map(([key,label,type])=>{const req=['nome','email','funcao','area'].includes(key);const star=req?' <span class="req">*</span>':'';const value=state[key]||'';if(type==='select')return `<div class="field"><label>${label}${star}</label><select id="f_${key}"${req?' required':''}><option value="">Selecione</option>${areas.map(a=>`<option value="${esc(a)}" ${a===value?'selected':''}>${esc(a)}</option>`).join('')}</select></div>`;if(type==='textarea')return `<div class="field" style="grid-column:1/-1"><label>${label}${star}</label><textarea id="f_${key}"${req?' required':''}>${esc(value)}</textarea></div>`;return `<div class="field"><label>${label}${star}</label><input id="f_${key}" type="${type}" value="${esc(value)}"${req?' required':''}></div>`}).join('');const list=courses[state.area]||[];$('perfil').innerHTML=`<div class="panel"><span class="eyebrow">Meu espaço</span><h2>Seu perfil profissional</h2><p class="muted">Os campos com <span class="req">*</span> são obrigatórios. Seus dados são enviados ao backend configurado em <code>/api</code>.</p><form id="profileForm"><div class="grid">${fields}</div><h3>Meus cursos</h3><div class="checkgrid" id="courseChecks">${list.map(name=>`<label class="check"><input type="checkbox" value="${esc(name)}" ${(state.cursosSalvos||[]).includes(name)?'checked':''}> ${esc(name)}</label>`).join('')||'<span class="muted">Escolha uma área para ver cursos.</span>'}</div><div class="actions"><button class="btn primary">Salvar no servidor</button><button type="button" class="btn secondary" onclick="tab(\'curriculo\')">Ver currículo</button></div></form></div>`;$('f_area').onchange=()=>renderProfile();$('profileForm').onsubmit=async e=>{e.preventDefault();if(!e.target.reportValidity())return;defs.forEach(([key])=>state[key]=$('f_'+key).value.trim());state.cursosSalvos=[...$('courseChecks').querySelectorAll('input:checked')].map(x=>x.value);await saveProfile()};if(state.email)loadData()}
-function missing(job){const text=(`${state.experiencias} ${state.cursos} ${state.funcao} ${(state.cursosSalvos||[]).join(' ')}`).toLowerCase();return job.req.filter(x=>!text.includes(x.toLowerCase()))}
-async function saveApplication(job,status='Candidatura iniciada'){try{const d=await request('/applications',{method:'POST',body:JSON.stringify({email:state.email,job,missing:missing(job),status})});state.candidaturas=d.applications||state.candidaturas;toast(status==='Salva'?'Vaga salva no histórico.':'Candidatura registrada!');return true}catch(e){toast('Não foi possível salvar a candidatura.',true);return false}}
-async function apply(job){if(!state.nome||!state.email||!state.funcao||!state.area){toast('Complete seu perfil antes de se candidatar.',true);return tab('perfil')}if(await saveApplication(job)){selectedJob=job;tab('curriculo')}}
-function renderJobs(){if(!state.email||!state.area){$('vagas').innerHTML='<div class="panel"><h2>Vagas recomendadas</h2><p class="muted">Complete e salve seu perfil para receber oportunidades.</p><button class="btn primary" onclick="tab(\'perfil\')">Ir para o perfil</button></div>';return}const list=jobs.filter(j=>j.area===state.area);$('vagas').innerHTML=`<div class="panel"><span class="eyebrow">Próximo passo</span><h2>Vagas para você</h2><p class="muted">Adapte o currículo ou salve a oportunidade para acompanhar depois.</p>${list.map(j=>`<article class="job"><h3>${esc(j.name)}</h3><span class="meta">${esc(j.area)} · Requisitos: ${j.req.map(esc).join(', ')}</span><p class="muted">${missing(j).length?'Cursos a desenvolver: '+missing(j).join(', '):'Seu perfil contempla os principais requisitos.'}</p><div class="actions"><button class="btn primary" onclick='apply(${JSON.stringify(j).replace(/"/g,'&quot;')})'>Candidatar com CV adaptado</button><button class="btn secondary" onclick='saveApplication(${JSON.stringify(j).replace(/"/g,'&quot;')},"Salva")'>Salvar vaga</button></div></article>`).join('')}</div>`}
-function renderResume(){const job=selectedJob,miss=job?missing(job):[];$('curriculo').innerHTML=`<div class="panel"><span class="eyebrow">Apresentação profissional</span><h2>${job?'CV adaptado para '+esc(job.name):'Seu CV profissional'}</h2><p class="muted">Use “Baixar / imprimir PDF” e escolha “Salvar como PDF”.</p>${miss.length?`<div class="notice bad"><b>Recomendação para a vaga:</b> ${miss.map(x=>`<a href="${links[x]||'https://www.ev.org.br/cursos'}" target="_blank">${esc(x)}</a>`).join(' · ')}</div>`:''}<div class="resume" id="resumeBox"><aside><h1>${esc(state.nome||'Seu nome')}</h1><p>${esc(state.funcao||'Profissional')}</p><h4>Contato</h4><p>${esc(state.email||'seuemail@email.com')}<br>${esc(state.telefone||'')}</p><h4>Área</h4><p>${esc(state.area||'Área profissional')}</p><h4>Idiomas</h4><p>${esc(state.idiomas||'Não informado')}</p></aside><article><h2>Resumo profissional</h2><p>Profissional com foco em <b>${esc(state.funcao||'carreira')}</b>, interessado(a) em oportunidades de ${esc(state.area||'desenvolvimento')}. ${esc(state.experiencias||'Perfil motivado, organizado e pronto para aprender.')}</p><h3>Formação</h3><p>${esc(state.formacao||'Não informada')}${state.instituicao?' · '+esc(state.instituicao):''}</p><h3>Experiências e competências</h3><p>${esc(state.experiencias||'Não informadas')}</p><h3>Cursos</h3><p>${(state.cursosSalvos||[]).concat((state.cursos||'').split(',').map(x=>x.trim()).filter(Boolean)).map(x=>`<span class="pill">${esc(x)}</span>`).join('')||'Não informados'}</p></article></div><div class="actions"><button class="btn primary" onclick="printResume()">Baixar / imprimir PDF</button><button class="btn secondary" onclick="tab('perfil')">Editar dados</button></div></div>`}
-function printResume(){const box=$('resumeBox');if(!box)return toast('Preencha seu perfil primeiro.',true);const w=window.open('','_blank');w.document.write(`<html><head><title>CV - ${esc(state.nome)}</title><style>body{font:14px Arial;color:#17324a;margin:0}.resume{display:grid;grid-template-columns:235px 1fr}.resume aside{background:#10283f;color:#fff;padding:30px}.resume article{padding:34px}.resume h2,.resume h3{color:#163b59;border-bottom:2px solid #f5a623;padding-bottom:7px}.resume aside h1,.resume aside h4{color:#ffd98a}.resume p{line-height:1.6}</style></head><body>${box.outerHTML}<script>onload=()=>print()<\/script></body></html>`);w.document.close()}
-async function renderHistory(){if(!state.email){$('historico').innerHTML='<div class="panel"><h2>Histórico de candidaturas</h2><p class="muted">Salve seu perfil para consultar seu histórico.</p></div>';return}try{const d=await request('/applications?email='+encodeURIComponent(state.email));state.candidaturas=d.applications||[];$('historico').innerHTML=`<div class="panel"><span class="eyebrow">Acompanhe seus passos</span><h2>Histórico de candidaturas</h2><p class="muted">Vagas e candidaturas salvas no servidor.</p>${state.candidaturas.length?state.candidaturas.map(a=>`<div class="history"><div><b>${esc(a.job?.name||a.name||'Vaga')}</b><div class="meta">${esc(a.job?.area||a.area||'')} · ${new Date(a.created_at||a.date||Date.now()).toLocaleDateString('pt-BR')}</div></div><span class="status">${esc(a.status||'Salva')}</span></div>`).join(''):'<p class="muted">Nenhuma candidatura registrada ainda.</p>'}</div>`}catch(e){$('historico').innerHTML='<div class="panel"><h2>Histórico indisponível</h2><p class="muted">Configure o backend para consultar candidaturas.</p></div>'}}
-function setTheme(theme){document.body.classList.toggle('dark',theme==='dark');localStorage.setItem('farol-theme',theme);$('themeToggle').textContent=theme==='dark'?'🌙 Escuro':'☀️ Claro'}$('themeToggle').onclick=()=>setTheme(document.body.classList.contains('dark')?'light':'dark');setTheme(localStorage.getItem('farol-theme')||'light');renderHome();
-</script></body></html>
+  <header>
+    <div class="top">
+      <div class="brand">farol.ia<small>carreira com direção</small></div>
+      <nav class="nav">
+        <button data-tab="home" class="active">Início</button>
+        <button data-tab="perfil">Meu perfil</button>
+        <button data-tab="vagas">Vagas</button>
+        <button data-tab="curriculo">Currículo</button>
+        <button data-tab="historico">Histórico</button>
+        <button id="themeToggle" class="theme-btn" type="button" aria-label="Alternar tema">☀️ Claro</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="screen active"></section>
+    <section id="perfil" class="screen"></section>
+    <section id="vagas" class="screen"></section>
+    <section id="curriculo" class="screen"></section>
+    <section id="historico" class="screen"></section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    'use strict';
+
+    const API = '/api';
+    const areas = ['Administração e Finanças','Agricultura e Meio Ambiente','Artes e Design','Atendimento e Serviços','Beleza e Estética','Comunicação e Marketing','Construção Civil','Educação e Formação','Gastronomia e Hotelaria','Informática e Tecnologia','Saúde e Bem-Estar','Vendas e Comercial'];
+    const jobs = [
+      ['Assistente Administrativo','Administração e Finanças',['Excel Básico','Administração']],
+      ['Assistente de Marketing','Comunicação e Marketing',['Marketing Digital','Redes Sociais']],
+      ['Suporte Técnico','Informática e Tecnologia',['Excel Básico','Fundamentos de TI']],
+      ['Atendente de Serviços','Atendimento e Serviços',['Atendimento ao Cliente','Liderança de Equipe']],
+      ['Consultor de Vendas','Vendas e Comercial',['Vendas Consultivas','Negociação']],
+      ['Técnico de Enfermagem','Saúde e Bem-Estar',['Primeiros Socorros','Atendimento em Saúde']],
+    ];
+
+    const blank = {
+      nome: '',
+      email: '',
+      telefone: '',
+      dataNascimento: '',
+      formacao: '',
+      instituicao: '',
+      funcao: '',
+      area: '',
+      experiencias: '',
+      idiomas: '',
+      cursos: '',
+      cursosSalvos: [],
+      candidaturas: []
+    };
+
+    let state = { ...blank };
+    let selectedJob = null;
+
+    const esc = (v = '') => String(v)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+
+    const $ = (id) => document.getElementById(id);
+
+    function toast(text, bad = false) {
+      const n = $('toast');
+      n.textContent = text;
+      n.style.background = bad ? '#8e2c25' : '#143e2b';
+      n.classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => n.classList.remove('show'), 2200);
+    }
+
+    async function request(path, options = {}) {
+      const r = await fetch(API + path, {
+        headers: { 'Content-Type': 'application/json' },
+        ...options
+      });
+
+      if (!r.ok) {
+        const txt = await r.text();
+        throw new Error(txt || 'Falha no servidor');
+      }
+
+      return r.status === 204 ? null : r.json();
+    }
+
+    function setTheme(theme) {
+      const dark = theme === 'dark';
+      document.body.classList.toggle('dark', dark);
+      localStorage.setItem('farol-theme', theme);
+
+      const toggle = $('themeToggle');
+      if (toggle) toggle.textContent = dark ? '🌙 Dark' : '☀️ Claro';
+    }
+
+    function loadTheme() {
+      const saved = localStorage.getItem('farol-theme') || 'light';
+      setTheme(saved);
+    }
+
+    async function loadData() {
+      if (!state.email) return;
+      try {
+        const d = await request('/profile?email=' + encodeURIComponent(state.email));
+        if (d && d.profile) {
+          state = { ...blank, ...d.profile, candidaturas: d.applications || [] };
+        } else {
+          state = { ...blank, email: state.email };
+        }
+        renderProfile();
+      } catch (e) {
+        toast('Não foi possível carregar o perfil.', true);
+      }
+    }
+
+    async function saveProfile() {
+      try {
+        const d = await request('/profile', {
+          method: 'PUT',
+          body: JSON.stringify(state)
+        });
+
+        if (d && d.profile) {
+          state = { ...state, ...d.profile, candidaturas: d.applications || state.candidaturas };
+        }
+
+        toast('Perfil salvo no servidor!');
+        return true;
+      } catch (e) {
+        toast('Backend indisponível. Configure /api e o Supabase.', true);
+        return false;
+      }
+    }
+
+    function tab(name) {
+      document.querySelectorAll('.screen').forEach((x) => x.classList.remove('active'));
+      const target = $(name);
+      if (target) target.classList.add('active');
+
+      document.querySelectorAll('[data-tab]').forEach((x) => {
+        x.classList.toggle('active', x.dataset.tab === name);
+      });
+
+      const map = {
+        home: renderHome,
+        perfil: renderProfile,
+        vagas: renderJobs,
+        curriculo: renderResume,
+        historico: renderHistory
+      };
+      if (map[name]) map[name]();
+    }
+
+    function renderHome() {
+      $('home').innerHTML = `
+        <div class="hero">
+          <span class="tag">🧭 mentor digital de carreira</span>
+          <h1>Um currículo forte abre portas.</h1>
+          <p>Crie uma apresentação profissional, adapte seu perfil para vagas e acompanhe seu histórico de candidaturas em um só lugar.</p>
+          <div class="actions">
+            <button class="btn primary" onclick="tab('perfil')">Montar meu perfil</button>
+            <button class="btn secondary" onclick="tab('vagas')">Explorar vagas</button>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <h3>CV profissional</h3>
+            <p>Layout completo, com foco em experiência, formação e objetivo profissional.</p>
+          </div>
+          <div class="card">
+            <h3>Candidaturas inteligentes</h3>
+            <p>Veja quais requisitos você ainda precisa alinhar para cada oportunidade.</p>
+          </div>
+          <div class="card">
+            <h3>Seu estilo</h3>
+            <p>Escolha o tema claro ou o tema escuro para uma experiência mais confortável.</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderProfile() {
+      const defs = [
+        ['nome', 'Nome completo', 'text'],
+        ['email', 'E-mail', 'email'],
+        ['telefone', 'Telefone', 'tel'],
+        ['dataNascimento', 'Data de nascimento', 'date'],
+        ['formacao', 'Formação', 'text'],
+        ['instituicao', 'Instituição', 'text'],
+        ['funcao', 'Função desejada', 'text'],
+        ['area', 'Área de interesse', 'select'],
+        ['experiencias', 'Experiências e competências', 'textarea'],
+        ['idiomas', 'Idiomas', 'text'],
+        ['cursos', 'Cursos', 'text']
+      ];
+
+      const fields = defs.map(([key, label, type]) => {
+        const value = state[key] || '';
+        const required = ['nome', 'email', 'funcao', 'area'].includes(key) ? ' required' : '';
+
+        if (type === 'select') {
+          return `
+            <div class="field">
+              <label>${label}${['nome','email','funcao','area'].includes(key) ? '<span style="color:var(--danger)">*</span>' : ''}</label>
+              <select id="f_${key}"${required} onchange="state['${key}'] = this.value.trim()">
+                <option value="">Selecione...</option>
+                ${areas.map((a) => `<option value="${esc(a)}" ${a === value ? 'selected' : ''}>${esc(a)}</option>`).join('')}
+              </select>
+            </div>
+          `;
+        }
+
+        if (type === 'textarea') {
+          return `
+            <div class="field" style="grid-column:1 / -1;">
+              <label>${label}</label>
+              <textarea id="f_${key}"${required}>${esc(value)}</textarea>
+            </div>
+          `;
+        }
+
+        return `
+          <div class="field">
+            <label>${label}</label>
+            <input id="f_${key}" type="${type}" value="${esc(value)}"${required}>
+          </div>
+        `;
+      }).join('');
+
+      $('perfil').innerHTML = `
+        <div class="panel">
+          <span class="eyebrow">Meu perfil</span>
+          <h2>Seu perfil profissional</h2>
+          <p class="meta">Os campos com * são obrigatórios.</p>
+
+          <form id="perfilForm">
+            <div class="grid">${fields}</div>
+            <div class="actions">
+              <button class="btn primary" type="submit">Salvar no servidor</button>
+              <button class="btn secondary" type="button" onclick="tab('curriculo')">Ver currículo</button>
+            </div>
+          </form>
+        </div>
+      `;
+
+      $('perfilForm').onsubmit = async (e) => {
+        e.preventDefault();
+        defs.forEach(([key]) => {
+          const el = document.getElementById('f_' + key);
+          if (!el) return;
+          state[key] = el.value.trim();
+        });
+
+        const ok = await saveProfile();
+        if (ok) renderProfile();
+      };
+    }
+
+    function missing(job) {
+      const text = `${state.experiencias || ''} ${state.cursos || ''} ${state.funcao || ''} ${(state.cursosSalvos || []).join(' ')}`.toLowerCase();
+      return (job[2] || []).filter((req) => !text.includes(req.toLowerCase()));
+    }
+
+    async function saveApplication(job, status = 'Candidatura iniciada') {
+      try {
+        const payload = {
+          email: state.email,
+          job,
+          missing: missing(job),
+          status
+        };
+
+        const d = await request('/applications', {
+          method: 'POST',
+          body: JSON.stringify(payload)
+        });
+
+        state.candidaturas = d && d.applications ? d.applications : state.candidaturas;
+        toast(status === 'Salva' ? 'Vaga salva no histórico.' : 'Candidatura registrada!');
+        return true;
+      } catch (e) {
+        toast('Não foi possível salvar a candidatura.', true);
+        return false;
+      }
+    }
+
+    async function apply(job) {
+      if (!state.nome || !state.email || !state.funcao || !state.area) {
+        toast('Complete seu perfil antes de se candidatar.', true);
+        tab('perfil');
+        return;
+      }
+
+      if (await saveApplication(job)) {
+        selectedJob = job;
+        tab('curriculo');
+      }
+    }
+
+    function renderJobs() {
+      if (!state.email || !state.area) {
+        $('vagas').innerHTML = `
+          <div class="panel">
+            <h2>Vagas recomendadas</h2>
+            <p class="meta">Complete e salve seu perfil para receber oportunidades.</p>
+            <div class="actions"><button class="btn primary" onclick="tab('perfil')">Ir para o perfil</button></div>
+          </div>
+        `;
+        return;
+      }
+
+      const list = jobs.filter((job) => job[1] === state.area);
+      $('vagas').innerHTML = `
+        <div class="panel">
+          <span class="eyebrow">Próximo passo</span>
+          <h2>Vagas para ${esc(state.area)}</h2>
+          <p class="meta">Ajuste seu currículo para cada oportunidade e salve as vagas que te interessem.</p>
+          ${list.length ? list.map((job) => `
+            <div class="job">
+              <h3>${esc(job[0])}</h3>
+              <p class="meta">${esc(job[1])} • Requisitos: ${esc(job[2].join(', '))}</p>
+              <div class="actions">
+                <button class="btn primary" onclick="apply(${JSON.stringify(job).replace(/"/g, '&quot;')})">Candidatar-se</button>
+                <button class="btn secondary" onclick="saveApplication(${JSON.stringify(job).replace(/"/g, '&quot;')}, 'Salva')">Salvar vaga</button>
+              </div>
+            </div>
+          `).join('') : '<p class="meta">Nenhuma vaga encontrada para essa área no momento.</p>'}
+        </div>
+      `;
+    }
+
+    function renderResume() {
+      const job = selectedJob;
+      const miss = job ? missing(job) : [];
+      $('curriculo').innerHTML = `
+        <div class="panel">
+          <span class="eyebrow">Apresentação profissional</span>
+          <h2>${job ? 'CV adaptado para ' + esc(job[0]) : 'Seu CV profissional'}</h2>
+          <p class="meta">Use esse resumo como base para o seu perfil.</p>
+          ${miss.length ? `
+            <div class="job" style="background:rgba(180,35,24,.05); border-color: rgba(180,35,24,.25);">
+              <b>Recomendações para a vaga:</b> ${miss.map((x) => `<span class="status">${esc(x)}</span>`).join(' ')}
+            </div>
+          ` : ''}
+
+          <div class="grid" style="margin-top:16px;">
+            <div class="card">
+              <h3>${esc(state.nome || 'Seu nome')}</h3>
+              <p>${esc(state.funcao || 'Profissão')} • ${esc(state.area || 'Área')}</p>
+              <p>${esc(state.email || 'E-mail')}</p>
+              <p>${esc(state.telefone || 'Telefone')}</p>
+            </div>
+            <div class="card">
+              <h3>Resumo</h3>
+              <p>${esc(state.experiencias || 'Adicione suas experiências e competências para destacar sua trajetória.')}</p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" onclick="window.print()">Baixar / imprimir PDF</button>
+            <button class="btn secondary" onclick="tab('perfil')">Editar dados</button>
+          </div>
+        </div>
+      `;
+    }
+
+    async function renderHistory() {
+      if (!state.email) {
+        $('historico').innerHTML = `
+          <div class="panel">
+            <h2>Histórico de candidaturas</h2>
+            <p class="meta">Salve seu perfil para consultar seu histórico.</p>
+          </div>
+        `;
+        return;
+      }
+
+      try {
+        const d = await request('/applications?email=' + encodeURIComponent(state.email));
+        state.candidaturas = (d && d.applications) || [];
+
+        $('historico').innerHTML = `
+          <div class="panel">
+            <span class="eyebrow">Acompanhamento</span>
+            <h2>Histórico de candidaturas</h2>
+            ${state.candidaturas.length ? state.candidaturas.map((a) => `
+              <div class="history-item">
+                <div><b>${esc(a.job?.nome || 'Vaga')}</b></div>
+                <div class="meta">${esc(a.job?.area || 'Área')} • ${new Date(a.created_at || Date.now()).toLocaleDateString('pt-BR')}</div>
+                <div class="status" style="display:inline-block; margin-top:8px;">${esc(a.status || 'Salva')}</div>
+              </div>
+            `).join('') : '<p class="meta">Nenhuma candidatura registrada ainda.</p>'}
+          </div>
+        `;
+      } catch (e) {
+        toast('Não foi possível buscar o histórico.', true);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTheme();
+      document.querySelectorAll('[data-tab]').forEach((button) => {
+        button.addEventListener('click', () => tab(button.dataset.tab));
+      });
+
+      $('themeToggle').addEventListener('click', () => {
+        const next = document.body.classList.contains('dark') ? 'light' : 'dark';
+        setTheme(next);
+      });
+
+      const savedEmail = localStorage.getItem('farol-email');
+      if (savedEmail) {
+        state.email = savedEmail;
+      }
+
+      renderHome();
+      renderProfile();
+      tab('home');
+
+      if (state.email) {
+        loadData();
+      }
+    });
+
+    window.addEventListener('beforeunload', () => {
+      if (state.email) localStorage.setItem('farol-email', state.email);
+    });
+  </script>
+</body>
+</html>
