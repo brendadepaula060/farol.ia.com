@@ -1,25 +1,246 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Farol.IA — mentor de carreira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0a1420;--panel:#10243b;--field:#182e49;--line:#29415d;--gold:#f5a623;--light:#ffd280;--muted:#a9b8ca}*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#0a1420,#122b47);color:#eef4fa;font:16px Arial,sans-serif;min-height:100vh}.top{position:sticky;top:0;background:#0a1420ee;border-bottom:1px solid var(--line);z-index:2}.top-inner{max-width:1050px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-size:22px;font-weight:bold;color:var(--light)}.brand small{display:block;color:var(--muted);font-size:11px;font-weight:normal}.nav{display:flex;gap:5px;overflow:auto}.nav button,.btn{border:0;border-radius:9px;padding:11px 15px;background:transparent;color:var(--muted);cursor:pointer;font-weight:bold}.nav button.active,.btn{background:var(--gold);color:#211500}.wrap{max-width:1050px;margin:auto;padding:32px 20px 70px}.screen{display:none}.screen.active{display:block}.hero,.panel{background:#10243bdd;border:1px solid var(--line);border-radius:18px;padding:clamp(22px,5vw,55px);margin-bottom:20px}.hero h1{font-size:clamp(30px,6vw,58px);max-width:720px;margin:18px 0}.hero p{max-width:600px;color:var(--muted);line-height:1.6}.tag{display:inline-block;border:1px solid #8b682c;background:#8b5b221f;color:var(--light);border-radius:99px;padding:6px 10px;font-size:12px}.head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:20px}.hint{color:var(--muted);font-size:13px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{margin-bottom:14px}.field label{display:block;color:var(--muted);font-size:13px;margin-bottom:6px}.field input,.chat-form input{width:100%;background:var(--field);border:1px solid var(--line);border-radius:9px;color:#fff;padding:13px;font:inherit}.quiz button{display:block;width:100%;text-align:left;background:var(--field);color:#fff;border:1px solid var(--line);border-radius:10px;padding:15px;margin:9px 0;cursor:pointer}.jobs,.courses{display:grid;gap:12px}.job,.course{background:var(--field);border:1px solid var(--line);border-radius:12px;padding:17px}.job h3,.course h3{margin:0 0 7px}.job p,.course p{color:var(--muted);margin:7px 0}.course a{color:var(--light);font-weight:bold}.chat{max-width:760px}.messages{max-height:390px;overflow:auto;display:grid;gap:10px;margin-bottom:12px}.bubble{background:var(--field);padding:12px 15px;border-radius:14px;max-width:90%;line-height:1.45}.bubble.user{justify-self:end;background:#76501d}.chat-form{display:flex;gap:8px}.chat-form input{flex:1}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{background:var(--field);padding:20px;border-radius:12px;color:var(--muted)}.stat b{display:block;color:#fff;font-size:30px;margin-bottom:5px}@media(max-width:650px){.top-inner{display:block}.nav{margin-top:12px}.grid{grid-template-columns:1fr}.chat-form{flex-direction:column}.stats{grid-template-columns:1fr}}
+:root{color-scheme:dark;--ink:#0a1420;--panel:#0f2035;--field:#16283e;--line:rgba(255,255,255,.1);--gold:#f5a623;--light:#ffd280;--muted:#93a5bc;--green:#5aab84;--serif:Fraunces,Georgia,serif;--sans:Inter,Arial,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(120% 100% at 15% -10%,#12253c 0%,#0b1728 55%,#091822 100%);color:#eef2f7;font-family:var(--sans);line-height:1.5}button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
+.top{position:sticky;top:0;z-index:5;background:rgba(10,20,32,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.top-inner{max-width:1040px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{font:600 22px/1.2 var(--serif);color:var(--light)}.brand small{display:block;font:400 11px/1.2 var(--sans);color:#5f7a96;letter-spacing:.04em}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav button{border:0;background:transparent;color:var(--muted);padding:9px 12px;border-radius:99px;font-weight:700;white-space:nowrap}.nav button.active{background:var(--gold);color:#091622}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 20px 70px}.screen{display:none}.screen.active{display:block}.hero,.panel{background:rgba(15,32,53,.92);border:1px solid var(--line);border-radius:18px;padding:clamp(22px,5vw,52px);margin-bottom:20px}.hero h1{font-family:var(--serif);font-size:clamp(31px,6vw,62px);line-height:1.08;max-width:700px;margin:16px 0 10px;color:#fff}.hero p{max-width:620px;color:var(--muted);font-size:1.04rem}.tag{display:inline-block;padding:8px 12px;border-radius:99px;border:1px solid rgba(255,200,91,.4);background:rgba(245,166,35,.12);color:var(--light);font-size:12px;font-weight:700;letter-spacing:.03em}.btn{border:0;background:var(--gold);color:#111820;padding:12px 18px;border-radius:12px;font-weight:700;box-shadow:0 10px 24px rgba(245,166,35,.22)}.btn.secondary{background:transparent;border:1px solid var(--line);color:#fff}.head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}.head h2{margin:0;font-family:var(--serif);font-size:clamp(24px,4vw,36px)}.hint{color:var(--muted);font-size:12px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{margin-bottom:14px}.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}.field input,.field textarea{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:#fff}.field textarea{min-height:110px;resize:vertical}.field input:focus,.field textarea:focus{outline:2px solid rgba(245,166,35,.5);border-color:transparent}.dotted{display:flex;gap:8px;margin-bottom:18px}.dot{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.02)}.dot.done{background:var(--gold)}.dot.now{background:rgba(255,255,255,.12)}.quiz{display:grid;gap:10px}.quiz button{display:block;width:100%;text-align:left;padding:15px 16px;border-radius:10px;border:1px solid var(--line);background:var(--field);color:#fff}.quiz button:hover{border-color:var(--gold)}.job,.course{background:var(--field);border:1px solid var(--line);border-radius:14px;padding:18px}.jobs,.courses{display:grid;gap:12px}.job-top{display:flex;justify-content:space-between;gap:12px;align-items:center}.job h3,.course h3{margin:0 0 8px;font-size:1.16rem}.job p,.course p{margin:6px 0;color:var(--muted)}.job-body{display:flex;justify-content:space-between;gap:14px;align-items:flex-end;flex-wrap:wrap;margin-top:12px}.badge{display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:rgba(245,166,35,.12);color:var(--light);padding:7px 10px;border:1px solid rgba(245,166,35,.25);font-size:12px;font-weight:700}.job button,.course button{margin-top:10px}.header-actions{display:flex;gap:10px;flex-wrap:wrap}.stats{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:12px;margin-bottom:18px}.stat{background:var(--field);border:1px solid var(--line);border-radius:12px;padding:18px}.stat b{display:block;font-family:var(--serif);font-size:32px;margin-bottom:6px}.chat{max-width:760px}.messages{display:grid;gap:10px;max-height:390px;overflow:auto;padding-right:8px;margin-bottom:12px}.bubble{max-width:88%;padding:12px 14px;border-radius:14px;background:var(--field);border:1px solid var(--line);line-height:1.48}.bubble.user{justify-self:end;background:rgba(118,80,29,.78);border-color:rgba(245,166,35,.35)}.chat-form{display:flex;gap:10px}.chat-form input{flex:1;padding:12px 13px;border-radius:10px;border:1px solid var(--line);background:var(--field);color:#fff}.free-link{display:inline-block;padding:8px 0 0;color:var(--light);font-weight:700;text-decoration:underline}.course a{display:inline-block;margin-top:8px;color:var(--light);font-weight:700;text-decoration:underline}.tool-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.mini{background:transparent;border:1px solid var(--line);color:#fff;padding:10px 12px;border-radius:10px}.footer-note{text-align:center;color:#5f7a96;padding:28px 0 0;font-size:12px}
+@media (max-width:650px){
+  .top-inner{display:block}.nav{margin-top:12px}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.job-top,.job-body,.chat-form,.header-actions{display:block}.chat-form input,.chat-form button{width:100%}.chat-form{display:grid;gap:8px}.hero,.panel{padding:18px 16px}.field input,.field textarea,.chat-form input{font-size:16px}.brand{font-size:20px}.wrap{padding:18px 14px 50px}.job,.course{padding:16px}.nav button{padding:8px 10px}
+}
 </style>
 </head>
 <body>
-<header class="top"><div class="top-inner"><div class="brand">farol.ia <small>mentor digital de carreira</small></div><nav class="nav"><button data-tab="home" class="active">Início</button><button data-tab="perfil">Meu Perfil</button><button data-tab="vagas">Oportunidades</button><button data-tab="progresso">Meu Progresso</button><button data-tab="mentor">Mentor IA</button></nav></div></header>
-<main class="wrap"><section id="screen-home" class="screen active"><div class="hero"><span class="tag">🧭 mentor de carreira com IA</span><h1>Encontre seu caminho profissional.</h1><p>Descubra seus pontos fortes, receba oportunidades compatíveis e tenha um plano de estudos feito para você.</p><button class="btn" id="start">Iniciar minha jornada</button></div><div id="snapshot"></div></section><section id="screen-perfil" class="screen"><div id="perfil"></div></section><section id="screen-vagas" class="screen"><div class="head"><h2>Oportunidades compatíveis</h2><span class="hint">Baseadas no seu perfil</span></div><div id="vagas"></div></section><section id="screen-progresso" class="screen"><div class="head"><h2>Meu progresso</h2></div><div id="progresso"></div></section><section id="screen-mentor" class="screen"><div class="head"><h2>Mentor IA</h2><span class="hint">Orientação instantânea para sua carreira</span></div><div id="mentor"></div></section></main>
+<header class="top"><div class="top-inner"><div class="brand">farol.ia <small>mentor digital de carreira</small></div><nav class="nav" id="nav"><button type="button" data-tab="home" class="active">Início</button><button type="button" data-tab="perfil">Meu Perfil</button><button type="button" data-tab="vagas">Oportunidades</button><button type="button" data-tab="progresso">Meu Progresso</button><button type="button" data-tab="mentor">Mentor IA</button></nav></div></header>
+<main class="wrap">
+  <section class="screen active" id="screen-home">
+    <div class="hero"><span class="tag">🧭 mentor de carreira com IA</span><h1>Porque encontrar uma vaga é importante.<br>Encontrar seu caminho também.</h1><p>O Farol.IA ajuda você a descobrir seu potencial, alinhar oportunidades com seu perfil e receber cursos e orientações personalizadas para evoluir.</p><button class="btn" id="start">Iniciar minha jornada</button></div>
+    <div id="snapshot"></div>
+  </section>
+  <section class="screen" id="screen-perfil"><div id="perfil"></div></section>
+  <section class="screen" id="screen-vagas"><div class="head"><h2>Oportunidades compatíveis</h2><span class="hint">Ordenadas pela sua aderência</span></div><div id="vagas"></div></section>
+  <section class="screen" id="screen-progresso"><div class="head"><h2>Meu progresso</h2></div><div id="progresso"></div></section>
+  <section class="screen" id="screen-mentor"><div class="head"><h2>Mentor IA</h2><span class="hint">Candidatura, currículo e cursos</span></div><div id="mentor"></div></section>
+</main>
+<footer class="footer-note">Farol.IA — protótipo de produto, dados simulados localmente no seu navegador.</footer>
 <script>
 'use strict';
-const courses=[['Excel Básico','Dados e organização','Fundação Bradesco','https://www.ev.org.br/cursos'],['Power BI','Dados e análise','Fundação Bradesco','https://www.ev.org.br/cursos/analise-de-dados-no-power-bi'],['SQL para Iniciantes','Dados e tecnologia','W3Schools','https://www.w3schools.com/sql/'],['Storytelling','Comunicação e conteúdo','Rock Content University','https://university.br.rockcontent.com/'],['Oratória e Apresentação','Comunicação','Fundação Bradesco','https://www.ev.org.br/cursos/comunicacao-empresarial'],['Gestão Ágil (Scrum)','Organização e projetos','Scrum.org','https://www.scrum.org/open-assessments'],['Introdução a UX','Design','Coursera — Google','https://www.coursera.org/learn/fundamentos-do-design-da-experiencia-do-usuario-ux']];
-const personas={criativa:{name:'Criativa Estratégica',desc:'Você transforma ideias em direção.',skills:['Criatividade','Comunicação','Autonomia'],areas:['Marketing','Design','Conteúdo'],keys:['Storytelling','Oratória e Apresentação','Introdução a UX']},dados:{name:'Analítica Orientada a Dados',desc:'Você decide com base em evidências.',skills:['Lógica','Curiosidade','Organização'],areas:['Dados','BI','Finanças'],keys:['Excel Básico','Power BI','SQL para Iniciantes']},pessoas:{name:'Conectora Comunicativa',desc:'Você constrói pontes entre pessoas.',skills:['Empatia','Comunicação','Persuasão'],areas:['RH','Atendimento','Comercial'],keys:['Oratória e Apresentação','Storytelling','Gestão Ágil (Scrum)']},organizacao:{name:'Estrategista Organizada',desc:'Você transforma caos em processo.',skills:['Planejamento','Organização','Liderança'],areas:['Operações','Projetos','Administração'],keys:['Gestão Ágil (Scrum)','Excel Básico','Oratória e Apresentação']}};
-const jobs=[['Analista de Conteúdo','Conteúdo','Criativa Estratégica'],['Assistente de Marketing Digital','Marketing','Criativa Estratégica'],['UX Design Jr.','Design','Criativa Estratégica'],['Analista de Dados Jr.','Dados','Analítica Orientada a Dados'],['Analista de RH Jr.','RH','Conectora Comunicativa'],['Assistente de Projetos','Projetos','Estrategista Organizada']];
-let state=JSON.parse(localStorage.getItem('faroliaState')||'null')||{name:'',email:'',area:'',persona:null,quiz:[],courses:[],applications:[],messages:[]};
-const $=id=>document.getElementById(id), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));function save(){localStorage.setItem('faroliaState',JSON.stringify(state))}function tab(name){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$('screen-'+name).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));render();scrollTo(0,0)}document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>tab(b.dataset.tab));$('start').onclick=()=>tab('perfil');
-function profile(){if(state.persona){let p=personas[state.persona];$('perfil').innerHTML=`<div class="panel"><div class="head"><h2>Seu perfil profissional</h2><button class="btn" id="redo">Refazer diagnóstico</button></div><h3>${p.name}</h3><p class="hint">${p.desc}</p><p>${p.skills.map(x=>`<span class="tag">✦ ${x}</span>`).join(' ')}</p><h3>Áreas recomendadas</h3><p>${p.areas.join(' · ')}</p><p class="hint">Olá, ${esc(state.name||'profissional')}! Seu plano de cursos e oportunidades já está pronto.</p></div>`;$('redo').onclick=()=>{state.persona=null;state.quiz=[];save();profile()};return}if(!state.name){$('perfil').innerHTML=`<div class="panel"><h2>Vamos começar</h2><form id="data"><div class="grid"><div class="field"><label>Nome</label><input id="name" required placeholder="Seu nome"></div><div class="field"><label>E-mail</label><input id="email" type="email" placeholder="voce@email.com"></div></div><div class="field"><label>Área de interesse</label><input id="area" placeholder="Ex.: Marketing, Dados, RH..."></div><button class="btn">Continuar para o diagnóstico</button></form></div>`;$('data').onsubmit=e=>{e.preventDefault();state.name=$('name').value.trim();state.email=$('email').value.trim();state.area=$('area').value.trim();save();profile()};return}quiz()}
-const questions=[['Quando precisa resolver algo novo?',['Procurar informações e entender o contexto','Pensar em ideias diferentes','Conversar com quem já passou por isso','Criar um plano com etapas']],['Qual papel você assume em um grupo?',['Organizar tarefas e prazos','Propor soluções criativas','Motivar e alinhar pessoas','Analisar informações']],['O que mais dá energia no trabalho?',['Resolver um problema lógico','Imaginar algo novo','Ajudar alguém','Ver um plano sair do papel']]];function quiz(){let i=state.quiz.length;if(i>=questions.length){let counts=[0,0,0,0];state.quiz.forEach(x=>counts[x]++);state.persona=['dados','criativa','pessoas','organizacao'][counts.indexOf(Math.max(...counts))];save();profile();return}let q=questions[i];$('perfil').innerHTML=`<div class="panel"><span class="hint">Pergunta ${i+1} de ${questions.length}</span><h2>${q[0]}</h2><div class="quiz">${q[1].map((x,n)=>`<button data-answer="${n}">${x}</button>`).join('')}</div></div>`;document.querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{state.quiz.push(Number(b.dataset.answer));save();quiz()})}
-function jobsView(){if(!state.persona){$('vagas').innerHTML='<div class="panel"><p class="hint">Complete seu diagnóstico em Meu Perfil para receber oportunidades personalizadas.</p></div>';return}let p=personas[state.persona];$('vagas').innerHTML=`<div class="jobs">${jobs.filter(j=>j[2]===p.name).map((j,i)=>`<article class="job"><h3>${j[0]}</h3><p>${j[1]} · Compatibilidade ${88-i*5}%</p><button class="btn apply" data-job="${j[0]}">${state.applications.includes(j[0])?'✓ Candidatura registrada':'Preparar candidatura'}</button></article>`).join('')}</div>`;document.querySelectorAll('.apply').forEach(b=>b.onclick=()=>{if(!state.applications.includes(b.dataset.job))state.applications.push(b.dataset.job);save();jobsView();progress()})}
-function mentor(){if(!state.persona){$('mentor').innerHTML='<div class="panel"><p class="hint">Complete seu perfil para desbloquear o Mentor IA.</p></div>';return}let p=personas[state.persona];let msgs=state.messages.length?state.messages:[{role:'mentor',text:`Olá, ${state.name||'profissional'}! Sou seu Mentor IA. Posso ajudar com currículo, entrevistas, cursos e oportunidades.`}];$('mentor').innerHTML=`<div class="panel chat"><div class="messages">${msgs.map(m=>`<div class="bubble ${m.role==='user'?'user':''}">${esc(m.text)}</div>`).join('')}</div><form id="chat" class="chat-form"><input id="chatInput" placeholder="Pergunte ao seu mentor..." autocomplete="off"><button class="btn">Enviar</button></form><p class="hint">Experimente: “quais cursos devo fazer?” ou “como melhorar meu currículo?”</p></div><div class="panel"><h2>Cursos recomendados para ${p.name}</h2><div class="courses">${courses.filter(c=>p.keys.includes(c[0])).map(c=>`<article class="course"><h3>${c[0]}</h3><p>${c[1]} · ${c[2]}</p><a href="${c[3]}" target="_blank" rel="noopener">Acessar curso gratuito ↗</a><br><button class="btn courseBtn" data-course="${c[0]}">${state.courses.includes(c[0])?'✓ No meu plano':'Adicionar ao meu plano'}</button></article>`).join('')}</div></div>`;$('chat').onsubmit=e=>{e.preventDefault();let input=$('chatInput'),text=input.value.trim();if(!text)return;state.messages.push({role:'user',text},{role:'mentor',text:reply(text,p)});save();mentor()};document.querySelectorAll('.courseBtn').forEach(b=>b.onclick=()=>{if(!state.courses.includes(b.dataset.course))state.courses.push(b.dataset.course);save();mentor()})}
-function reply(text,p){let t=text.toLowerCase();if(t.includes('curr'))return'No currículo, destaque resultados concretos: ação, contexto e impacto. Posso ajudar a revisar cada experiência.';if(t.includes('entrevist'))return'Prepare três histórias curtas usando situação, ação e resultado. Treine em voz alta e pesquise a empresa.';if(t.includes('curso')||t.includes('aprender'))return`Para o perfil ${p.name}, comece pelos cursos recomendados abaixo. Estude em blocos de 30 minutos e registre o que praticou.`;if(t.includes('vaga')||t.includes('emprego'))return`Priorize as oportunidades na aba Oportunidades. Seu perfil combina especialmente com ${p.areas.join(', ')}.`;return'Entendi. Minha sugestão é transformar esse objetivo em uma pequena ação para esta semana. Quer falar sobre currículo, entrevistas, cursos ou vagas?'}function progress(){let n=state.applications.length;$('progresso').innerHTML=`<div class="stats"><div class="stat"><b>${n}</b>candidaturas</div><div class="stat"><b>${state.courses.length}</b>cursos no plano</div><div class="stat"><b>${state.persona?100:0}%</b>perfil concluído</div></div><div class="panel"><h3>Próximo passo</h3><p class="hint">${state.persona?'Acesse o Mentor IA para conversar e iniciar seu plano de cursos.':'Comece preenchendo seu perfil e respondendo ao diagnóstico.'}</p></div>`}function home(){$('snapshot').innerHTML=state.persona?`<div class="panel"><h2>${personas[state.persona].name}</h2><p class="hint">Seu progresso está salvo neste dispositivo. Acesse o Mentor IA para ver seus cursos direcionados.</p></div>`:''}function render(){home();profile();jobsView();progress();mentor()}render();
-</script></body></html>
+const DEFAULT={dados:{nome:'',email:'',telefone:'',nascimento:'',idioma:'',formacao:'',instituicao:'',funcao:'',experiencias:[],cursosComp:[]},quiz:[],persona:null,potencialTexto:'',competencias:[],cursosFeitos:[],candidaturas:[],chatHistory:[],perfilStep:0};
+const QUESTIONS=[
+ ['Quando precisa resolver algo novo, o que faz?', ['Procurar informações e entender o contexto','Pensar em ideias diferentes','Conversar com quem já passou por isso','Criar um plano com etapas']],
+ ['Qual papel você assume em grupo?', ['Organizar tarefas e prazos','Propor soluções criativas','Motivar e alinhar pessoas','Analisar informações com critério']],
+ ['O que mais te energiza no trabalho?', ['Resolver um problema complexo','Imaginar algo novo','Ajudar pessoas','Ver um plano sair do papel']],
+ ['Em uma nova oportunidade, o que você prioriza?', ['Aprender rápido e acompanhar a área','Criar impacto e diferenciar a proposta','Conectar pessoas e alinhar objetivos','Organizar processos e entregar previsibilidade']]
+];
+const PERSONAS={
+ c:['Criativa Estratégica','Você transforma ideias em direção.', ['Criatividade','Comunicação','Autonomia'], ['Marketing','Design','Conteúdo']],
+ a:['Analítica Orientada a Dados','Você decide com base em evidências.', ['Lógica','Curiosidade','Organização'], ['Dados','BI','Finanças']],
+ m:['Conectora Comunicativa','Você conecta pessoas e cria alinhamento.', ['Empatia','Comunicação','Persuasão'], ['RH','Atendimento','Comercial']],
+ o:['Estrategista Organizada','Você transforma caos em processo.', ['Planejamento','Organização','Liderança'], ['Operações','Projetos','Administração']]
+};
+const JOBS=[
+ ['Analista de Conteúdo','Conteúdo',['Comunicação','Criatividade']],
+ ['Assistente de Marketing Digital','Marketing',['Criatividade','Comunicação']],
+ ['UX Design Jr.','Design',['Criatividade','Organização']],
+ ['Analista de Dados Jr.','Dados',['Lógica','Organização']],
+ ['Analista de RH Jr.','RH',['Empatia','Comunicação']],
+ ['Assistente de Projetos','Projetos',['Planejamento','Comunicação']]
+];
+const COURSES=[
+ ['Excel Básico',8,'Fundação Bradesco','https://www.ev.org.br/cursos'],
+ ['Power BI',12,'Fundação Bradesco','https://www.ev.org.br/cursos/analise-de-dados-no-power-bi'],
+ ['SQL para Iniciantes',12,'W3Schools','https://www.w3schools.com/sql/'],
+ ['Storytelling',6,'Rock Content University','https://university.br.rockcontent.com/'],
+ ['Oratória e Apresentação',7,'Fundação Bradesco','https://www.ev.org.br/cursos/comunicacao-empresarial'],
+ ['Gestão Ágil (Scrum)',10,'Scrum.org — Open Assessments','https://www.scrum.org/open-assessments'],
+ ['Introdução a UX',9,'Coursera — Google','https://www.coursera.org/learn/fundamentos-do-design-da-experiencia-do-usuario-ux']
+];
+let state=load();
+let quizIndex=0,openJob=-1;
+function clone(v){return JSON.parse(JSON.stringify(v));}
+function merge(base,extra){Object.keys(extra||{}).forEach(k=>{if(extra[k]!==undefined)base[k]=extra[k];});return base;}
+function load(){
+  try{
+    const raw=localStorage.getItem('farolIAState_v1');
+    return raw ? merge(clone(DEFAULT), JSON.parse(raw)) : clone(DEFAULT);
+  }catch(e){
+    return clone(DEFAULT);
+  }
+}
+function save(){localStorage.setItem('farolIAState_v1', JSON.stringify(state));}
+function esc(s){return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));}
+function val(id){return document.getElementById(id).value;}
+function tab(name){
+  document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+  const target=document.getElementById('screen-'+name); if(target) target.classList.add('active');
+  document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('active', b.dataset.tab===name));
+  render();
+  window.scrollTo({top:0, behavior:'instant'});
+}
+function goStep(n){state.perfilStep=n; save(); render();}
+function render(){
+  home();
+  profile();
+  jobs();
+  progress();
+  chat();
+}
+function home(){
+  const snapshot=document.getElementById('snapshot');
+  if(!state.persona){ snapshot.innerHTML=''; return; }
+  snapshot.innerHTML=`<div class="panel"><h2>${PERSONAS[state.persona][0]}</h2><p class="hint">Seu progresso está salvo neste dispositivo. Acesse o Mentor IA para receber cursos, currículo e oportunidades compatíveis.</p></div>`;
+}
+function profile(){
+  const box=document.getElementById('perfil');
+  const p=state.persona ? PERSONAS[state.persona] : null;
+  if(state.perfilStep===3 && p){
+    box.innerHTML=`<div class="panel"><div class="head"><h2>Seu perfil profissional</h2><div class="header-actions"><button class="btn secondary" id="edit-profile">Editar dados</button><button class="btn secondary" id="reset-profile">Refazer diagnóstico</button></div></div><h3>${p[0]}</h3><p class="hint">${p[1]}</p><p>${p[2].map(x=>`<span class="tag" style="display:inline-block;margin:0 6px 8px 0;padding:6px 10px;border-radius:99px;background:rgba(255,255,255,.02);border:1px solid var(--line);color:#fff">✦ ${x}</span>`).join('')}</p><h3>Áreas recomendadas</h3><p>${p[3].join(' · ')}</p><div class="tool-row"><button class="btn" id="download-cv">Baixar currículo</button><button class="btn secondary" id="go-to-mentor">Ir para Mentor IA</button></div></div>`;
+    document.getElementById('edit-profile').onclick=()=>goStep(0);
+    document.getElementById('reset-profile').onclick=()=>{state.persona=null; state.quiz=[]; state.perfilStep=0; save(); render();};
+    document.getElementById('download-cv').onclick=downloadCurriculo;
+    document.getElementById('go-to-mentor').onclick=()=>tab('mentor');
+    return;
+  }
+  const dots=[0,1,2,3].map(i=>`<i class="dot ${i<state.perfilStep?'done':i===state.perfilStep?'now':''}"></i>`).join('');
+  if(state.perfilStep===0){
+    const d=state.dados;
+    box.innerHTML=`<div class="panel"><div class="dotted">${dots}</div><div class="head"><h2>Meus dados</h2><span class="hint">Base do seu perfil para vagas e cursos</span></div><form id="data-form"><div class="grid"><div class="field"><label>Nome</label><input id="nome" value="${esc(d.nome)}" placeholder="Seu nome completo"></div><div class="field"><label>Email</label><input id="email" type="email" value="${esc(d.email)}" placeholder="voce@email.com"></div><div class="field"><label>Telefone</label><input id="telefone" value="${esc(d.telefone)}" placeholder="(11) 9 9999-9999"></div><div class="field"><label>Data de nascimento</label><input id="nascimento" type="date" value="${esc(d.nascimento)}"></div><div class="field"><label>Idioma principal</label><input id="idioma" value="${esc(d.idioma)}" placeholder="Inglês, espanhol, ..."></div><div class="field"><label>Formação</label><input id="formacao" value="${esc(d.formacao)}" placeholder="Ensino médio, graduação, ..."></div><div class="field"><label>Instituição</label><input id="instituicao" value="${esc(d.instituicao)}" placeholder="Nome da faculdade ou escola"></div><div class="field"><label>Função atual</label><input id="funcao" value="${esc(d.funcao)}" placeholder="Ex.: estudante, auxiliar administrativo"></div><div class="field" style="grid-column:1 / -1"><label>Experiências e projetos</label><textarea id="experiencias">${esc(d.experiencias.join('\n'))}</textarea></div><div class="field" style="grid-column:1 / -1"><label>Cursos complementares</label><textarea id="cursosComp">${esc(d.cursosComp.join('\n'))}</textarea></div></div><div class="tool-row"><button type="submit" class="btn">Continuar para o diagnóstico</button><button type="button" class="btn secondary" id="download-cv">Baixar currículo</button></div></form></div>`;
+    document.getElementById('data-form').onsubmit=e=>{e.preventDefault();state.dados.nome=val('nome').trim();state.dados.email=val('email').trim();state.dados.telefone=val('telefone').trim();state.dados.nascimento=val('nascimento');state.dados.idioma=val('idioma').trim();state.dados.formacao=val('formacao').trim();state.dados.instituicao=val('instituicao').trim();state.dados.funcao=val('funcao').trim();state.dados.experiencias=val('experiencias').split('\n').map(x=>x.trim()).filter(Boolean);state.dados.cursosComp=val('cursosComp').split('\n').map(x=>x.trim()).filter(Boolean);state.perfilStep=1;save();render();};
+    document.getElementById('download-cv').onclick=downloadCurriculo;
+    return;
+  }
+  if(state.perfilStep===1){
+    quizIndex = state.quiz.length || 0;
+    const q=QUESTIONS[quizIndex] || QUESTIONS[0];
+    box.innerHTML=`<div class="panel"><div class="dotted">${dots}</div><div class="head"><h2>Diagnóstico de perfil</h2><span class="hint">Pergunta ${Math.min(quizIndex+1, QUESTIONS.length)} de ${QUESTIONS.length}</span></div><h3>${q[0]}</h3><div class="quiz">${q[1].map((option,i)=>`<button type="button" data-ans="${i}">${option}</button>`).join('')}</div></div>`;
+    document.querySelectorAll('[data-ans]').forEach(btn => btn.onclick = () => {state.quiz.push(Number(btn.dataset.ans));save(); if(state.quiz.length >= QUESTIONS.length){state.perfilStep=2;} render();});
+    return;
+  }
+  if(state.perfilStep===2){
+    const d=state.dados;
+    box.innerHTML=`<div class="panel"><div class="dotted">${dots}</div><div class="head"><h2>Descoberta de potencial</h2><span class="hint">Descreva sua trajetória e objetivos</span></div><form id="potential-form"><div class="field"><textarea id="potencial" placeholder="Ex.: Tenho interesse em seguir em marketing digital, gosto de criar campanhas e me envolvo em projetos de comunicação e redes sociais.">${esc(state.potencialTexto || '')}</textarea></div><div class="tool-row"><button type="submit" class="btn">Analisar e definir meu perfil</button><button type="button" class="btn secondary" id="back-step">Voltar</button></div></form></div>`;
+    document.getElementById('potential-form').onsubmit=e=>{e.preventDefault(); state.potencialTexto = val('potencial').trim(); const t = state.potencialTexto.toLowerCase(); const competenciaBase = ['organização','comunicação','criatividade','lógica','empatia','liderança','dados','projetos']; state.competencias = competenciaBase.filter(x => t.includes(x)); if(!state.competencias.length) state.competencias = ['Organização','Comunicação'];
+      const map = { c:'c', a:'a', m:'m', o:'o' };
+      const scores = { c:0, a:0, m:0, o:0 };
+      ['criatividade','comunicação','dados','projetos','empatia','liderança','organização','lógica'].forEach(word => {
+        if(t.includes(word)){ if(['criatividade','comunicação','empatia'].includes(word)) scores.c += 1; if(['dados','lógica'].includes(word)) scores.a += 1; if(['comunicação','empatia'].includes(word)) scores.m += 1; if(['projetos','organização','liderança'].includes(word)) scores.o += 1; }
+      });
+      const selected = Object.entries(scores).sort((a,b)=>b[1]-a[1])[0][0];
+      state.persona = selected === 'c' ? 'c' : selected === 'a' ? 'a' : selected === 'm' ? 'm' : 'o';
+      state.perfilStep=3; save(); render(); };
+    document.getElementById('back-step').onclick=()=>goStep(1);
+    return;
+  }
+}
+function downloadCurriculo(){
+  const d=state.dados;
+  const text = [
+    'FAROL.IA — CURRÍCULO',
+    '',
+    'Nome: ' + (d.nome || '—'),
+    'Email: ' + (d.email || '—'),
+    'Telefone: ' + (d.telefone || '—'),
+    'Data de nascimento: ' + (d.nascimento || '—'),
+    'Idioma: ' + (d.idioma || '—'),
+    'Formação: ' + (d.formacao || '—'),
+    'Instituição: ' + (d.instituicao || '—'),
+    'Função atual: ' + (d.funcao || '—'),
+    '',
+    'Experiências e projetos:',
+    (d.experiencias.length ? d.experiencias.join('\n') : '—'),
+    '',
+    'Cursos complementares:',
+    (d.cursosComp.length ? d.cursosComp.join('\n') : '—'),
+    '',
+    'Potencial descrito:',
+    (state.potencialTexto || '—')
+  ].join('\n');
+  const blob = new Blob([text], {type:'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'curriculo-farol-ia.txt';
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+function jobs(){
+  const box=document.getElementById('vagas');
+  if(!state.persona){
+    box.innerHTML='<div class="panel"><p class="hint">Complete seu perfil em Meu Perfil para ver oportunidades.</p></div>';
+    return;
+  }
+  const p=PERSONAS[state.persona];
+  const list = JOBS.filter(([title, area, skills]) => p[3].includes(area) || skills.some(s => p[2].includes(s))); 
+  box.innerHTML=`<div class="jobs">${list.map((job,i)=>`<article class="job"><div class="job-top"><h3>${job[0]}</h3><span class="badge">${Math.max(70, 88 - i*6)}% compatível</span></div><p>${job[1]} • Recomendado para ${p[0]}</p><div class="job-body"><div>${job[2].map(x=>`<span class="tag" style="display:inline-block;margin:0 6px 6px 0;padding:5px 9px;border-radius:99px;background:rgba(255,255,255,.03);border:1px solid var(--line);color:#fff">${x}</span>`).join('')}</div><div><button type="button" class="btn" data-apply="${job[0]}">${state.candidaturas.some(c=>c.title===job[0])?'✓ Candidatura inteligente ativa':'Candidatura inteligente'}</button></div></div></article>`).join('')}</div>`;
+  document.querySelectorAll('[data-apply]').forEach(btn => btn.onclick = () => {
+    const title=btn.dataset.apply;
+    if(!state.candidaturas.some(c=>c.title===title)){
+      state.candidaturas.push({title, date:new Date().toISOString()});
+      save();
+    }
+    jobs();
+    progress();
+  });
+}
+function progress(){
+  const n=state.candidaturas.length;
+  const box=document.getElementById('progresso');
+  const perfilPct = state.persona ? 100 : 0;
+  box.innerHTML=`<div class="stats"><div class="stat"><b>${n}</b><span class="hint">candidaturas</span></div><div class="stat"><b>${state.cursosFeitos.length || 0}</b><span class="hint">cursos concluídos</span></div><div class="stat"><b>${perfilPct}%</b><span class="hint">perfil concluído</span></div></div><div class="panel"><h3>Próximo passo</h3><p class="hint">${state.persona ? 'Acesse o Mentor IA para receber cursos e revisar seu currículo.' : 'Comece preenchendo seus dados e respondendo ao diagnóstico.'}</p></div>`;
+}
+function mentorReply(text){
+  const t=text.toLowerCase();
+  if(t.includes('currículo') || t.includes('curriculo')) return 'No currículo, destaque resultados e impacto. Use verbos de ação e mostre números, contexto e resultado final.';
+  if(t.includes('entrevista') || t.includes('entrevistas')) return 'Prepare três histórias curtas com situação, ação e resultado. Treine em voz alta e pesquise a empresa antes.';
+  if(t.includes('curso') || t.includes('aprender') || t.includes('estudar')) return 'Para o seu perfil, vale começar por cursos de comunicação, dados ou organização, conforme sua área. Abaixo estão sugestões direcionadas.';
+  if(t.includes('vaga') || t.includes('emprego') || t.includes('oportunidade')) return 'Priorize as vagas que combinem com suas competências e a área de interesse. O melhor próximo passo é aplicar para 2 ou 3 posições com perfil bem alinhado.';
+  return 'Entendi. Posso te ajudar a definir uma ação prática para esta semana: currículo, entrevista, vagas ou cursos.';
+}
+function chat(){
+  const box=document.getElementById('mentor');
+  if(!state.persona){
+    box.innerHTML='<div class="panel"><p class="hint">Complete seu perfil para desbloquear o Mentor IA.</p></div>';
+    return;
+  }
+  const d=state.dados; const name = esc(d.nome || 'profissional');
+  if(!state.chatHistory.length){
+    state.chatHistory=[{role:'mentor', text:`Olá, ${name}! Sou seu Mentor IA. Posso te ajudar com currículo, entrevistas, cursos e oportunidades.`}];
+    save();
+  }
+  const p = PERSONAS[state.persona];
+  const courseList = COURSES.filter(course => p[3].some(area => course[0].toLowerCase().includes(area.toLowerCase().slice(0,4)) || ['Excel', 'Power BI', 'SQL', 'Storytelling', 'Oratória', 'Scrum', 'UX'].includes(course[0].split(' ')[0])) || p[2].includes(course[0].split(' ')[0]))
+  .slice(0, 3);
+  box.innerHTML=`<div class="panel chat"><div class="messages">${state.chatHistory.map(msg => `<div class="bubble ${msg.role === 'user' ? 'user' : ''}">${esc(msg.text)}</div>`).join('')}</div><form id="chat-form" class="chat-form"><input id="chat-input" placeholder="Pergunte ao seu mentor..." autocomplete="off"><button type="submit" class="btn">Enviar</button></form></div><div class="panel"><h3>Cursos recomendados</h3>${courseList.map(c => `<div class="course"><h3>${c[0]}</h3><p>${c[1]} horas • ${c[2]}</p><a href="${c[3]}" target="_blank" rel="noopener">Acessar curso</a><button type="button" class="btn secondary" data-course="${c[0]}">${state.cursosFeitos.includes(c[0]) ? '✓ Adicionado ao plano' : 'Adicionar ao plano'}</button></div>`).join('')} </div>`;
+  document.getElementById('chat-form').onsubmit = e => {
+    e.preventDefault();
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if(!text) return;
+    state.chatHistory.push({role:'user', text});
+    state.chatHistory.push({role:'mentor', text: mentorReply(text)});
+    save();
+    chat();
+  };
+  document.querySelectorAll('[data-course]').forEach(btn => btn.onclick = () => {
+    const course = btn.dataset.course;
+    if(!state.cursosFeitos.includes(course)) state.cursosFeitos.push(course);
+    save();
+    progress();
+    chat();
+  });
+}
+function init(){
+  document.querySelectorAll('[data-tab]').forEach(btn => btn.onclick = () => tab(btn.dataset.tab));
+  document.getElementById('start').onclick = () => { state.perfilStep = 0; save(); tab('perfil'); };
+  render();
+}
+init();
+</script>
+</body>
+</html>
