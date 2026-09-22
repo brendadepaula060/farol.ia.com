@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Farol.IA — mentor de carreira</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,6 +55,7 @@
   html[data-theme="claro"] .hero{ background:linear-gradient(180deg, var(--ink-2) 0%, var(--ink) 100%); }
   html[data-theme="claro"] .quiz-opt:hover{ background:#fdf1de; }
   *{box-sizing:border-box}
+  html{scroll-padding-top:env(safe-area-inset-top,0px)}
   html,body{margin:0;padding:0}
   body{
     background: radial-gradient(120% 100% at 15% -10%, var(--glow) 0%, var(--ink) 45%) fixed;
@@ -62,21 +63,24 @@
     font-family:var(--sans);
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
+    padding-bottom:env(safe-area-inset-bottom,0px);
   }
   a{color:inherit}
   button{font-family:inherit}
   h1,h2,h3,h4{font-family:var(--serif);font-weight:600;margin:0 0 .4em;letter-spacing:-.01em}
   p{margin:0 0 1em;color:var(--fog)}
   .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  @media(max-width:480px){ .wrap{padding:0 16px} }
 
   /* ---------- Header & waypoint nav ---------- */
   header.top{
-    position:sticky;top:0;z-index:40;
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:40;
     background:rgba(10,20,32,.86);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
   .top-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1040px;margin:0 auto;gap:20px}
+  @media(max-width:480px){ .top-inner{padding:12px 14px;gap:10px} }
   .brand{display:flex;align-items:baseline;gap:10px}
   .brand-mark{font-family:var(--serif);font-style:italic;font-weight:600;font-size:22px;color:var(--beacon-light)}
   .brand-sub{font-size:12px;color:var(--fog-dim);display:none}
@@ -95,7 +99,7 @@
   .settings-wrap{position:relative;flex-shrink:0}
   .icon-btn{background:none;border:1px solid var(--line);color:var(--fog);width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:15px;flex-shrink:0}
   .icon-btn:hover{border-color:var(--beacon);color:var(--beacon-light)}
-  .settings-panel{position:absolute;top:44px;right:0;background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:210px;box-shadow:0 12px 30px -8px rgba(0,0,0,.45);z-index:50}
+  .settings-panel{position:absolute;top:44px;right:0;background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:210px;max-width:calc(100vw - 32px);box-shadow:0 12px 30px -8px rgba(0,0,0,.45);z-index:50}
   .settings-panel.hidden{display:none}
   .settings-title{font-family:var(--serif);font-size:15px;color:var(--text);margin-bottom:12px}
   .settings-row{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13.5px;color:var(--fog);cursor:default}
@@ -121,6 +125,7 @@
   .hero p.lede{font-size:17px;color:var(--fog);max-width:480px}
   .hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--beacon-light);
     background:var(--beacon-dim);border:1px solid rgba(245,166,35,.3);padding:5px 12px;border-radius:999px;margin-bottom:18px}
+  @media(max-width:480px){ .hero{padding:36px 20px} }
 
   /* ---------- Buttons ---------- */
   .btn{display:inline-flex;align-items:center;gap:8px;background:var(--beacon);color:#1a1200;
@@ -135,6 +140,7 @@
 
   /* ---------- Cards / panels (varied treatments) ---------- */
   .panel{background:var(--ink-2);border:1px solid var(--line);border-radius:16px;padding:28px}
+  @media(max-width:480px){ .panel{padding:18px} }
   .panel + .panel{margin-top:18px}
   .section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap}
   .section-head h2{font-size:23px;color:var(--text)}
@@ -224,9 +230,11 @@
   .gap-note a{color:var(--beacon-light)}
   .next-step-cta{text-align:center;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
 
-  .auth-overlay{position:fixed;inset:0;background:var(--ink);z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;overflow-y:auto}
+  .auth-overlay{position:fixed;inset:0;background:var(--ink);z-index:100;display:flex;align-items:center;justify-content:center;overflow-y:auto;
+    padding:calc(24px + env(safe-area-inset-top,0px)) 24px calc(24px + env(safe-area-inset-bottom,0px)) 24px;}
   .auth-overlay.hidden{display:none}
   .auth-card{background:var(--ink-2);border:1px solid var(--line);border-radius:18px;padding:36px;max-width:420px;width:100%;margin:auto}
+  @media(max-width:420px){ .auth-overlay{padding:calc(16px + env(safe-area-inset-top,0px)) 12px calc(16px + env(safe-area-inset-bottom,0px)) 12px} .auth-card{padding:22px} }
   .auth-card h1{font-family:var(--serif);font-style:italic;color:var(--beacon-light);font-size:27px;margin-bottom:4px}
   .auth-card .sub{font-size:13px;color:var(--fog-dim);margin-bottom:22px}
   .auth-switch{font-size:13px;color:var(--fog);margin-top:14px;text-align:center}
@@ -439,10 +447,10 @@ const QUESTIONS = [
 ];
 
 const PERSONAS = {
-  c:{ name:'Criativa Estratégica', desc:'Você enxerga possibilidades onde outros veem obstáculos e sabe transformar ideias soltas em direção.', traits:['Criatividade','Comunicação','Autonomia','Iniciativa'], areas:['Marketing','Design','Conteúdo','Produto'] },
-  a:{ name:'Analítica Orientada a Dados', desc:'Você decide com base em evidências e enxerga padrões que passam despercebidos para os outros.', traits:['Lógica','Atenção a detalhes','Curiosidade','Organização'], areas:['Dados','BI','Finanças','Growth'] },
-  m:{ name:'Conectora Comunicativa', desc:'Você constrói pontes entre pessoas e faz as coisas acontecerem por meio de relações genuínas.', traits:['Empatia','Comunicação','Persuasão','Trabalho em equipe'], areas:['RH','Atendimento','Comercial','Vendas'] },
-  o:{ name:'Estrategista Organizada', desc:'Você transforma caos em processo e garante que tudo saia do papel dentro do prazo.', traits:['Planejamento','Organização','Liderança','Foco em resultados'], areas:['Operações','Projetos','Administração','Processos'] }
+  c:{ name:'Criatividade Estratégica', desc:'Você enxerga possibilidades onde outros veem obstáculos e sabe transformar ideias soltas em direção.', traits:['Criatividade','Comunicação','Autonomia','Iniciativa'], areas:['Marketing','Design','Conteúdo','Produto'] },
+  a:{ name:'Análise Orientada a Dados', desc:'Você decide com base em evidências e enxerga padrões que passam despercebidos para os outros.', traits:['Lógica','Atenção a detalhes','Curiosidade','Organização'], areas:['Dados','BI','Finanças','Growth'] },
+  m:{ name:'Conexão Comunicativa', desc:'Você constrói pontes entre pessoas e faz as coisas acontecerem por meio de relações genuínas.', traits:['Empatia','Comunicação','Persuasão','Trabalho em equipe'], areas:['RH','Atendimento','Comercial','Vendas'] },
+  o:{ name:'Organização Estratégica', desc:'Você transforma caos em processo e garante que tudo saia do papel dentro do prazo.', traits:['Planejamento','Organização','Liderança','Foco em resultados'], areas:['Operações','Projetos','Administração','Processos'] }
 };
 
 const KEYWORD_MAP = [
@@ -649,6 +657,9 @@ function generateMentorReply(raw){
     { keys:['entrevista'], replies:[
       'Para a entrevista, pesquise a empresa antes, prepare exemplos concretos das suas experiências e leve 2 perguntas para fazer no final — isso mostra interesse genuíno.',
       'Estruture suas respostas com Situação, Tarefa, Ação e Resultado (método STAR). Fica mais fácil contar uma experiência de forma clara e objetiva.' ]},
+    { keys:['o que perguntam em uma entrevista','o que perguntariam em uma entrevista','perguntas de entrevista','quais perguntas','o que vao me perguntar','o que me perguntariam','perguntas mais comuns'], replies:[
+      'As perguntas mais comuns costumam ser: "fale um pouco sobre você", "por que você quer trabalhar aqui", "conte uma situação difícil que você enfrentou e como resolveu", "quais são seus pontos fortes e o que você quer melhorar", "onde você se vê daqui a alguns anos" e "por que devemos te contratar". Vale preparar uma resposta curta (1-2 minutos) para cada uma, com exemplos reais.',
+      'Prepare-se para perguntas comportamentais tipo "me dê um exemplo de quando você trabalhou em equipe" ou "como você lida com prazos apertados" — use o método STAR (Situação, Tarefa, Ação, Resultado) para estruturar a resposta. E guarde 2 perguntas suas para fazer no final, tipo "como é o dia a dia dessa vaga?".' ]},
     { keys:['currículo','curriculo','cv'], replies:[
       'Seu currículo deve caber em 1 página e mostrar resultados, não só tarefas. Troque "ajudei na organização de um evento" por "organizei um evento com mais de 100 participantes".',
       'Use verbos de ação no início de cada linha (organizei, liderei, criei, analisei) e, quando possível, coloque um número — isso chama muito mais atenção do recrutador.' ]},
@@ -1044,8 +1055,8 @@ function careerMap(p){
   const steps = [
     {lbl:'Você', sub:p.name, you:true},
     {lbl:'Assistente de '+area, sub:'ponto de partida'},
-    {lbl:'Analista de '+area, sub:'1–2 anos'},
-    {lbl:'Especialista em '+area, sub:'3–5 anos'},
+    {lbl:'Analista de '+area, sub:'próximo passo'},
+    {lbl:'Especialista em '+area, sub:'aprofundamento'},
     {lbl:'Coordenador(a) de '+area, sub:'liderança'}
   ];
   return steps.map((s,i) => `
