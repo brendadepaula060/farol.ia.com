@@ -290,6 +290,10 @@
 
   ::selection{background:var(--beacon-dim);color:var(--text)}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init("Jm3ioQ20vD0PPfNzH");
+</script>
 </head>
 <body>
 
@@ -844,10 +848,15 @@ function renderDados(box, dots){
     d.cursosComp = val('f-cursos').split(',').map(s=>s.trim()).filter(Boolean);
     state.areaSelecionada = val('f-area');
     if(document.getElementById('f-confirmar-email').checked){
-      const assunto = encodeURIComponent('Confirmação de cadastro — Farol.IA');
-      const corpo = encodeURIComponent('Olá ' + nome + ',\n\nEste é um e-mail de confirmação do seu cadastro no Farol.IA, gerado a partir dos dados que você preencheu (' + email + ').\n\nSe você reconhece este cadastro, é só enviar este e-mail para si mesmo(a) como registro.\n\n— Farol.IA');
-      window.location.href = 'mailto:' + encodeURIComponent(email) + '?subject=' + assunto + '&body=' + corpo;
-      state.emailConfirmado = true;
+      emailjs.send("service_anwfz1b", "template_3wbhiun", {
+        nome: nome,
+        email: email
+      }).then(() => {
+        state.emailConfirmado = true;
+        saveState();
+      }).catch(error => {
+        console.error("Erro ao enviar e-mail de boas-vindas:", error);
+      });
     }
     goPerfilStep(1);
   });
